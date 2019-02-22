@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BasicFramework</string>
+
+
+    <string name="not_have_data">暂无数据</string>
+    <string name="In_the_load">加载中...</string>
+
+
+
+</resources>
