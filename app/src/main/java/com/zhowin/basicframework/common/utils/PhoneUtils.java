@@ -38,13 +38,13 @@ public final class PhoneUtils {
      */
     public static boolean checkPhone(String phone, boolean toast) {
         if (TextUtils.isEmpty(phone)) {
-            if (toast) ToastUtils.showToast("手机号为空");
+            if (toast) ToastUtils.showLong("手机号为空");
             return false;
         }
         String PHONE_NUMBER_REG = "^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\\d{8}$";
         if (phone.length() != 11 || !phone
                 .matches(PHONE_NUMBER_REG)) {
-            if (toast) ToastUtils.showToast("手机号格式不对");
+            if (toast) ToastUtils.showLong("手机号格式不对");
             return false;
         }
         return true;

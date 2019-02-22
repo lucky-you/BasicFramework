@@ -129,7 +129,7 @@ public abstract class LibFragment extends Fragment implements BaseView {
     }
 
     protected void showToast(String msg) {
-        ToastUtils.showToast(msg);
+        ToastUtils.showLong(msg);
     }
 
 

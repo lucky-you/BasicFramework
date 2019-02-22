@@ -131,7 +131,7 @@ public class PhotoUtils {
             Cursor cursor = context.getContentResolver().query(uri,
                     new String[]{MediaStore.Images.Media.DATA}, null, null, null);
             if (null == cursor) {
-                ToastUtils.showToast("图片没找到");
+                ToastUtils.showLong("图片没找到");
                 return null;
             }
             cursor.moveToFirst();

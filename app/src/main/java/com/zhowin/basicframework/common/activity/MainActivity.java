@@ -1,10 +1,10 @@
 package com.zhowin.basicframework.common.activity;
 
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
-
     }
 
     @Override
@@ -46,6 +45,7 @@ public class MainActivity extends BaseActivity {
 
         }
     }
+
     private void setPasswordDialogOne() {
         PasswordDialogUtils.passwordDialog(mContext, new PasswordEditText.PasswordFullListener() {
             @Override
@@ -63,7 +63,6 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
-
 
 
 }

@@ -95,7 +95,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
      * 显示Toast
      */
     protected void showToast(String msg) {
-        ToastUtils.showToast(msg);
+        ToastUtils.showLong(msg);
     }
 
 

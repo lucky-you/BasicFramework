@@ -58,5 +58,10 @@
 
     </LinearLayout>
 
+    <com.zhowin.viewlibrary.view.CropImageView
+        android:id="@+id/civImage"
+        android:layout_width="@dimen/spacing_100"
+        android:layout_height="@dimen/spacing_80" />
+
 
 </LinearLayout>

@@ -25,6 +25,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import tgio.rncryptor.RNCryptorNative;
 
 
 /**
@@ -139,33 +140,33 @@ public class RetrofitFactory {
     /**
      * 参数拦截器--》对参数进行加密
      */
-//    private static class EncryptInterceptor implements Interceptor {
-//
-//        @Override
-//        public Response intercept(Chain chain) throws IOException {
-//            Request request = chain.request();
-//            RequestBody requestBody = request.body();
-//            String password = ApiService.ENCRYPTION_PASSWORD;
-//            FormBody.Builder newFormBuilder = new FormBody.Builder();
-//            if (requestBody instanceof FormBody) {
-//                FormBody formBody = (FormBody) requestBody;
-//                for (int i = 0; i < formBody.size(); i++) {
-//                    if (TextUtils.equals("param", formBody.name(i))) { //只对param参数做加密
-//                        String paramJson = formBody.value(i); //原始的json， 做加密
-//                        RNCryptorNative rncryptor = new RNCryptorNative();
-//                        String encrypted = new String(rncryptor.encrypt(paramJson, password));
-////                        Log.e("xy", "加密前param数据：" + paramJson);
-////                        Log.e("xy", "加密后param数据：" + encrypted);
-//                        newFormBuilder.add("param", encrypted); //加密之后添加
-//                    } else if (TextUtils.equals("token", formBody.name(i))) {//token 不用加密
-//                        newFormBuilder.add(formBody.name(i), formBody.value(i));
-//                    }
-//                }
-//            }
-//            RequestBody newFormBody = newFormBuilder.build();
-//            Request.Builder builder = request.newBuilder();
-//            builder.post(newFormBody);
-//            return chain.proceed(builder.build());
-//        }
-//    }
+    private static class EncryptInterceptor implements Interceptor {
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            RequestBody requestBody = request.body();
+            String password = ApiService.ENCRYPTION_PASSWORD;
+            FormBody.Builder newFormBuilder = new FormBody.Builder();
+            if (requestBody instanceof FormBody) {
+                FormBody formBody = (FormBody) requestBody;
+                for (int i = 0; i < formBody.size(); i++) {
+                    if (TextUtils.equals("param", formBody.name(i))) { //只对param参数做加密
+                        String paramJson = formBody.value(i); //原始的json， 做加密
+                        RNCryptorNative rncryptor = new RNCryptorNative();
+                        String encrypted = new String(rncryptor.encrypt(paramJson, password));
+//                        Log.e("xy", "加密前param数据：" + paramJson);
+//                        Log.e("xy", "加密后param数据：" + encrypted);
+                        newFormBuilder.add("param", encrypted); //加密之后添加
+                    } else if (TextUtils.equals("token", formBody.name(i))) {//token 不用加密
+                        newFormBuilder.add(formBody.name(i), formBody.value(i));
+                    }
+                }
+            }
+            RequestBody newFormBody = newFormBuilder.build();
+            Request.Builder builder = request.newBuilder();
+            builder.post(newFormBody);
+            return chain.proceed(builder.build());
+        }
+    }
 }
