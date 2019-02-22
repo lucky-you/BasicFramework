@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <RelativeLayout
@@ -32,6 +24,39 @@
             app:mv_cornerRadius="@dimen/spacing_10" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTypeOne"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="样式一"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeTwo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="样式二"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

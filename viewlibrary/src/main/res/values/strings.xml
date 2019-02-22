@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ViewLibrary</string>
+
+
+    <string name="please_edit_password">请输入支付密码</string>
+    <string name="dialog_withdrawal_money">提现金额¥ %s元</string>
+    <string name="Forgot_password">忘记密码?</string>
+
+
 </resources>
