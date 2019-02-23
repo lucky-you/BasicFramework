@@ -43,7 +43,6 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
         if (mClearDrawable == null) {
             mClearDrawable = getResources().getDrawable(R.drawable.ic_clear_edit_text);
         }
-
         mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(),
                 mClearDrawable.getIntrinsicHeight());
         // 默认设置隐藏图标
