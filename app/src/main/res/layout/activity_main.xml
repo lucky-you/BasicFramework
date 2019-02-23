@@ -56,8 +56,20 @@
 
         <View style="@style/DivideStyleOf1dp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvTypeThree"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="样式三"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
 
+        <View style="@style/DivideStyleOf1dp" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

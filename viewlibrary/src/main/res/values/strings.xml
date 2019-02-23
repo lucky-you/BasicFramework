@@ -5,6 +5,10 @@
     <string name="please_edit_password">请输入支付密码</string>
     <string name="dialog_withdrawal_money">提现金额¥ %s元</string>
     <string name="Forgot_password">忘记密码?</string>
+    <string name="Are_you_sure_you_want_to_delete_it">确定要删除吗?</string>
+    <string name="prompt">提示</string>
+    <string name="cancel">取消</string>
+    <string name="determine">确定</string>
 
 
 </resources>
