@@ -9,7 +9,7 @@ import android.app.Dialog;
  */
 public interface OnAndroidDialogClickListener {
 
-    void onCancelClick(Dialog dialog);
+    void onNegativeClick(Dialog dialog);
 
-    void onDetermineClick(Dialog dialog);
+    void onPositiveClick(Dialog dialog);
 }

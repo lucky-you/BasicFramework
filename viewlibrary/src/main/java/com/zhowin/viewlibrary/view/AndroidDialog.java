@@ -3,7 +3,6 @@ package com.zhowin.viewlibrary.view;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -28,20 +27,24 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
     private String content;
     private String positiveName;
     private String negativeName;
+    private int titleTextColor;
+    private int contentTextColor;
+    private int positiveTextColor;
+    private int negativeTextColor;
 
     public AndroidDialog(Context context) {
         super(context);
         this.mContext = context;
     }
 
-    public AndroidDialog(Context context, int themeResId, String content) {
-        super(context, themeResId);
+    public AndroidDialog(Context context, String content) {
+        super(context, R.style.AndroidDialogStyle);
         this.mContext = context;
         this.content = content;
     }
 
-    public AndroidDialog(Context context, int themeResId, String content, OnAndroidDialogClickListener listener) {
-        super(context, themeResId);
+    public AndroidDialog(Context context, String content, OnAndroidDialogClickListener listener) {
+        super(context, R.style.AndroidDialogStyle);
         this.mContext = context;
         this.content = content;
         this.onAndroidDialogClickListener = listener;
@@ -62,31 +65,66 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public AndroidDialog setTitleTextColor(int color) {
+        this.titleTextColor = color;
+        return this;
+    }
+
+    public AndroidDialog setContentTextColor(int color) {
+        this.contentTextColor = color;
+        return this;
+    }
+
+    public AndroidDialog setPositiveTextColor(int color) {
+        this.positiveTextColor = color;
+        return this;
+    }
+
+    public AndroidDialog setNegativeTextColor(int color) {
+        this.negativeTextColor = color;
+        return this;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.include_android_dialog_layout);
         setCanceledOnTouchOutside(false);
         setCancelable(false);
-        initView();
+        initViews();
     }
 
-    private void initView() {
+    private void initViews() {
         tvTitleTxt = findViewById(R.id.tvTitle);
         tvContentTxt = findViewById(R.id.tvContent);
         tvDetermineTxt = findViewById(R.id.tvDetermine);
         tvDetermineTxt.setOnClickListener(this);
         tvCancelTxt = findViewById(R.id.tvCancel);
         tvCancelTxt.setOnClickListener(this);
-        tvContentTxt.setText(content);
+        if (!TextUtils.isEmpty(title)) {
+            tvTitleTxt.setText(title);
+        }
+        if (!TextUtils.isEmpty(content)) {
+            tvContentTxt.setText(content);
+        }
         if (!TextUtils.isEmpty(positiveName)) {
             tvDetermineTxt.setText(positiveName);
         }
         if (!TextUtils.isEmpty(negativeName)) {
             tvCancelTxt.setText(negativeName);
         }
-        if (!TextUtils.isEmpty(title)) {
-            tvTitleTxt.setText(title);
+        if (titleTextColor != 0) {
+            tvTitleTxt.setTextColor(titleTextColor);
+        }
+        if (contentTextColor != 0) {
+            tvContentTxt.setTextColor(contentTextColor);
+        }
+        if (positiveTextColor != 0) {
+            tvDetermineTxt.setTextColor(positiveTextColor);
+        }
+        if (negativeTextColor != 0) {
+            tvCancelTxt.setTextColor(negativeTextColor);
         }
     }
 
@@ -95,11 +133,11 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
         int i = view.getId();
         if (i == R.id.tvCancel) {
             if (onAndroidDialogClickListener != null) {
-                onAndroidDialogClickListener.onCancelClick(this);
+                onAndroidDialogClickListener.onNegativeClick(this);
             }
         } else if (i == R.id.tvDetermine) {
             if (onAndroidDialogClickListener != null) {
-                onAndroidDialogClickListener.onDetermineClick(this);
+                onAndroidDialogClickListener.onPositiveClick(this);
             }
         }
         this.dismiss();

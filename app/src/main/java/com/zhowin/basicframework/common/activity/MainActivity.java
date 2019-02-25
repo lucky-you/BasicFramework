@@ -46,12 +46,9 @@ public class MainActivity extends BaseActivity {
             case R.id.tvTypeTwo:
                 setPasswordDialogTwo();
                 break;
-
             case R.id.tvTypeThree:
                 showDialog();
                 break;
-
-
         }
     }
 
@@ -73,20 +70,20 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-
     private void showDialog() {
-        new AndroidDialog(mContext, R.style.AndroidDialogStyle, "您确定删除此信息？", new OnAndroidDialogClickListener() {
+        new AndroidDialog(mContext, "您确定删除此信息？", new OnAndroidDialogClickListener() {
             @Override
-            public void onCancelClick(Dialog dialog) {
+            public void onNegativeClick(Dialog dialog) {
                 showToast("取消");
             }
 
             @Override
-            public void onDetermineClick(Dialog dialog) {
+            public void onPositiveClick(Dialog dialog) {
                 showToast("确定");
             }
-        }).setTitle("友情提醒").show();
-
+        })
+                .setTitle("友情提醒")
+                .show();
 
     }
 
