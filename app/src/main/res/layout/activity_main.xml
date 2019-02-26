@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -58,6 +57,19 @@
 
         <TextView
             android:id="@+id/tvTypeThree"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="样式三"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeFour"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spacing_44"
             android:layout_gravity="center_vertical"

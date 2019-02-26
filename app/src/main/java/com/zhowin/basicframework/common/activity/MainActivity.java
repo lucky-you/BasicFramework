@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeOne).setOnClickListener(this);
         get(R.id.tvTypeTwo).setOnClickListener(this);
         get(R.id.tvTypeThree).setOnClickListener(this);
+        get(R.id.tvTypeFour).setOnClickListener(this);
     }
 
     @Override
