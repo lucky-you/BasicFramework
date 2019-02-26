@@ -16,7 +16,7 @@ android {
         signconfig {
             keyAlias 'app'
             keyPassword '110120119'
-            storeFile file('E:/BasicFramework/appKey.keystore')
+            storeFile file('E:/AppKey/appKey.keystore')
             storePassword '110120119'
             v1SigningEnabled true
             v2SigningEnabled true
