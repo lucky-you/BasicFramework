@@ -7,12 +7,10 @@ import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
-import com.zhowin.viewlibrary.callback.ActionSheetListener;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
-import com.zhowin.viewlibrary.view.ActionSheet;
 import com.zhowin.viewlibrary.view.PasswordEditText;
 
 public class MainActivity extends BaseActivity {
@@ -113,23 +111,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showActionSheet() {
-        final String[] cityList = {"北京", "上海", "广州", "深圳", "武汉", "成都", "杭州", "天津"};
-        new ActionSheet.Builder(mContext, getSupportFragmentManager())
-                .setCancelableOnTouchOutside(true)
-                .setCancelButtonTitle("取消")
-                .setOtherButtonTitles(cityList)
-                .setListener(new ActionSheetListener() {
-                    @Override
-                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-
-                    }
-
-                    @Override
-                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-                        showToast("选择了:" + cityList[index]);
-                    }
-                })
-                .show();
 
     }
 }
