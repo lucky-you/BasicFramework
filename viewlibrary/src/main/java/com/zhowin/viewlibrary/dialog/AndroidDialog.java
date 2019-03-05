@@ -1,4 +1,4 @@
-package com.zhowin.viewlibrary.view;
+package com.zhowin.viewlibrary.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

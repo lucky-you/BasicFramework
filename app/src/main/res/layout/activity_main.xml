@@ -75,7 +75,20 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/spacing_10"
-            android:text="样式三"
+            android:text="样式四"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeFive"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="样式五"
             android:textColor="@color/color_333"
             android:textSize="14sp" />
 

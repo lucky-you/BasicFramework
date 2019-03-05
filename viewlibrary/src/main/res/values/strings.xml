@@ -9,6 +9,7 @@
     <string name="prompt">提示</string>
     <string name="cancel">取消</string>
     <string name="determine">确定</string>
-
-
+    <string name="Please_enter_information">请输入信息</string>
+    <string name="The_title">标题</string>
+    <string name="content">内容</string>
 </resources>

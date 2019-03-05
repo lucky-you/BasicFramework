@@ -5,12 +5,12 @@ import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
+import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
-import com.zhowin.viewlibrary.view.AndroidDialog;
+import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.view.PasswordEditText;
 
 public class MainActivity extends BaseActivity {
@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeTwo).setOnClickListener(this);
         get(R.id.tvTypeThree).setOnClickListener(this);
         get(R.id.tvTypeFour).setOnClickListener(this);
+        get(R.id.tvTypeFive).setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +50,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tvTypeThree:
                 showDialog();
+                break;
+            case R.id.tvTypeFour:
+                shoIosDialog();
                 break;
         }
     }
@@ -85,9 +89,21 @@ public class MainActivity extends BaseActivity {
         })
                 .setTitle("友情提醒")
                 .show();
-
     }
 
+    private void shoIosDialog() {
+        HitIOSDialog hitIOSDialog = new HitIOSDialog(mContext).builder();
+        hitIOSDialog
+                .setTitle("友情提示")
+                .setMsg("确定要退出吗?")
+                .setNegativeButton("取消", null)
+                .setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                }).show();
+    }
 }
 
 
