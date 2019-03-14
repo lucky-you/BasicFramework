@@ -73,100 +73,74 @@ public class SwitchButton extends View implements Checkable {
      * 初始化参数
      */
     private void init(Context context, AttributeSet attrs) {
-
         TypedArray typedArray = null;
         if (attrs != null) {
             typedArray = context.obtainStyledAttributes(attrs, R.styleable.SwitchButton);
         }
-
         shadowEffect = optBoolean(typedArray,
                 R.styleable.SwitchButton_sb_shadow_effect,
                 true);
-
         uncheckCircleColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_uncheckcircle_color,
                 0XffAAAAAA);//0XffAAAAAA;
-
         uncheckCircleWidth = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_uncheckcircle_width,
                 dp2pxInt(1.5f));//dp2pxInt(1.5f);
-
         uncheckCircleOffsetX = dp2px(10);
-
         uncheckCircleRadius = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_uncheckcircle_radius,
                 dp2px(4));//dp2px(4);
-
         checkedLineOffsetX = dp2px(4);
         checkedLineOffsetY = dp2px(4);
-
         shadowRadius = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_shadow_radius,
                 dp2pxInt(2.5f));//dp2pxInt(2.5f);
-
         shadowOffset = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_shadow_offset,
                 dp2pxInt(1.5f));//dp2pxInt(1.5f);
-
         shadowColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_shadow_color,
                 0X33000000);//0X33000000;
-
         uncheckColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_uncheck_color,
                 0XffDDDDDD);//0XffDDDDDD;
-
         checkedColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_checked_color,
                 0Xff51d367);//0Xff51d367;
-
         borderWidth = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_border_width,
                 dp2pxInt(1));//dp2pxInt(1);
-
         checkLineColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_checkline_color,
                 Color.WHITE);//Color.WHITE;
-
         checkLineWidth = optPixelSize(typedArray,
                 R.styleable.SwitchButton_sb_checkline_width,
                 dp2pxInt(1f));//dp2pxInt(1.0f);
-
         checkLineLength = dp2px(6);
-
         int buttonColor = optColor(typedArray,
                 R.styleable.SwitchButton_sb_button_color,
                 Color.WHITE);//Color.WHITE;
-
         int effectDuration = optInt(typedArray,
                 R.styleable.SwitchButton_sb_effect_duration,
                 300);//300;
-
         isChecked = optBoolean(typedArray,
                 R.styleable.SwitchButton_sb_checked,
                 false);
-
         showIndicator = optBoolean(typedArray,
                 R.styleable.SwitchButton_sb_show_indicator,
                 true);
-
         background = optColor(typedArray,
                 R.styleable.SwitchButton_sb_background,
                 Color.WHITE);//Color.WHITE;
-
         enableEffect = optBoolean(typedArray,
                 R.styleable.SwitchButton_sb_enable_effect,
                 true);
-
         if (typedArray != null) {
             typedArray.recycle();
         }
-
-
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         buttonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         buttonPaint.setColor(buttonColor);
-
         if (shadowEffect) {
             buttonPaint.setShadowLayer(
                     shadowRadius,
