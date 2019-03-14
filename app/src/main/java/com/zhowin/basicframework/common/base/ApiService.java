@@ -14,7 +14,4 @@ public interface ApiService {
     String PARAM = "param";
     String HEADER_URL = "api/v1";
 
-    //参数加密的密码参数
-    String ENCRYPTION_PASSWORD = "Xiayun20180801";
-
 }
