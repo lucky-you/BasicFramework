@@ -5,10 +5,12 @@ import android.support.annotation.IdRes;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.lib.LibActivity;
+import com.zhowin.basicframework.common.utils.BarUtils;
 import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
@@ -26,9 +28,6 @@ public abstract class BaseActivity extends LibActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        LinearLayout linearLayout = get(R.id.ll_root_layout);
-//        BarUtils.addMarginTopEqualStatusBarHeight(linearLayout);
-//        BarUtils.setStatusBarColor(this, BaseApplication.getInstance().getResources().getColor(R.color.title_bar_color), 0);
     }
 
     public RecyclerView initCommonRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
