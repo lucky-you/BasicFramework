@@ -92,9 +92,9 @@ public class RetrofitFactory {
     private static HttpLoggingInterceptor LoggerInterceptor() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY); // 测试
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         } else {
-            interceptor.setLevel(HttpLoggingInterceptor.Level.NONE); // 打包
+            interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
         }
         return interceptor;
     }
