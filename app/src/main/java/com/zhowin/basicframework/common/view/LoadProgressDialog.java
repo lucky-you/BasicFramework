@@ -36,8 +36,8 @@ public class LoadProgressDialog extends Dialog {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.include_progress_dialog_layout, null);
         LinearLayout layout = view.findViewById(R.id.dialog_view);
-        ImageView spaceshipImage = view.findViewById(R.id.img);
-        TextView tipTextView = view.findViewById(R.id.tipTextView);
+        ImageView spaceshipImage = view.findViewById(R.id.ivLoadImage);
+        TextView tipTextView = view.findViewById(R.id.tvLoadText);
         // 加载动画
         Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(context, R.anim.progress_dialog_anim);
         // 使用ImageView显示动画
@@ -48,9 +48,6 @@ public class LoadProgressDialog extends Dialog {
         progressDialog.setCancelable(false);// 不可以用“返回键”取消
         progressDialog.setContentView(layout, new LinearLayout.LayoutParams(
                 dip2px(context, 120), dip2px(context, 110)));
-//        progressDialog.setContentView(layout, new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT));
         return progressDialog;
     }
 
