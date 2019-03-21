@@ -212,7 +212,8 @@ public final class KeyboardUtils {
 
     /**
      * Fix the leaks of soft input.
-     * <p>Call the function in {@link Activity#onDestroy()}.</p>
+     * <p>Call the  function in {@link Activity#onDestroy()}.</p>
+     * 用于解决输入法内存泄露    参考：http://blog.csdn.net/sodino/article/details/32188809
      *
      * @param context The context.
      */
@@ -242,49 +243,6 @@ public final class KeyboardUtils {
             }
         }
     }
-
-    /**
-     * Click blankj area to hide soft input.
-     * <p>Copy the following code in ur activity.</p>
-     */
-    public static void clickBlankArea2HideSoftInput() {
-        Log.i("KeyboardUtils", "Please refer to the following code.");
-        /*
-        @Override
-        public boolean dispatchTouchEvent(MotionEvent ev) {
-            if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-                View v = getCurrentFocus();
-                if (isShouldHideKeyboard(v, ev)) {
-                    InputMethodManager imm =
-                            (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(),
-                            InputMethodManager.HIDE_NOT_ALWAYS
-                    );
-                }
-            }
-            return super.dispatchTouchEvent(ev);
-        }
-
-        // Return whether touch the view.
-        private boolean isShouldHideKeyboard(View v, MotionEvent event) {
-            if (v != null && (v instanceof EditText)) {
-                int[] l = {0, 0};
-                v.getLocationInWindow(l);
-                int left = l[0],
-                        top = l[1],
-                        bottom = top + v.getHeight(),
-                        right = left + v.getWidth();
-                return !(event.getX() > left && event.getX() < right
-                        && event.getY() > top && event.getY() < bottom);
-            }
-            return false;
-        }
-        */
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // interface
-    ///////////////////////////////////////////////////////////////////////////
 
     public interface OnSoftInputChangedListener {
         void onSoftInputChanged(int height);
