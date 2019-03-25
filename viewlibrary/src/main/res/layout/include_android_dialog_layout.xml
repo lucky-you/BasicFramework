@@ -14,7 +14,7 @@
         android:text="@string/prompt"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tvContent"
@@ -51,7 +51,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
             android:background="@color/color_f2f2f2" />
 
         <TextView

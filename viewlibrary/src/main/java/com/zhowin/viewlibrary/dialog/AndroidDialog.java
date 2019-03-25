@@ -102,7 +102,10 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
         tvDetermineTxt.setOnClickListener(this);
         tvCancelTxt = findViewById(R.id.tvCancel);
         tvCancelTxt.setOnClickListener(this);
-        if (!TextUtils.isEmpty(title)) {
+        if (TextUtils.isEmpty(title)) {
+            tvTitleTxt.setVisibility(View.GONE);
+        } else {
+            tvTitleTxt.setVisibility(View.VISIBLE);
             tvTitleTxt.setText(title);
         }
         if (!TextUtils.isEmpty(content)) {
