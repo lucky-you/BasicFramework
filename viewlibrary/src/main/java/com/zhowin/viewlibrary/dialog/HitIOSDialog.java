@@ -52,8 +52,7 @@ public class HitIOSDialog {
 
     public HitIOSDialog builder() {
         // 获取Dialog布局
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.include_hit_ios_dialog_layout, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.include_hit_ios_dialog_layout, null);
         // 获取自定义Dialog布局中的控件
         lLayoutBackground = view.findViewById(R.id.lLayout_bg);
         txt_title = view.findViewById(R.id.txt_title);
