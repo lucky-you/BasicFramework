@@ -12,4 +12,11 @@
     <string name="Please_enter_information">请输入信息</string>
     <string name="The_title">标题</string>
     <string name="content">内容</string>
+
+    <string name="LoadingController_loading_message">加载中...</string>
+    <string name="LoadingController_network_error_message">加载失败，请检查网络连接~</string>
+    <string name="LoadingController_error_message">加载失败，点击重试~</string>
+    <string name="LoadingController_error_retry">重新加载</string>
+    <string name="not_have_data">暂无数据</string>
+
 </resources>
