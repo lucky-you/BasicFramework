@@ -100,7 +100,7 @@ public class RetrofitFactory {
     }
 
     /**
-     * 添加Okhttp缓存拦截器
+     * 添加OkHttp缓存拦截器
      */
     private static class CacheInterceptor implements Interceptor {
         @Override

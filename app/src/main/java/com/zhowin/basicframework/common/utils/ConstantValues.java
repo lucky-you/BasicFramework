@@ -14,7 +14,7 @@ public interface ConstantValues {
     String NAME = "name";
     String PHONE_NUMBER = "phone";
     String CODE = "code";
-    String SP_TOKEN = "token";
+    String TOKEN = "token";
     String USER_NAME = "user_name";
     String USER_GENDER = "user_gender";
     String SEX = "sex";

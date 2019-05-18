@@ -21,8 +21,8 @@ import io.reactivex.observers.DisposableObserver;
 public abstract class ApiServiceCallback<T> extends DisposableObserver<ResultResponse<? extends T>> {
 
 
-    public static final int JSON_ERROR = 777;//解析错误
-    public static final int DATA_ERROR = 888;//数据错误
+    public static final int JSON_ERROR = 0X777;//解析错误
+    public static final int DATA_ERROR = 0X888;//数据错误
 
     @Override
     protected void onStart() {
@@ -36,6 +36,7 @@ public abstract class ApiServiceCallback<T> extends DisposableObserver<ResultRes
         } else {
             onFailure(response.code, response.msg);
         }
+        onNextFinish(response);
     }
 
     @Override
@@ -81,14 +82,19 @@ public abstract class ApiServiceCallback<T> extends DisposableObserver<ResultRes
     /**
      * 网络请求失败
      */
-    public abstract void onFailure(int resultCode, String failureMessage);
+    public abstract void onFailure(int resultCode, String message);
 
 
     /**
      * 网络请求异常
      */
-    public abstract void onErrorThrowable(String errorMessage);
+    public abstract void onErrorThrowable(String message);
 
+    /**
+     * 网络请求
+     */
+    public void onNextFinish(ResultResponse response) {
+    }
 
 
 }

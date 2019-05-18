@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 
+import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseApplication;
 
 import java.lang.reflect.Method;
@@ -540,6 +541,28 @@ public final class BarUtils {
             window.setStatusBarColor(Color.TRANSPARENT);
         } else {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+    }
+
+    public static void setStatusBar(Activity activity, boolean useThemeStatusBarColor, boolean withoutUseStatusBarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
+            View decorView = activity.getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+
+            if (useThemeStatusBarColor) {
+                activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.white));
+            } else {
+                activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//4.4到5.0
+            WindowManager.LayoutParams localLayoutParams = activity.getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        }
+        //亮色
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !withoutUseStatusBarColor) {
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
 

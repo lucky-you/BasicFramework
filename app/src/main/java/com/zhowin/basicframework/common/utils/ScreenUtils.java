@@ -24,12 +24,8 @@ import com.zhowin.basicframework.common.base.BaseApplication;
 import static android.Manifest.permission.WRITE_SETTINGS;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/08/02
- *     desc  : utils about screen
- * </pre>
+ * blog  : http://blankj.com
+ * desc  : utils about screen
  */
 public final class ScreenUtils {
 
@@ -65,7 +61,7 @@ public final class ScreenUtils {
         WindowManager wm = (WindowManager) BaseApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
         if (wm == null) {
             return BaseApplication.getInstance().getResources().getDisplayMetrics().heightPixels;
-            
+
         }
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {

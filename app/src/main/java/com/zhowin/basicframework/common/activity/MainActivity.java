@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
+import com.zhowin.basicframework.common.utils.SharedPreferenceHelper;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
@@ -54,7 +55,6 @@ public class MainActivity extends BaseActivity {
             case R.id.tvTypeFour:
                 shoIosDialog();
                 break;
-
             case R.id.tvTypeFive:
                 showActionSheet();
                 break;

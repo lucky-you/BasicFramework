@@ -14,7 +14,7 @@ import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.model.EventNotice;
-import com.zhowin.basicframework.common.utils.InputMethodUtils;
+import com.zhowin.basicframework.common.utils.KeyboardUtils;
 import com.zhowin.basicframework.common.utils.ToastUtils;
 import com.zhowin.basicframework.common.view.LoadProgressDialog;
 
@@ -29,7 +29,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
      * 上次点击时间
      */
     private long lastClick = 0;
-    private LoadProgressDialog  progressDialog;
+    private LoadProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +118,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
     @Override
     protected void onDestroy() {
         ActivityManager.getAppInstance().removeActivity(this);//将当前activity移除管理栈
-        InputMethodUtils.fixInputMethodManagerLeak(this);
+        KeyboardUtils.fixInputMethodManagerLeak(this);
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }

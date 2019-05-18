@@ -49,12 +49,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/08/12
- *     desc  : utils about image
- * </pre>
+ * blog  : http://blankj.com
+ * desc  : utils about image
  */
 public final class ImageUtils {
 
@@ -454,6 +450,7 @@ public final class ImageUtils {
 
     /**
      * Return the clipped bitmap.
+     *
      * @param src    The source of bitmap.
      * @param x      The x coordinate of the first pixel.
      * @param y      The y coordinate of the first pixel.
