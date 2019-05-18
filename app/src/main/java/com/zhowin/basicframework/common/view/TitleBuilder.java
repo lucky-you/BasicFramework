@@ -130,7 +130,6 @@ public class TitleBuilder {
     }
 
     // right
-
     public TitleBuilder setRightImage(int resId) {
         ivRight.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
         ivRight.setImageResource(resId);
@@ -138,8 +137,7 @@ public class TitleBuilder {
     }
 
     public TitleBuilder setRightText(String text) {
-        tvRight.setVisibility(TextUtils.isEmpty(text) ? View.GONE
-                : View.VISIBLE);
+        tvRight.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
         tvRight.setText(text);
         return this;
     }
