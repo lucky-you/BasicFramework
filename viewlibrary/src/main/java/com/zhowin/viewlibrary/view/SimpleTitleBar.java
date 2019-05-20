@@ -5,14 +5,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,45 +31,46 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
     private View rlTitleBarLayout; //标题栏根布局
 
     private View llLeftLayout;//左侧布局
-    private ImageView ivLeftIcon;
-    private TextView tvLeftTextTitle;
-    private boolean isShowLeftLayout ;
-    private boolean isShowLeftIcon ;
-    private boolean isShowLeftText ;
+    private ImageView ivLeftIcon; //左侧icon
+    private TextView tvLeftTextTitle; //左侧文字
+    private boolean isShowLeftLayout;//是否显示左侧布局
+    private boolean isShowLeftIcon;//是否显示左侧icon
+    private boolean isShowLeftText;//是否显示左侧文本
 
-    private int leftIconResId;
-    private int leftTextColor;
-    private int leftTextSize;
-    private String leftTextTitle;
+    private int leftIconResId; // 左侧icon资源id
+    private int leftTextColor;//左侧文本颜色
+    private int leftTextSize;//左侧文本大小
+    private String leftTextTitle;//左侧文本内容
     private boolean clickLeftIsFinish;//点击左侧是否finish
 
 
     private TextView tvTitleText; //标题
-    private int titleTextColor;
-    private int titleTextSize;
-    private String titleText;
+    private int titleTextColor;// 标题颜色
+    private int titleTextSize;//标题字体大小
+    private String titleText;//标题文本
 
 
     private View llRightLayout; //右侧布局
-    private ImageView ivRightIcon;
-    private TextView tvRightText;
-    private boolean isShowRightLayout;
-    private boolean isShowRightIcon;
-    private boolean isShowRightText;
+    private ImageView ivRightIcon;//右侧icon
+    private TextView tvRightText;// 右侧文本
+    private boolean isShowRightLayout;//是否显示右侧布局
+    private boolean isShowRightIcon;//是否显示右侧icon
+    private boolean isShowRightText;//是否显示右侧文本
 
-    private int rightIconResId;
-    private int rightTextColor;
-    private int rightTextSize;
-    private String rightTextTitle;
+    private int rightIconResId;//右侧图片资源
+    private int rightTextColor;// 右侧文本颜色
+    private int rightTextSize;//右侧文本大小
+    private String rightTextTitle;//右侧文本内容
 
 
     private View bottomDivideLine; //底部分割线
-    private boolean isShowBottomDivideLine ;
-    private int bottomDivideHeight;
-    private int bottomDivideColor;
+    private boolean isShowBottomDivideLine;//是否显示底部分割线
+    private int bottomDivideHeight;// 底部分割线高度
+    private int bottomDivideColor;//底部分割线颜色
+    private Drawable  bottomDrawable;//底部分割线默认样式
 
 
-    private boolean bottomLineFitStatusBar;
+    private boolean bottomLineFitStatusBar;//是否与状态栏适配
 
     public SimpleTitleBar(@NonNull Context context) {
         this(context, null, 0);
@@ -131,7 +129,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         titleTextColor = att.getColor(R.styleable.SimpleTitleBar_titleColor, defaultTextColor);
         titleTextSize = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_titleSize, 17);
 
-        setTitleBarTitle(titleText, titleTextColor, titleTextSize);
 
         //左侧布局
         leftIconResId = att.getResourceId(R.styleable.SimpleTitleBar_leftIcon, R.drawable.icon_back_black);
@@ -144,9 +141,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowLeftIcon = att.getBoolean(R.styleable.SimpleTitleBar_leftIconVisible, true);
         isShowLeftText = att.getBoolean(R.styleable.SimpleTitleBar_leftTextVisible, false);
 
-
-        setLeftLayout(leftIconResId, leftTextTitle, leftTextColor, new FinishAction((Activity) getContext()));
-
         //右侧布局
         rightIconResId = att.getResourceId(R.styleable.SimpleTitleBar_rightIcon, -1);
         rightTextTitle = att.getString(R.styleable.SimpleTitleBar_rightTextTitle);
@@ -157,26 +151,20 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowRightIcon = att.getBoolean(R.styleable.SimpleTitleBar_rightIconVisible, false);
         isShowRightText = att.getBoolean(R.styleable.SimpleTitleBar_rightTextVisible, false);
 
-        showRightLayout(isShowRightLayout);
-        setRightLayout(rightIconResId, rightTextTitle, rightTextColor, null);
-        setRightTextSize(rightTextSize);
-
         //底部分割布局
         isShowBottomDivideLine = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineVisible, true);
-        Drawable bottomDrawable = att.getDrawable(R.styleable.SimpleTitleBar_bottomDividerLine);
-        bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, dp2px(1));
+        bottomDrawable = att.getDrawable(R.styleable.SimpleTitleBar_bottomDividerLine);
+        bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, 1);
         bottomDivideColor = att.getColor(R.styleable.SimpleTitleBar_bottomDividerLineColor, defaultTextColor);
 
         bottomLineFitStatusBar = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineFitStatusBar, true);
-
-        showBottomDivideLine(isShowBottomDivideLine);
-
 
         if (bottomDrawable != null) {
             bottomDivideLine.setBackground(backgroundRes);
         } else {
             bottomDivideLine.setBackgroundColor(backgroundColor);
         }
+
         if (!isInEditMode()) {
             ViewGroup.LayoutParams layoutParams = bottomDivideLine.getLayoutParams();
             if (layoutParams == null) {
@@ -188,120 +176,87 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
 
     }
 
-    public SimpleTitleBar setTitleBarTitle(@NonNull String title) {
-        return setTitleBarTitle(title, Color.TRANSPARENT, 17);
+
+    public SimpleTitleBar isShowLeftLayout(boolean isShow) {
+        this.llLeftLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
     }
 
+    public SimpleTitleBar setLeftIconResId(int resId) {
+        this.ivLeftIcon.setImageResource(resId);
+        return this;
+    }
 
-    public SimpleTitleBar setTitleBarTitle(String title, @ColorInt int textColor, int textSize) {
-        if (textColor != Color.TRANSPARENT) {
-            this.tvTitleText.setTextColor(textColor);
-        }
+    public SimpleTitleBar setLeftText(String text) {
+        if (TextUtils.isEmpty(text)) return this;
+        this.tvLeftTextTitle.setText(text);
+        return this;
+    }
+
+    public SimpleTitleBar setLeftTextColor(int textColor) {
+        this.tvLeftTextTitle.setTextColor(textColor);
+        return this;
+    }
+
+    public SimpleTitleBar setLeftTextSize(int textSize) {
+        this.tvLeftTextTitle.setTextSize(textSize);
+        return this;
+    }
+
+    public SimpleTitleBar setTitleText(String text) {
+        if (TextUtils.isEmpty(text)) return this;
+        this.tvTitleText.setText(text);
+        return this;
+    }
+
+    public SimpleTitleBar setTitleTextColor(int textColor) {
+        this.tvTitleText.setTextColor(textColor);
+        return this;
+    }
+
+    public SimpleTitleBar setTitleTextSize(int textSize) {
         this.tvTitleText.setTextSize(textSize);
-        this.tvTitleText.setText(title);
         return this;
     }
 
 
-    public SimpleTitleBar noBack() {
-        ivLeftIcon.setVisibility(View.GONE);
+    public SimpleTitleBar setRightIconResId(int resId) {
+        this.ivRightIcon.setImageResource(resId);
         return this;
     }
 
-    public SimpleTitleBar setLeftLayout(@DrawableRes int icon, @NonNull String text, @ColorInt int color, @NonNull OnClickListener click) {
-        return this.setLeftIcon(icon).setLeftText(text).setLeftTextColor(color).setLeftAction(click);
+    public SimpleTitleBar isShowRightLayout(boolean isShow) {
+        this.llRightLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
     }
 
-    public SimpleTitleBar setLeftIcon(@DrawableRes int icon) {
-        if (icon == -1) {
-            MarginLayoutParams layoutParams = (MarginLayoutParams) llLeftLayout.getLayoutParams();
-            if (layoutParams != null) {
-                layoutParams.leftMargin = 0;
+    public SimpleTitleBar setRightText(String text) {
+        if (TextUtils.isEmpty(text)) return this;
+        this.tvRightText.setText(text);
+        return this;
+    }
+
+    public SimpleTitleBar setRightTextColor(int textColor) {
+        this.tvRightText.setTextColor(textColor);
+        return this;
+    }
+
+    public SimpleTitleBar setRightTextSize(int textSize) {
+        this.tvRightText.setTextSize(textSize);
+        return this;
+    }
+
+    public SimpleTitleBar setBottomDividerLineHeight(int height) {
+        if (!isInEditMode()) {
+            ViewGroup.LayoutParams layoutParams = bottomDivideLine.getLayoutParams();
+            if (layoutParams == null) {
+                layoutParams = generateDefaultLayoutParams();
             }
-            llLeftLayout.setVisibility(GONE);
-            return this;
+            layoutParams.height = height;
         }
-        llLeftLayout.setVisibility(View.VISIBLE);
-        this.ivLeftIcon.setImageResource(icon);
         return this;
     }
 
-
-    public SimpleTitleBar setLeftText(@NonNull String leftText) {
-        if (TextUtils.isEmpty(leftText)) return this;
-        llLeftLayout.setVisibility(View.VISIBLE);
-        this.tvLeftTextTitle.setText(leftText);
-        return this;
-    }
-
-    private SimpleTitleBar setLeftTextColor(int color) {
-        this.tvLeftTextTitle.setTextColor(color);
-        return this;
-    }
-
-    public SimpleTitleBar setLeftAction(@NonNull OnClickListener click) {
-        if (click == null) return this;
-        llLeftLayout.setVisibility(View.VISIBLE);
-        this.tvLeftTextTitle.setOnClickListener(click);
-        return this;
-    }
-
-
-    public void showRightLayout(boolean isShowRightLayout) {
-        llRightLayout.setVisibility(isShowRightLayout ? View.VISIBLE : View.GONE);
-    }
-
-    public void
-    showBottomDivideLine(boolean isShowBottomDivideLine) {
-        bottomDivideLine.setVisibility(isShowBottomDivideLine ? View.VISIBLE : View.GONE);
-    }
-
-    public SimpleTitleBar setRightLayout(@DrawableRes int icon, @NonNull String text, @ColorInt int color, @NonNull OnClickListener click) {
-
-        return this.setRightIcon(icon).setRightText(text).setRightTextColor(color).setRightAction(click);
-    }
-
-
-    public SimpleTitleBar setRightIcon(@DrawableRes int icon) {
-        if (icon == -1) return this;
-        llRightLayout.setVisibility(View.VISIBLE);
-        this.ivRightIcon.setImageResource(icon);
-        return this;
-    }
-
-    public SimpleTitleBar setRightText(@NonNull String rightText) {
-        if (TextUtils.isEmpty(rightText)) return this;
-        llRightLayout.setVisibility(View.VISIBLE);
-        this.tvRightText.setText(rightText);
-        return this;
-    }
-
-    private SimpleTitleBar setRightTextColor(int color) {
-        this.tvRightText.setTextColor(color);
-        return this;
-    }
-
-    private SimpleTitleBar setRightTextSize(int size) {
-        this.tvRightText.setTextSize(size);
-        return this;
-    }
-
-    public SimpleTitleBar setRightAction(@NonNull OnClickListener click) {
-        if (click == null) return this;
-        llRightLayout.setVisibility(View.VISIBLE);
-        this.ivRightIcon.setOnClickListener(click);
-        return this;
-    }
-
-    public SimpleTitleBar hideTitle() {
-        tvTitleText.setVisibility(View.GONE);
-        return this;
-    }
-
-    public SimpleTitleBar showTitle() {
-        tvTitleText.setVisibility(View.VISIBLE);
-        return this;
-    }
 
     @Override
     public void onClick(View view) {
@@ -324,10 +279,5 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
                 activity.finish();
             }
         }
-    }
-
-    private int dp2px(int dpVal) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                dpVal, getResources().getDisplayMetrics());
     }
 }
