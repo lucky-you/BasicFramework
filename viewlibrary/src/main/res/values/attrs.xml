@@ -32,7 +32,6 @@
     </declare-styleable>
 
 
-
     <!--垂直跑马灯-->
     <declare-styleable name="VerticalBannerView">
         <attr name="gap" format="integer" />
@@ -121,6 +120,46 @@
         <attr name="sb_background" format="reference|color" />
         <!--是否启用特效，默认true-->
         <attr name="sb_enable_effect" format="reference|boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="SimpleTitleBar">
+
+        <!-- 中间 -->
+        <attr name="title" format="string" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleColor" format="color" />
+
+        <!--整体背景-->
+        <attr name="backgroundColor" format="color" />
+        <attr name="backgroundDrawable" format="reference" />
+
+        <!-- 左边 -->
+        <attr name="leftIcon" format="reference" /><!-- leftIcon 优先于 backButton -->
+        <attr name="leftTitle" format="string" />
+        <attr name="leftTextColor" format="color" />
+        <attr name="leftTextSize" format="dimension" />
+        <attr name="leftIsFinish" format="boolean" />
+        <attr name="leftLayoutVisible" format="boolean" />
+        <attr name="leftIconVisible" format="boolean" />
+        <attr name="leftTextVisible" format="boolean" />
+
+        <!-- 右边 -->
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightTextTitle" format="string" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="rightLayoutVisible" format="boolean" />
+        <attr name="rightIconVisible" format="boolean" />
+        <attr name="rightTextVisible" format="boolean" />
+
+        <!-- 分割线 -->
+        <attr name="bottomDividerLineVisible" format="boolean" />
+        <attr name="bottomDividerLine" format="reference" />
+        <attr name="bottomDividerLineColor" format="reference|color" />
+        <attr name="bottomDividerLineHeight" format="dimension" />
+        <!-- 适配进入到状态栏的情况-->
+        <attr name="bottomDividerLineFitStatusBar" format="boolean" />
 
     </declare-styleable>
 

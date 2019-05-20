@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void showActionSheet() {
-
+        LoginActivity.start(mContext);
     }
 }
 

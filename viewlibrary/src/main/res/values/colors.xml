@@ -12,4 +12,6 @@
     <color name="color_e53d3d">#e53d3d</color>
     <color name="color_c6c6c6">#c6c6c6</color>
     <color name="color_3F51B5">#3F51B5</color>
+    <color name="divide_line_out">#dfdfdf</color>
+    <color name="main_text_color">#3f3f3f</color>
 </resources>

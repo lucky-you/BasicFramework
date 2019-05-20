@@ -74,8 +74,8 @@ public class HitIOSDialog {
         dialog = new Dialog(context, R.style.AndroidDialogStyle);
         dialog.setContentView(view);
         // 调整dialog背景大小
-        lLayoutBackground.setLayoutParams(new FrameLayout.LayoutParams((int) (display
-                .getWidth() * 0.85), LinearLayout.LayoutParams.WRAP_CONTENT));
+        lLayoutBackground.setLayoutParams(new FrameLayout.LayoutParams((int) (display.getWidth() * 0.85),
+                LinearLayout.LayoutParams.WRAP_CONTENT));
         return this;
     }
 
