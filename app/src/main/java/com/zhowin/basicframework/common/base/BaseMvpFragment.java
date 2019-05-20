@@ -81,15 +81,9 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends MvpFragme
         super.onViewCreated(view, savedInstanceState);
     }
 
-    @Override
+       @Override
     public void onResume() {
         super.onResume();
-    }
-
-
-    @Override
-    protected void firstLoad() {
-        super.firstLoad();
     }
 
 

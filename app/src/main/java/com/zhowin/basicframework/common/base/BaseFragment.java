@@ -29,12 +29,6 @@ public abstract class BaseFragment extends LibFragment {
         }
     }
 
-
-    @Override
-    protected void firstLoad() {
-        super.firstLoad();
-    }
-
     public RecyclerView initCommonRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
         RecyclerView recyclerView = (RecyclerView) mRootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
