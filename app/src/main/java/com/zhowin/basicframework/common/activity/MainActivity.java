@@ -13,6 +13,10 @@ import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.view.PasswordEditText;
+import com.zhowin.viewlibrary.widget.TagGroupLayout;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
@@ -34,10 +38,12 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeThree).setOnClickListener(this);
         get(R.id.tvTypeFour).setOnClickListener(this);
         get(R.id.tvTypeFive).setOnClickListener(this);
+
     }
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
+
     }
 
     @Override

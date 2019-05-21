@@ -8,4 +8,6 @@
     <color name="color_333">#333333</color>
     <color name="color_666">#666666</color>
     <color name="color_999">#999999</color>
+    <color name="color_blue">#03A9F4</color>
+    <color name="yellow_color">#FFC107</color>
 </resources>
