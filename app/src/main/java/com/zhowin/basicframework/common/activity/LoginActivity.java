@@ -17,6 +17,7 @@ public class LoginActivity extends BaseActivity {
 
     private SimpleTitleBar simpleTitleBar;
 
+
     public static void start(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
@@ -39,8 +40,18 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
-//        simpleTitleBar.setRightIcon(R.drawable.icon_right_more)
-//                .setTitleBarTitle("就是登录");
+        simpleTitleBar.setTitleText("即刻登录")
+                .isShowRightLayout(true)
+                .isShowRightText(true)
+                .setRightTextColor(mContext.getResources().getColor(R.color.white))
+                .setRightText("立即注册")
+                .setRightAction(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showToast("点击了注册");
+                    }
+                });
+
     }
 
     @Override

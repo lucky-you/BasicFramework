@@ -10,7 +10,8 @@
         android:id="@+id/simpleTitleBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_48"
-        app:backgroundColor="@color/color_e53d3d"
+        app:backgroundColor="@color/theme_color"
+        app:leftIcon="@drawable/icon_back_white"
         app:title="登录"
         app:titleColor="@color/white" />
 

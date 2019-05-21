@@ -67,7 +67,7 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
     private boolean isShowBottomDivideLine;//是否显示底部分割线
     private int bottomDivideHeight;// 底部分割线高度
     private int bottomDivideColor;//底部分割线颜色
-    private Drawable  bottomDrawable;//底部分割线默认样式
+    private Drawable bottomDrawable;//底部分割线默认样式
 
 
     private boolean bottomLineFitStatusBar;//是否与状态栏适配
@@ -88,10 +88,10 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
 
     }
 
-
     private void inflateRootView() {
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         layoutInflater.inflate(R.layout.include_simple_title_layout, this, true);
+
     }
 
     private <T extends View> T get(@IdRes int id) {
@@ -129,9 +129,12 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         titleTextColor = att.getColor(R.styleable.SimpleTitleBar_titleColor, defaultTextColor);
         titleTextSize = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_titleSize, 17);
 
+        setTitleText(titleText);
+        setTitleTextColor(titleTextColor);
+        setTitleTextSize(titleTextSize);
 
         //左侧布局
-        leftIconResId = att.getResourceId(R.styleable.SimpleTitleBar_leftIcon, R.drawable.icon_back_black);
+        leftIconResId = att.getResourceId(R.styleable.SimpleTitleBar_leftIcon, 0);
         leftTextTitle = att.getString(R.styleable.SimpleTitleBar_leftTitle);
         leftTextColor = att.getColor(R.styleable.SimpleTitleBar_leftTextColor, defaultTextColor);
         leftTextSize = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_leftTextSize, 15);
@@ -140,9 +143,34 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowLeftLayout = att.getBoolean(R.styleable.SimpleTitleBar_leftLayoutVisible, true);
         isShowLeftIcon = att.getBoolean(R.styleable.SimpleTitleBar_leftIconVisible, true);
         isShowLeftText = att.getBoolean(R.styleable.SimpleTitleBar_leftTextVisible, false);
-
+        if (isShowLeftLayout) {
+            llLeftLayout.setVisibility(VISIBLE);
+            isShowLeftLayout(isShowLeftLayout);
+            setLeftAction((clickLeftIsFinish && (getContext() instanceof Activity)) ? new FinishAction((Activity) getContext()) : null);
+            if (!TextUtils.isEmpty(leftTextTitle) && leftIconResId == 0) {
+                isShowLeftText(isShowLeftText);
+                isShowLeftIcon(isShowLeftIcon);
+                setLeftText(leftTextTitle);
+                setLeftTextColor(leftTextColor);
+                setLeftTextSize(leftTextSize);
+            } else if (TextUtils.isEmpty(leftTextTitle) && leftIconResId != 0) {
+                isShowLeftText(isShowLeftText);
+                isShowLeftIcon(isShowLeftIcon);
+                setLeftIconResId(leftIconResId);
+            } else if (!TextUtils.isEmpty(leftTextTitle) && leftIconResId != 0) {
+                isShowLeftText(isShowLeftText);
+                isShowLeftIcon(isShowLeftIcon);
+                setLeftText(leftTextTitle);
+                setLeftTextColor(leftTextColor);
+                setLeftTextSize(leftTextSize);
+                setLeftIconResId(leftIconResId);
+            }
+        } else {
+            llLeftLayout.setVisibility(GONE);
+            isShowLeftLayout(isShowLeftLayout);
+        }
         //右侧布局
-        rightIconResId = att.getResourceId(R.styleable.SimpleTitleBar_rightIcon, -1);
+        rightIconResId = att.getResourceId(R.styleable.SimpleTitleBar_rightIcon, 0);
         rightTextTitle = att.getString(R.styleable.SimpleTitleBar_rightTextTitle);
         rightTextColor = att.getColor(R.styleable.SimpleTitleBar_rightTextColor, defaultTextColor);
         rightTextSize = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_rightTextSize, 16);
@@ -150,35 +178,74 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowRightLayout = att.getBoolean(R.styleable.SimpleTitleBar_rightLayoutVisible, false);
         isShowRightIcon = att.getBoolean(R.styleable.SimpleTitleBar_rightIconVisible, false);
         isShowRightText = att.getBoolean(R.styleable.SimpleTitleBar_rightTextVisible, false);
-
+        if (isShowRightLayout) {
+            llRightLayout.setVisibility(VISIBLE);
+            setRightAction(new FinishAction((Activity) getContext()));
+            isShowRightLayout(isShowRightLayout);
+            if (!TextUtils.isEmpty(rightTextTitle) && rightIconResId == 0) {
+                setRightText(rightTextTitle);
+                setRightTextColor(rightTextColor);
+                setRightTextSize(rightTextSize);
+                isShowRightText(isShowRightText);
+                isShowRightIcon(isShowRightIcon);
+            } else if (TextUtils.isEmpty(rightTextTitle) && rightIconResId != 0) {
+                setRightIconResId(rightIconResId);
+                isShowRightText(isShowRightText);
+                isShowRightIcon(isShowRightIcon);
+            } else if (!TextUtils.isEmpty(rightTextTitle) && rightIconResId != 0) {
+                setRightText(rightTextTitle);
+                setRightTextColor(rightTextColor);
+                setRightTextSize(rightTextSize);
+                setRightIconResId(rightIconResId);
+                isShowRightText(isShowRightText);
+                isShowRightIcon(isShowRightIcon);
+            }
+        } else {
+            llRightLayout.setVisibility(GONE);
+            isShowRightLayout(isShowRightLayout);
+        }
         //底部分割布局
         isShowBottomDivideLine = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineVisible, true);
         bottomDrawable = att.getDrawable(R.styleable.SimpleTitleBar_bottomDividerLine);
         bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, 1);
         bottomDivideColor = att.getColor(R.styleable.SimpleTitleBar_bottomDividerLineColor, defaultTextColor);
-
         bottomLineFitStatusBar = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineFitStatusBar, true);
-
+        if (isShowBottomDivideLine) {
+            bottomDivideLine.setVisibility(VISIBLE);
+            setBottomDividerLineHeight(bottomDivideHeight);
+            setBottomDivideColor(bottomDivideColor);
+            setBottomDivideDrawable(bottomDrawable);
+        } else {
+            bottomDivideLine.setVisibility(GONE);
+        }
         if (bottomDrawable != null) {
             bottomDivideLine.setBackground(backgroundRes);
         } else {
             bottomDivideLine.setBackgroundColor(backgroundColor);
         }
-
-        if (!isInEditMode()) {
-            ViewGroup.LayoutParams layoutParams = bottomDivideLine.getLayoutParams();
-            if (layoutParams == null) {
-                layoutParams = generateDefaultLayoutParams();
-            }
-            layoutParams.height = bottomDivideHeight;
-        }
         att.recycle();
-
     }
 
 
     public SimpleTitleBar isShowLeftLayout(boolean isShow) {
         this.llLeftLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
+    public SimpleTitleBar setLeftAction(@NonNull OnClickListener click) {
+        if (click == null) return this;
+        this.llLeftLayout.setOnClickListener(click);
+        return this;
+    }
+
+
+    public SimpleTitleBar isShowLeftIcon(boolean isShow) {
+        this.ivLeftIcon.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
+    public SimpleTitleBar isShowLeftText(boolean isShow) {
+        this.tvLeftTextTitle.setVisibility(isShow ? View.VISIBLE : View.GONE);
         return this;
     }
 
@@ -219,16 +286,26 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         return this;
     }
 
+    public SimpleTitleBar isShowRightLayout(boolean isShow) {
+        this.llRightLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
+    public SimpleTitleBar isShowRightIcon(boolean isShow) {
+        this.ivRightIcon.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
+    public SimpleTitleBar isShowRightText(boolean isShow) {
+        this.tvRightText.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
 
     public SimpleTitleBar setRightIconResId(int resId) {
         this.ivRightIcon.setImageResource(resId);
         return this;
     }
 
-    public SimpleTitleBar isShowRightLayout(boolean isShow) {
-        this.llRightLayout.setVisibility(isShow ? View.VISIBLE : View.GONE);
-        return this;
-    }
 
     public SimpleTitleBar setRightText(String text) {
         if (TextUtils.isEmpty(text)) return this;
@@ -246,6 +323,17 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         return this;
     }
 
+    public SimpleTitleBar setRightAction(@NonNull OnClickListener click) {
+        if (click == null) return this;
+        this.llRightLayout.setOnClickListener(click);
+        return this;
+    }
+
+    public SimpleTitleBar isShowBottomDividerLine(boolean isShow) {
+        this.bottomDivideLine.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
     public SimpleTitleBar setBottomDividerLineHeight(int height) {
         if (!isInEditMode()) {
             ViewGroup.LayoutParams layoutParams = bottomDivideLine.getLayoutParams();
@@ -254,6 +342,16 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
             }
             layoutParams.height = height;
         }
+        return this;
+    }
+
+    public SimpleTitleBar setBottomDivideColor(int color) {
+        this.bottomDivideLine.setBackgroundColor(color);
+        return this;
+    }
+
+    public SimpleTitleBar setBottomDivideDrawable(Drawable drawable) {
+        this.bottomDivideLine.setBackground(drawable);
         return this;
     }
 
