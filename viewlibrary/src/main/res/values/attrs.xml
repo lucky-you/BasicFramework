@@ -155,7 +155,6 @@
 
         <!-- 分割线 -->
         <attr name="bottomDividerLineVisible" format="boolean" />
-        <attr name="bottomDividerLine" format="reference" />
         <attr name="bottomDividerLineColor" format="reference|color" />
         <attr name="bottomDividerLineHeight" format="dimension" />
         <!-- 适配进入到状态栏的情况-->

@@ -153,8 +153,7 @@ public class TitleBuilder {
 
     public TitleBuilder setRightDrawable(Drawable drawable) {
         // 这一步必须要做,否则不会显示.
-        drawable.setBounds(0, 0, drawable.getMinimumWidth(),
-                drawable.getMinimumHeight());
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         tvRight.setCompoundDrawables(null, null, drawable, null);
         return this;
     }

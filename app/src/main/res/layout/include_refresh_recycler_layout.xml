@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhowin.basicframework.common.view.RefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            style="@style/RecycleViewCommonStyle"
+            android:layout_height="match_parent" />
+
+        <include
+            layout="@layout/include_empty_view_layout"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+</com.zhowin.basicframework.common.view.RefreshLayout>

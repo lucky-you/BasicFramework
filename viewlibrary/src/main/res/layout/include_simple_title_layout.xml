@@ -13,6 +13,7 @@
         android:id="@+id/llLeftLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:visibility="visible">
 
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="4dp"
-            android:src="@drawable/icon_back_black" />
+            android:src="@drawable/svg_black_return_back" />
 
         <TextView
             android:id="@+id/tvLeftTextTitle"
@@ -50,6 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:visibility="visible">
 

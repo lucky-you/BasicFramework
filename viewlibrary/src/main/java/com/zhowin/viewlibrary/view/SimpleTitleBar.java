@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -26,7 +25,7 @@ import java.lang.ref.WeakReference;
  * date       : 2019/5/20
  * function  :  简单的Android 通用标题栏
  */
-public class SimpleTitleBar extends FrameLayout implements View.OnClickListener {
+public class SimpleTitleBar extends FrameLayout {
 
     private View rlTitleBarLayout; //标题栏根布局
 
@@ -43,12 +42,10 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
     private String leftTextTitle;//左侧文本内容
     private boolean clickLeftIsFinish;//点击左侧是否finish
 
-
     private TextView tvTitleText; //标题
     private int titleTextColor;// 标题颜色
     private int titleTextSize;//标题字体大小
     private String titleText;//标题文本
-
 
     private View llRightLayout; //右侧布局
     private ImageView ivRightIcon;//右侧icon
@@ -67,7 +64,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
     private boolean isShowBottomDivideLine;//是否显示底部分割线
     private int bottomDivideHeight;// 底部分割线高度
     private int bottomDivideColor;//底部分割线颜色
-    private Drawable bottomDrawable;//底部分割线默认样式
 
 
     private boolean bottomLineFitStatusBar;//是否与状态栏适配
@@ -94,20 +90,16 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
 
     }
 
-    private <T extends View> T get(@IdRes int id) {
-        return (T) findViewById(id);
-    }
-
     private void initViews() {
-        rlTitleBarLayout = get(R.id.rlTitleBarLayout);
-        llLeftLayout = get(R.id.llLeftLayout);
-        ivLeftIcon = get(R.id.ivLeftIcon);
-        tvLeftTextTitle = get(R.id.tvLeftTextTitle);
-        tvTitleText = get(R.id.tvTitleText);
-        llRightLayout = get(R.id.llRightLayout);
-        ivRightIcon = get(R.id.ivRightIcon);
-        tvRightText = get(R.id.tvRightText);
-        bottomDivideLine = get(R.id.bottomDivideLine);
+        rlTitleBarLayout = findViewById(R.id.rlTitleBarLayout);
+        llLeftLayout = findViewById(R.id.llLeftLayout);
+        ivLeftIcon = findViewById(R.id.ivLeftIcon);
+        tvLeftTextTitle = findViewById(R.id.tvLeftTextTitle);
+        tvTitleText = findViewById(R.id.tvTitleText);
+        llRightLayout = findViewById(R.id.llRightLayout);
+        ivRightIcon = findViewById(R.id.ivRightIcon);
+        tvRightText = findViewById(R.id.tvRightText);
+        bottomDivideLine = findViewById(R.id.bottomDivideLine);
         llLeftLayout.setOnClickListener(new FinishAction((Activity) getContext()));
     }
 
@@ -144,7 +136,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowLeftIcon = att.getBoolean(R.styleable.SimpleTitleBar_leftIconVisible, true);
         isShowLeftText = att.getBoolean(R.styleable.SimpleTitleBar_leftTextVisible, false);
         if (isShowLeftLayout) {
-            llLeftLayout.setVisibility(VISIBLE);
             isShowLeftLayout(isShowLeftLayout);
             setLeftAction((clickLeftIsFinish && (getContext() instanceof Activity)) ? new FinishAction((Activity) getContext()) : null);
             if (!TextUtils.isEmpty(leftTextTitle) && leftIconResId == 0) {
@@ -166,7 +157,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
                 setLeftIconResId(leftIconResId);
             }
         } else {
-            llLeftLayout.setVisibility(GONE);
             isShowLeftLayout(isShowLeftLayout);
         }
         //右侧布局
@@ -179,7 +169,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
         isShowRightIcon = att.getBoolean(R.styleable.SimpleTitleBar_rightIconVisible, false);
         isShowRightText = att.getBoolean(R.styleable.SimpleTitleBar_rightTextVisible, false);
         if (isShowRightLayout) {
-            llRightLayout.setVisibility(VISIBLE);
             setRightAction(new FinishAction((Activity) getContext()));
             isShowRightLayout(isShowRightLayout);
             if (!TextUtils.isEmpty(rightTextTitle) && rightIconResId == 0) {
@@ -201,29 +190,18 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
                 isShowRightIcon(isShowRightIcon);
             }
         } else {
-            llRightLayout.setVisibility(GONE);
             isShowRightLayout(isShowRightLayout);
         }
         //底部分割布局
         isShowBottomDivideLine = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineVisible, true);
-        bottomDrawable = att.getDrawable(R.styleable.SimpleTitleBar_bottomDividerLine);
-        bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, 1);
-        bottomDivideColor = att.getColor(R.styleable.SimpleTitleBar_bottomDividerLineColor, defaultTextColor);
+        bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, 2);
+        bottomDivideColor = att.getColor(R.styleable.SimpleTitleBar_bottomDividerLineColor, context.getResources().getColor(R.color.color_f2f2f2));
         bottomLineFitStatusBar = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineFitStatusBar, true);
-        if (isShowBottomDivideLine) {
-            bottomDivideLine.setVisibility(VISIBLE);
-            setBottomDividerLineHeight(bottomDivideHeight);
-            setBottomDivideColor(bottomDivideColor);
-            setBottomDivideDrawable(bottomDrawable);
-        } else {
-            bottomDivideLine.setVisibility(GONE);
-        }
-        if (bottomDrawable != null) {
-            bottomDivideLine.setBackground(backgroundRes);
-        } else {
-            bottomDivideLine.setBackgroundColor(backgroundColor);
-        }
+        isShowBottomDividerLine(isShowBottomDivideLine);
+        setBottomDividerLineHeight(bottomDivideHeight);
+        setBottomDivideColor(bottomDivideColor);
         att.recycle();
+
     }
 
 
@@ -348,17 +326,6 @@ public class SimpleTitleBar extends FrameLayout implements View.OnClickListener 
     public SimpleTitleBar setBottomDivideColor(int color) {
         this.bottomDivideLine.setBackgroundColor(color);
         return this;
-    }
-
-    public SimpleTitleBar setBottomDivideDrawable(Drawable drawable) {
-        this.bottomDivideLine.setBackground(drawable);
-        return this;
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
     }
 
 
