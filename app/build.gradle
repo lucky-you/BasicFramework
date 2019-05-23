@@ -58,7 +58,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     implementation 'me.jessyan:autosize:1.1.2'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.github.bumptech.glide:glide:4.4.0'

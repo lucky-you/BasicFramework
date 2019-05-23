@@ -26,7 +26,6 @@ public class LoginActivity extends BaseActivity {
 
     private RefreshLayout refreshLayout;
     private RecyclerView recyclerView;
-    private View rlEmptyLayout;
     private LoadingController loadingController;
 
     public static void start(Context context) {
@@ -49,7 +48,6 @@ public class LoginActivity extends BaseActivity {
         simpleTitleBar = get(R.id.simpleTitleBar);
         refreshLayout = get(R.id.refreshLayout);
         recyclerView = get(R.id.recyclerView);
-        rlEmptyLayout = get(R.id.rlEmptyLayout);
         simpleTitleBar.setTitleText("列表展示")
                 .isShowRightLayout(true)
                 .isShowRightText(true)
