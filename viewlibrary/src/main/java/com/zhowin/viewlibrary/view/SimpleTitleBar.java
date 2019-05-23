@@ -64,7 +64,6 @@ public class SimpleTitleBar extends FrameLayout {
     private int bottomDivideHeight;// 底部分割线高度
     private int bottomDivideColor;//底部分割线颜色
 
-    private boolean bottomLineFitStatusBar;//是否与状态栏适配
 
     public SimpleTitleBar(@NonNull Context context) {
         this(context, null, 0);
@@ -194,7 +193,6 @@ public class SimpleTitleBar extends FrameLayout {
         isShowBottomDivideLine = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineVisible, true);
         bottomDivideHeight = att.getDimensionPixelSize(R.styleable.SimpleTitleBar_bottomDividerLineHeight, 2);
         bottomDivideColor = att.getColor(R.styleable.SimpleTitleBar_bottomDividerLineColor, context.getResources().getColor(R.color.color_f2f2f2));
-        bottomLineFitStatusBar = att.getBoolean(R.styleable.SimpleTitleBar_bottomDividerLineFitStatusBar, true);
         isShowBottomDividerLine(isShowBottomDivideLine);
         setBottomDividerLineHeight(bottomDivideHeight);
         setBottomDivideColor(bottomDivideColor);
