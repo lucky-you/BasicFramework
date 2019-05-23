@@ -59,12 +59,10 @@ public class SimpleTitleBar extends FrameLayout {
     private int rightTextSize;//右侧文本大小
     private String rightTextTitle;//右侧文本内容
 
-
     private View bottomDivideLine; //底部分割线
     private boolean isShowBottomDivideLine;//是否显示底部分割线
     private int bottomDivideHeight;// 底部分割线高度
     private int bottomDivideColor;//底部分割线颜色
-
 
     private boolean bottomLineFitStatusBar;//是否与状态栏适配
 
