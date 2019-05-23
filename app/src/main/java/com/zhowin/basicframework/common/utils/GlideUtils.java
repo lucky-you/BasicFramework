@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.zhowin.basicframework.R;
+import com.zhowin.basicframework.common.widget.GlideRoundTransform;
 
 
 /**
@@ -27,6 +28,7 @@ public class GlideUtils {
                 .placeholder(R.drawable.ic_default_image_view)
                 .error(R.drawable.ic_default_image_view)
                 .centerCrop()
+                .transform(new GlideRoundTransform(context,6))
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(context)
                 .load(url)
@@ -44,6 +46,7 @@ public class GlideUtils {
                 .placeholder(R.drawable.ic_default_image_view)
                 .error(R.drawable.ic_default_image_view)
                 .circleCrop()
+                .transform(new GlideRoundTransform(context,6))
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
         Glide.with(context)
                 .load(url)
