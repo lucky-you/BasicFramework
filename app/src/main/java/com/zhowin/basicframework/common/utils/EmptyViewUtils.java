@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhowin.basicframework.R;
+import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 import com.zhowin.basicframework.common.view.EmptyView;
 
 /**
@@ -19,21 +19,21 @@ public class EmptyViewUtils {
     /**
      * 绑定数据
      */
-    public static void bindEmptyView(Context mContext, BaseQuickAdapter adapter) {
+    public static void bindEmptyView(Context mContext, BaseSimpleAdapter adapter) {
         bindEmptyView(mContext, adapter, 0, mContext.getString(R.string.not_have_data), true);
     }
 
     /**
      * 绑定空布局
      */
-    public static void bindEmptyView(Context mContext, BaseQuickAdapter adapter, String emptyString) {
+    public static void bindEmptyView(Context mContext, BaseSimpleAdapter adapter, String emptyString) {
         bindEmptyView(mContext, adapter, 0, emptyString, true);
     }
 
     /**
      * 绑定空布局
      */
-    public static View bindEmptyView(Context mContext, BaseQuickAdapter adapter, int imgIds, String emptyString, boolean isEmpty) {
+    public static View bindEmptyView(Context mContext, BaseSimpleAdapter adapter, int imgIds, String emptyString, boolean isEmpty) {
         View emptyView = adapter.getEmptyView();
         if (emptyView == null) {
             emptyView = new EmptyView(mContext);

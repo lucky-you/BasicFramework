@@ -6,10 +6,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.mvp.BasePresenter;
 import com.zhowin.basicframework.common.mvp.MvpActivity;
+import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
@@ -26,11 +26,11 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivi
         }
     }
 
-    public RecyclerView initCommonRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
+    public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         return initCommonRecyclerView(R.id.recyclerView, adapter, decoration);
     }
 
-    public RecyclerView initCommonRecyclerView(@IdRes int id, BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
+    public RecyclerView initCommonRecyclerView(@IdRes int id, BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         RecyclerView recyclerView = (RecyclerView) findViewById(id);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (decoration != null) {
@@ -40,7 +40,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivi
         return recyclerView;
     }
 
-    public RecyclerView initGridRecyclerView(@IdRes int id, BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(@IdRes int id, BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         RecyclerView recyclerView = (RecyclerView) findViewById(id);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spanCount));
         if (decoration != null) {
@@ -50,7 +50,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivi
         return recyclerView;
     }
 
-    public RecyclerView initGridRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         return initGridRecyclerView(R.id.recyclerView, adapter, decoration, spanCount);
     }
 

@@ -4,9 +4,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.lib.LibFragment;
+import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
@@ -29,7 +29,7 @@ public abstract class BaseFragment extends LibFragment {
         }
     }
 
-    public RecyclerView initCommonRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
+    public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         RecyclerView recyclerView = (RecyclerView) mRootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         if (decoration != null) {
@@ -39,11 +39,11 @@ public abstract class BaseFragment extends LibFragment {
         return recyclerView;
     }
 
-    public RecyclerView initGridRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         return initGridRecyclerView((RecyclerView) mRootView.findViewById(R.id.recyclerView), adapter, decoration, spanCount);
     }
 
-    public RecyclerView initGridRecyclerView(RecyclerView recyclerView, BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(RecyclerView recyclerView, BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
         if (decoration != null) {
             recyclerView.addItemDecoration(decoration);

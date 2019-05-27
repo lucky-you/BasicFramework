@@ -1,22 +1,18 @@
 package com.zhowin.basicframework.common.activity;
 
 import android.app.Dialog;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
-import com.zhowin.basicframework.common.utils.SharedPreferenceHelper;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
+import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
-import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.view.PasswordEditText;
-import com.zhowin.viewlibrary.widget.TagGroupLayout;
-
-import java.util.Arrays;
-import java.util.List;
+import com.zhowin.viewlibrary.view.SingleCountDownView;
 
 public class MainActivity extends BaseActivity {
 

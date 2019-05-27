@@ -5,12 +5,10 @@ import android.support.annotation.IdRes;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.lib.LibActivity;
-import com.zhowin.basicframework.common.utils.BarUtils;
+import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
@@ -30,11 +28,11 @@ public abstract class BaseActivity extends LibActivity {
         super.onCreate(savedInstanceState);
     }
 
-    public RecyclerView initCommonRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
+    public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         return initCommonRecyclerView(R.id.recyclerView, adapter, decoration);
     }
 
-    public RecyclerView initCommonRecyclerView(@IdRes int id, BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration) {
+    public RecyclerView initCommonRecyclerView(@IdRes int id, BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         RecyclerView recyclerView = (RecyclerView) findViewById(id);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (decoration != null) {
@@ -44,7 +42,7 @@ public abstract class BaseActivity extends LibActivity {
         return recyclerView;
     }
 
-    public RecyclerView initGridRecyclerView(@IdRes int id, BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(@IdRes int id, BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         RecyclerView recyclerView = (RecyclerView) findViewById(id);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spanCount));
         if (decoration != null) {
@@ -54,10 +52,9 @@ public abstract class BaseActivity extends LibActivity {
         return recyclerView;
     }
 
-    public RecyclerView initGridRecyclerView(BaseQuickAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
+    public RecyclerView initGridRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration, int spanCount) {
         return initGridRecyclerView(R.id.recyclerView, adapter, decoration, spanCount);
     }
-
 
 
     @Override
