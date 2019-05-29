@@ -11,8 +11,12 @@ import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
+import com.zhowin.viewlibrary.utils.TimeUtils;
 import com.zhowin.viewlibrary.view.PasswordEditText;
 import com.zhowin.viewlibrary.view.SingleCountDownView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends BaseActivity {
 
