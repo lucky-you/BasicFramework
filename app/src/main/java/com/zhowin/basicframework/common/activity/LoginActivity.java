@@ -48,26 +48,18 @@ public class LoginActivity extends BaseActivity {
         simpleTitleBar = get(R.id.simpleTitleBar);
         refreshLayout = get(R.id.refreshLayout);
         recyclerView = get(R.id.recyclerView);
-        simpleTitleBar.setTitleText("列表展示")
-                .isShowRightLayout(true)
-                .isShowRightText(true)
-                .setRightTextColor(mContext.getResources().getColor(R.color.color_333))
-                .setRightText("查看明细")
-                .isShowBottomDividerLine(true)
-                .setBottomDividerLineHeight(SizeUtils.dp2px(1))
-                .setRightAction(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showToast("明细");
-                    }
-                });
+        simpleTitleBar.setTitleText("列表展示");
+        simpleTitleBar.isShowRightLayout(true);
+        simpleTitleBar.isShowRightText(true);
+        simpleTitleBar.setRightTextColor(mContext.getResources().getColor(R.color.color_333));
+        simpleTitleBar.setRightText("查看明细");
+        simpleTitleBar.isShowBottomDividerLine(true);
+        simpleTitleBar.setBottomDividerLineHeight(SizeUtils.dp2px(1));
+        simpleTitleBar.setRightAction((View view) -> LoginActivity.this.showToast("明细"));
 
-        loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, new OnNextClickListener() {
-            @Override
-            public void onNextClick() {
-                showToast("点击了重新加载");
-                loadingController.dismissLoading();
-            }
+        loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, () -> {
+            showToast("点击了重新加载");
+            loadingController.dismissLoading();
         });
     }
 
@@ -81,13 +73,9 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        simpleTitleBar.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
+        simpleTitleBar.postDelayed(() -> {
 //                loadingController.showEmpty();
-                loadingController.showNetworkError();
-            }
+            loadingController.showNetworkError();
         }, 2000);
 
     }

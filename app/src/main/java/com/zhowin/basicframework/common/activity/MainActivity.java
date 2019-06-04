@@ -38,7 +38,6 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeFive).setOnClickListener(this);
         get(R.id.tvTypeSix).setOnClickListener(this);
 
-
     }
 
     @Override
@@ -72,32 +71,17 @@ public class MainActivity extends BaseActivity {
 
     private void showMineLoadView() {
         showLoadDialog("加载中..");
-        tvTypeOne.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dismissDialog();
-            }
-        }, 3000);
+        tvTypeOne.postDelayed(() -> dismissDialog(), 3000);
 
     }
 
 
     private void setPasswordDialogOne() {
-        PasswordDialogUtils.passwordDialog(mContext, new PasswordEditText.PasswordFullListener() {
-            @Override
-            public void passwordFull(String password) {
-                showToast("密码是=" + password);
-            }
-        });
+        PasswordDialogUtils.passwordDialog(mContext, password -> showToast("密码是=" + password));
     }
 
     private void setPasswordDialogTwo() {
-        PasswordDialogUtils.passwordEditDialog(mContext, new PasswordEditText.PasswordFullListener() {
-            @Override
-            public void passwordFull(String password) {
-                showToast("密码是=" + password);
-            }
-        });
+        PasswordDialogUtils.passwordEditDialog(mContext, password -> showToast("密码是=" + password));
     }
 
     private void showDialog() {
@@ -122,11 +106,8 @@ public class MainActivity extends BaseActivity {
                 .setTitle("友情提示")
                 .setMsg("确定要退出吗?")
                 .setNegativeButton("取消", null)
-                .setPositiveButton("确定", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                .setPositiveButton("确定", view -> {
 
-                    }
                 }).show();
     }
 

@@ -13,7 +13,7 @@ import com.zhowin.viewlibrary.R;
  */
 public class LoadingViewUtils {
 
-    public static LoadingController showLoadingView(Context mContext, View rootView, final OnNextClickListener onNextClickListener) {
+    public static LoadingController showLoadingView(Context mContext, RecyclerView rootView, final OnNextClickListener onNextClickListener) {
         LoadingController loadingController = new LoadingController.Builder(mContext, rootView)
                 .setLoadingMessage(mContext.getString(R.string.LoadingController_loading_message))
                 .setErrorMessage(mContext.getString(R.string.LoadingController_error_message))
