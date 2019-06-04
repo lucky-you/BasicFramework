@@ -6,14 +6,11 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/ivLoadImage"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_loading_background" />
+    <com.zhowin.viewlibrary.view.MiniLoadingView
+        android:id="@+id/miniLoadingView"
+        android:layout_width="@dimen/spacing_44"
+        android:layout_height="@dimen/spacing_44"
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/tvLoadText"

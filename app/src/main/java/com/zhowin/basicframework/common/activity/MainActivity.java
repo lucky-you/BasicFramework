@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
@@ -11,15 +12,11 @@ import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
-import com.zhowin.viewlibrary.utils.TimeUtils;
 import com.zhowin.viewlibrary.view.PasswordEditText;
-import com.zhowin.viewlibrary.view.SingleCountDownView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainActivity extends BaseActivity {
 
+    private TextView tvTypeOne;
 
     @Override
     public void initData(@Nullable Bundle bundle) {
@@ -33,11 +30,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void bindViews(View contentView) {
-        get(R.id.tvTypeOne).setOnClickListener(this);
+        tvTypeOne = get(R.id.tvTypeOne);
+        tvTypeOne.setOnClickListener(this);
         get(R.id.tvTypeTwo).setOnClickListener(this);
         get(R.id.tvTypeThree).setOnClickListener(this);
         get(R.id.tvTypeFour).setOnClickListener(this);
         get(R.id.tvTypeFive).setOnClickListener(this);
+        get(R.id.tvTypeSix).setOnClickListener(this);
+
 
     }
 
@@ -62,9 +62,23 @@ public class MainActivity extends BaseActivity {
                 shoIosDialog();
                 break;
             case R.id.tvTypeFive:
-                showActionSheet();
+                LoginActivity.start(mContext);
+                break;
+            case R.id.tvTypeSix:
+                showMineLoadView();
                 break;
         }
+    }
+
+    private void showMineLoadView() {
+        showLoadDialog("加载中..");
+        tvTypeOne.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dismissDialog();
+            }
+        }, 3000);
+
     }
 
 
@@ -116,9 +130,6 @@ public class MainActivity extends BaseActivity {
                 }).show();
     }
 
-    private void showActionSheet() {
-        LoginActivity.start(mContext);
-    }
 }
 
 

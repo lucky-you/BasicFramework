@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhowin.basicframework.R;
+import com.zhowin.viewlibrary.view.MiniLoadingView;
 
 /**
  * author      : Z_B
@@ -36,12 +37,11 @@ public class LoadProgressDialog extends Dialog {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.include_progress_dialog_layout, null);
         LinearLayout layout = view.findViewById(R.id.dialog_view);
-        ImageView spaceshipImage = view.findViewById(R.id.ivLoadImage);
+        MiniLoadingView miniLoadingView = view.findViewById(R.id.miniLoadingView);
         TextView tipTextView = view.findViewById(R.id.tvLoadText);
-        // 加载动画
-        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(context, R.anim.progress_dialog_anim);
-        // 使用ImageView显示动画
-        spaceshipImage.startAnimation(hyperspaceJumpAnimation);
+//        Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(context, R.anim.progress_dialog_anim); // 加载动画
+//        spaceshipImage.startAnimation(hyperspaceJumpAnimation); // 使用ImageView显示动画
+        miniLoadingView.start();
         tipTextView.setText(msg);
         progressDialog = new LoadProgressDialog(context, R.style.myProgressDialog);// 创建自定义样式dialog
         progressDialog.setCanceledOnTouchOutside(false);//点击外围不可消失

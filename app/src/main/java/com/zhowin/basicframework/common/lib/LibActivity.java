@@ -129,7 +129,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
     /**
      * 显示对话框
      */
-    public LoadProgressDialog showDialog(String hitMessage) {
+    public LoadProgressDialog showLoadDialog(String hitMessage) {
         if (progressDialog == null) {
             progressDialog = new LoadProgressDialog(mContext);
             if (TextUtils.isEmpty(hitMessage)) {
