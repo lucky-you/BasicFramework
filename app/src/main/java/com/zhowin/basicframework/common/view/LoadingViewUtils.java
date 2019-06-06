@@ -1,11 +1,10 @@
 package com.zhowin.basicframework.common.view;
 
 import android.content.Context;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
 import com.zhowin.viewlibrary.R;
 import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.viewlibrary.empty.LoadingInterface;
 import com.zhowin.viewlibrary.empty.OnNextClickListener;
 
 
@@ -23,29 +22,20 @@ public class LoadingViewUtils {
                 .setErrorImageResoruce(R.drawable.svg_data_error)
                 .setEmptyMessage(mContext.getString(R.string.not_have_data))
                 .setEmptyViewImageResource(R.drawable.svg_empty)
-                .setOnNetworkErrorRetryClickListener(new LoadingInterface.OnClickListener() {
-                    @Override
-                    public void onClick() {
-                        if (onNextClickListener != null) {
-                            onNextClickListener.onNextClick();
-                        }
+                .setOnNetworkErrorRetryClickListener(() -> {
+                    if (onNextClickListener != null) {
+                        onNextClickListener.onNextClick();
                     }
                 })
                 .setOnErrorRetryClickListener(mContext.getString(R.string.LoadingController_error_retry),
-                        new LoadingInterface.OnClickListener() {
-                            @Override
-                            public void onClick() {
-                                if (onNextClickListener != null) {
-                                    onNextClickListener.onNextClick();
-                                }
+                        () -> {
+                            if (onNextClickListener != null) {
+                                onNextClickListener.onNextClick();
                             }
                         })
-                .setOnEmptyTodoClickListener(new LoadingInterface.OnClickListener() {
-                    @Override
-                    public void onClick() {
-                        if (onNextClickListener != null) {
-                            onNextClickListener.onNextClick();
-                        }
+                .setOnEmptyTodoClickListener(() -> {
+                    if (onNextClickListener != null) {
+                        onNextClickListener.onNextClick();
                     }
                 })
                 .build();

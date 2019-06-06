@@ -89,16 +89,15 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".common.activity.MainActivity">
+        <activity android:name=".common.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".common.activity.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+        <activity android:name=".common.activity.MainActivity" />
+        <activity android:name=".common.activity.LoginActivity" />
     </application>
 
 </manifest>

@@ -8,11 +8,12 @@ import android.widget.TextView;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
+import com.zhowin.basicframework.common.utils.ActivityUtils;
+import com.zhowin.basicframework.common.utils.LogUtils;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
-import com.zhowin.viewlibrary.view.PasswordEditText;
 
 public class MainActivity extends BaseActivity {
 
@@ -61,7 +62,7 @@ public class MainActivity extends BaseActivity {
                 shoIosDialog();
                 break;
             case R.id.tvTypeFive:
-                LoginActivity.start(mContext);
+                ActivityUtils.startActivity(LoginActivity.class);
                 break;
             case R.id.tvTypeSix:
                 showMineLoadView();
@@ -72,7 +73,6 @@ public class MainActivity extends BaseActivity {
     private void showMineLoadView() {
         showLoadDialog("加载中..");
         tvTypeOne.postDelayed(() -> dismissDialog(), 3000);
-
     }
 
 

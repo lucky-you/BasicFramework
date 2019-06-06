@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 
-
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.model.EventNotice;
 import com.zhowin.basicframework.common.utils.KeyboardUtils;
@@ -97,7 +96,6 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
     protected void showToast(String msg) {
         ToastUtils.showLong(msg);
     }
-
 
     /**
      * 注册事件通知

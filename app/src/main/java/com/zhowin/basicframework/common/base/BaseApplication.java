@@ -6,7 +6,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.zhowin.basicframework.common.utils.FileUtils;
-import com.zhowin.basicframework.common.utils.SPUtils;
+import com.zhowin.basicframework.common.utils.Utils;
 
 
 /**
@@ -21,8 +21,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        SPUtils.init(this);
-        FileUtils.init("miyue");
+        Utils.init(this);
+        FileUtils.init("zhowin");
     }
 
 
@@ -36,7 +36,6 @@ public class BaseApplication extends Application {
     public static BaseApplication getInstance() {
         return instance;
     }
-
 
 
     /**

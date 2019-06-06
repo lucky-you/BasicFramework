@@ -1,7 +1,5 @@
 package com.zhowin.basicframework.common.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,9 +9,9 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.utils.SizeUtils;
+import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.viewlibrary.view.SimpleTitleBar;
 
 /**
@@ -22,15 +20,10 @@ import com.zhowin.viewlibrary.view.SimpleTitleBar;
 public class LoginActivity extends BaseActivity {
 
     private SimpleTitleBar simpleTitleBar;
-
     private RefreshLayout refreshLayout;
     private RecyclerView recyclerView;
     private LoadingController loadingController;
 
-    public static void start(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        context.startActivity(intent);
-    }
 
     @Override
     public void initData(@Nullable Bundle bundle) {
@@ -64,12 +57,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshLayout.setRefreshing(false);
-                loadingController.showError();
-            }
+        refreshLayout.setOnRefreshListener(() -> {
+            refreshLayout.setRefreshing(false);
+            loadingController.showError();
         });
 
         simpleTitleBar.postDelayed(() -> {

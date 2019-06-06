@@ -7,7 +7,7 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
-import com.zhowin.basicframework.common.utils.Utils;
+import com.zhowin.basicframework.common.utils.DrawableUtils;
 
 
 /**
@@ -41,12 +41,11 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
 
     /**
      * 初始化启动界面
-     *
      * @param splashImgResId 背景资源图片资源ID
      */
     protected void initSplashView(int splashImgResId) {
         if (splashImgResId != 0) {
-            Utils.setBackground(this, mWelcomeLayout, splashImgResId);
+            DrawableUtils.setBackground(this, mWelcomeLayout, splashImgResId);
         }
     }
 
@@ -95,7 +94,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
      * @param anim
      */
     private void startSplashAnim(Animation anim) {
-        Utils.checkNull(anim, "Splash Animation can not be null");
+        DrawableUtils.checkNull(anim, "Splash Animation can not be null");
         anim.setDuration(getSplashDurationMillis());
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -116,7 +115,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        Utils.recycleBackground(mWelcomeLayout);
+        DrawableUtils.recycleBackground(mWelcomeLayout);
         super.onDestroy();
     }
 }
