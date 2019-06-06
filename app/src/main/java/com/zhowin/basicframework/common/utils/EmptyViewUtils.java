@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
-import com.zhowin.basicframework.common.view.EmptyView;
 
 /**
  * Created by : Z_B on 2017/12/21.

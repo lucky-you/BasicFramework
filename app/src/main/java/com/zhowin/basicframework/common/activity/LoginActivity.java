@@ -13,8 +13,7 @@ import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.utils.SizeUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.viewlibrary.empty.LoadingViewUtils;
-import com.zhowin.viewlibrary.empty.OnNextClickListener;
+import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.viewlibrary.view.SimpleTitleBar;
 
 /**

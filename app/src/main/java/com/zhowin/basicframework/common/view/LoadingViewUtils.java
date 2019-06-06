@@ -1,9 +1,12 @@
-package com.zhowin.viewlibrary.empty;
+package com.zhowin.basicframework.common.view;
 
 import android.content.Context;
 import android.view.View;
 
 import com.zhowin.viewlibrary.R;
+import com.zhowin.viewlibrary.empty.LoadingController;
+import com.zhowin.viewlibrary.empty.LoadingInterface;
+import com.zhowin.viewlibrary.empty.OnNextClickListener;
 
 
 /**
