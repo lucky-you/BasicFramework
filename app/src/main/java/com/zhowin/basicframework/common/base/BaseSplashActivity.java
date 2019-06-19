@@ -51,7 +51,6 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
 
     /**
      * 初始化启动界面背景图片
-     *
      * @return 背景图片资源ID
      */
     protected int getSplashImgResId() {
