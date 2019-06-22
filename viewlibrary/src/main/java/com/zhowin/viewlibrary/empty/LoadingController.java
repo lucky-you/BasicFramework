@@ -97,11 +97,10 @@ public class LoadingController implements LoadingInterface {
         if (builder.customEmptyView != null) {
             emptyView = builder.customEmptyView;
         }
-
-        init();
+        initViews();
     }
 
-    private void init() {
+    private void initViews() {
         inflater = LayoutInflater.from(context);
         params = loadingTargetView.getLayoutParams();
         if (loadingTargetView.getParent() != null) {

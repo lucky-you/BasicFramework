@@ -148,6 +148,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
     public void dismissDialog() {
         if (progressDialog != null) {
             if (progressDialog.isShowing()) {
+                progressDialog.stopAnimator();
                 progressDialog.dismiss();
             }
             progressDialog = null;

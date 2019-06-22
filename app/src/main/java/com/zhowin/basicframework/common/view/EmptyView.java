@@ -1,4 +1,4 @@
-package com.zhowin.viewlibrary.empty;
+package com.zhowin.basicframework.common.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhowin.viewlibrary.R;
+import com.zhowin.basicframework.R;
+
 
 /**
  * author      : Z_B

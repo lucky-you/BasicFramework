@@ -56,12 +56,15 @@ android {
             buildConfigField("String", "API_HOST", API_DEVELOP_HOST)
         }
     }
-    dataBinding {
-        enabled = true
-    }
     compileOptions {
         sourceCompatibility rootProject.ext.javaVersion
         targetCompatibility rootProject.ext.javaVersion
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+
     }
 
 }
