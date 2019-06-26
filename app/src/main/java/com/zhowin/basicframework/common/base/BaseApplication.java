@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.zhowin.basicframework.common.utils.FileUtils;
 import com.zhowin.basicframework.common.utils.Utils;
 
 
@@ -22,7 +21,6 @@ public class BaseApplication extends Application {
         super.onCreate();
         instance = this;
         Utils.init(this);
-        FileUtils.init("zhowin");
     }
 
 
