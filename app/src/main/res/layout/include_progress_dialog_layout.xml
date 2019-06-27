@@ -10,14 +10,15 @@
         android:id="@+id/miniLoadingView"
         android:layout_width="@dimen/spacing_44"
         android:layout_height="@dimen/spacing_44"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_8" />
 
     <TextView
         android:id="@+id/tvLoadText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="@dimen/spacing_12"
         android:text="加载中…"
         android:textColor="#ffffff" />
 

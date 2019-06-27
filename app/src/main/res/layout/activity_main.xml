@@ -90,6 +90,13 @@
 
         <View style="@style/DivideStyleOf1dp" />
 
+        <com.zhowin.viewlibrary.view.CircleProgressBarView
+            android:id="@+id/progressView"
+            android:layout_width="@dimen/spacing_60"
+            android:layout_height="@dimen/spacing_60"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp" />
+
 
     </LinearLayout>
 

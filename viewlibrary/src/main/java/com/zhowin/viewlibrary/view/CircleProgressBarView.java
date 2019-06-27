@@ -40,6 +40,10 @@ public class CircleProgressBarView extends View {
 
     public CircleProgressBarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
+        mRectF = new RectF();
+        mPaint = new Paint();
+        mTextPaint = new TextPaint();
     }
 
     @Override

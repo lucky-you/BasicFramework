@@ -14,10 +14,12 @@ import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
+import com.zhowin.viewlibrary.view.CircleProgressBarView;
 
 public class MainActivity extends BaseActivity {
 
     private TextView tvTypeOne;
+    private CircleProgressBarView progressView;
 
     @Override
     public void initData(@Nullable Bundle bundle) {
@@ -38,11 +40,14 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeFour).setOnClickListener(this);
         get(R.id.tvTypeFive).setOnClickListener(this);
         get(R.id.tvTypeSix).setOnClickListener(this);
+        progressView = get(R.id.progressView);
 
     }
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
+
+        progressView.setProgress(60);
 
     }
 
