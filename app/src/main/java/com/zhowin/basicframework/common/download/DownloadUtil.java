@@ -1,7 +1,6 @@
 package com.zhowin.basicframework.common.download;
 
 import android.os.Environment;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -18,10 +17,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * 下载的工具类
@@ -32,9 +32,6 @@ public class DownloadUtil {
     public static final String PATH_CHALLENGE_VIDEO = Environment.getExternalStorageDirectory() + "/" + BaseApplication.getInstance().getString(R.string.app_name);
     //视频下载相关
     protected ApiService mApiService;
-    private Call<ResponseBody> mCall;
-    private File mFile;
-    private Thread mThread;
     private String mVideoPath; //下载到本地的视频路径
 
 
@@ -61,37 +58,42 @@ public class DownloadUtil {
             }
         }
         if (TextUtils.isEmpty(mVideoPath)) {
-            Log.e(TAG, "downloadVideo: 存储路径为空了");
+            Log.e(TAG, "downloadVideo:存储路径为空了");
             return;
         }
         //建立一个文件
-        mFile = new File(mVideoPath);
+        File mFile = new File(mVideoPath);
         if (!FileUtils.isFileExists(mFile) && FileUtils.createOrExistsFile(mFile)) {
             if (mApiService == null) {
-                Log.e(TAG, "downloadVideo: 下载接口为空了");
+                Log.e(TAG, "downloadVideo:下载接口为空了");
                 return;
             }
-            mCall = mApiService.downloadFile(url);
-            mCall.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
-                    //下载文件放在子线程
-                    mThread = new Thread() {
+            mApiService.downloadFile(url)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<ResponseBody>() {
                         @Override
-                        public void run() {
-                            super.run();
-                            //保存到本地
-                            writeFileToDisk(response, mFile, downloadListener);
+                        public void onSubscribe(Disposable d) {
+                            downloadListener.onStart();
                         }
-                    };
-                    mThread.start();
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    downloadListener.onFailure("网络错误!");
-                }
-            });
+                        @Override
+                        public void onNext(ResponseBody responseBody) {
+                            writeFileToDisk(responseBody, mFile, downloadListener);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            downloadListener.onFailure(e.getMessage());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+
+
         } else {
             //已经存在了，不再重复下载
             downloadListener.onFinish(mVideoPath);
@@ -101,16 +103,16 @@ public class DownloadUtil {
     /**
      * 保存到本地
      */
-    private void writeFileToDisk(Response<ResponseBody> response, File file, DownloadStatusListener downloadListener) {
-        downloadListener.onStart();
+    private void writeFileToDisk(ResponseBody response, File file, DownloadStatusListener downloadListener) {
+//        downloadListener.onStart();
         long currentLength = 0;
         OutputStream os = null;
-        if (response.body() == null) {
+        if (response == null) {
             downloadListener.onFailure("资源错误!");
             return;
         }
-        InputStream is = response.body().byteStream();
-        long totalLength = response.body().contentLength();
+        InputStream is = response.byteStream();
+        long totalLength = response.contentLength();
         try {
             os = new FileOutputStream(file);
             int len;

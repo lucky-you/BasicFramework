@@ -3,6 +3,7 @@ package com.zhowin.basicframework.common.base;
 
 import com.zhowin.basicframework.BuildConfig;
 
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -31,7 +32,7 @@ public interface ApiService {
      */
     @Streaming //大文件时要加不然会OOM
     @GET
-    Call<ResponseBody> downloadFile(@Url String fileUrl);
+    Observable<ResponseBody> downloadFile(@Url String url);
 
 
 }
