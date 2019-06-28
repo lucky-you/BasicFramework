@@ -25,7 +25,6 @@ import static android.Manifest.permission.WRITE_SETTINGS;
 
 /**
  * blog  : http://blankj.com
- * desc  : utils about screen
  */
 public final class ScreenUtils {
 

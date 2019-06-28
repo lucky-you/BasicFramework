@@ -8,6 +8,7 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.utils.SizeUtils;
+import com.zhowin.basicframework.common.utils.SnackbarUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
@@ -46,12 +47,19 @@ public class LoginActivity extends BaseActivity {
         simpleTitleBar.setRightText("明细");
         simpleTitleBar.isShowBottomDividerLine(true);
         simpleTitleBar.setBottomDividerLineHeight(SizeUtils.dp2px(1));
-        simpleTitleBar.setRightAction(view -> showToast("点击了明细"));
+        simpleTitleBar.setRightAction(view -> {
+//                LoginActivity.this.showToast("点击了明细");
+            SnackbarUtils.with(findViewById(android.R.id.content))
+                    .setMessage("点击了明细")
+                    .show();
+
+        });
 
         loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, () -> {
             showToast("点击了重新加载");
             loadingController.dismissLoading();
         });
+
     }
 
     @Override

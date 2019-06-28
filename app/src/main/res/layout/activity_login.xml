@@ -17,4 +17,6 @@
         app:titleColor="@color/color_333" />
 
     <include layout="@layout/include_refresh_recycler_layout" />
+
+
 </LinearLayout>
