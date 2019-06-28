@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tvTypeTwo:
                 setPasswordDialogTwo();
-
                 break;
             case R.id.tvTypeThree:
                 showDialog();
