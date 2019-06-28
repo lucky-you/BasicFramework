@@ -2,7 +2,6 @@ package com.zhowin.basicframework.common.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -44,10 +43,10 @@ public class LoginActivity extends BaseActivity {
         simpleTitleBar.isShowRightLayout(true);
         simpleTitleBar.isShowRightText(true);
         simpleTitleBar.setRightTextColor(mContext.getResources().getColor(R.color.color_333));
-        simpleTitleBar.setRightText("查看明细");
+        simpleTitleBar.setRightText("明细");
         simpleTitleBar.isShowBottomDividerLine(true);
         simpleTitleBar.setBottomDividerLineHeight(SizeUtils.dp2px(1));
-        simpleTitleBar.setRightAction((View view) -> LoginActivity.this.showToast("明细"));
+        simpleTitleBar.setRightAction(view -> showToast("点击了明细"));
 
         loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, () -> {
             showToast("点击了重新加载");
@@ -68,6 +67,7 @@ public class LoginActivity extends BaseActivity {
         }, 2000);
 
     }
+
 
     @Override
     public void setClickListener(View view) {

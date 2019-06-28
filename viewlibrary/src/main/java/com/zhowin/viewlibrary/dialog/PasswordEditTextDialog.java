@@ -30,8 +30,7 @@ public class PasswordEditTextDialog extends Dialog implements View.OnClickListen
 
     public PasswordEditTextDialog(Context context) {
         super(context);
-        WindowManager windowManager = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
         initViews(context);
     }
