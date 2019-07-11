@@ -53,7 +53,6 @@ public final class ToastUtils {
 
     /**
      * Set the gravity.
-     *
      * @param gravity The gravity.
      * @param xOffset X-axis offset, in pixel.
      * @param yOffset Y-axis offset, in pixel.
