@@ -29,11 +29,11 @@ import android.widget.ScrollView;
 
 /**
  * Created by : Z_B on 2019/7/11.
- * describe： 可以拖拽的展示未读消息数量的空间
+ * describe： 可以拖拽的展示未读消息数量的控件
  */
 public class DragPointTextView extends AppCompatTextView {
     private boolean initBgFlag;
-    private OnDragListener dragListencer;
+    private OnDragListener dragListener;
     private int backgroundColor = Color.parseColor("#f43530");
     private PointView pointView;
     private int x, y, r;
@@ -45,12 +45,12 @@ public class DragPointTextView extends AppCompatTextView {
         initBackground();
     }
 
-    public OnDragListener getDragListencer() {
-        return dragListencer;
+    public OnDragListener getDragListener() {
+        return dragListener;
     }
 
-    public void setDragListencer(OnDragListener dragListencer) {
-        this.dragListencer = dragListencer;
+    public void setDragListener(OnDragListener dragListener) {
+        this.dragListener = dragListener;
     }
 
     public int getBackgroundColor() {
@@ -308,8 +308,8 @@ public class DragPointTextView extends AppCompatTextView {
                 }
             });
             a.start();
-            if (dragListencer != null) {
-                dragListencer.onDragOut();
+            if (dragListener != null) {
+                dragListener.onDragOut();
             }
         }
 
