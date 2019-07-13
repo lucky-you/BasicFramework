@@ -48,7 +48,7 @@ public class LoadProgressDialog extends Dialog {
     }
 
     /**
-     *
+     * 停止动画
      */
     public void stopAnimator() {
         if (miniLoadingView != null) {
