@@ -176,7 +176,7 @@ public abstract class LibFragment extends Fragment implements BaseView {
     /**
      * 显示对话框
      */
-    public LoadProgressDialog showDialog(String hitMessage) {
+    public LoadProgressDialog showLoadDialog(String hitMessage) {
         if (progressDialog == null) {
             progressDialog = new LoadProgressDialog(mContext);
             if (TextUtils.isEmpty(hitMessage)) {
@@ -194,7 +194,7 @@ public abstract class LibFragment extends Fragment implements BaseView {
     /**
      * 关闭提示框
      */
-    public void dismissDialog() {
+    public void dismissLoadDialog() {
         if (progressDialog != null) {
             if (progressDialog.isShowing()) {
                 progressDialog.dismiss();

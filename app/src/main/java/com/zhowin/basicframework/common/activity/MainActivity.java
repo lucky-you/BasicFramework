@@ -105,7 +105,7 @@ public class MainActivity extends BaseActivity {
 
     private void showMineLoadView() {
         showLoadDialog("加载中..");
-        tvTypeOne.postDelayed(() -> dismissDialog(), 3000);
+        tvTypeOne.postDelayed(() -> dismissLoadDialog(), 3000);
     }
 
 
