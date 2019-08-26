@@ -140,7 +140,6 @@ public class MainActivity extends BaseActivity {
                 .setMsg("确定要退出吗?")
                 .setNegativeButton("取消", null)
                 .setPositiveButton("确定", view -> {
-
                 }).show();
     }
 
