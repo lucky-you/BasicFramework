@@ -7,12 +7,20 @@ import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
+import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
 import com.zhowin.basicframework.common.utils.SizeUtils;
 import com.zhowin.basicframework.common.utils.SnackbarUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
 import com.zhowin.viewlibrary.view.SimpleTitleBar;
+
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 /**
  * 登录界面，这里只是方便展示网络请求，正式项目根据不同的需求来展示不同的界面
@@ -60,6 +68,9 @@ public class LoginActivity extends BaseActivity {
             loadingController.dismissLoading();
         });
 
+
+
+
     }
 
     @Override
@@ -73,6 +84,32 @@ public class LoginActivity extends BaseActivity {
 //                loadingController.showEmpty();
             loadingController.showNetworkError();
         }, 2000);
+
+
+        RetrofitFactory.getInstance().downloadFile("")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
     }
 
