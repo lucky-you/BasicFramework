@@ -6,15 +6,17 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.zhowin.viewlibrary.view.SimpleTitleBar
-        android:id="@+id/simpleTitleBar"
+    <com.zhowin.viewlibrary.view.ZhoSimpleTitleView
+        android:id="@+id/zhoTitleView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_48"
-        app:backgroundColor="@color/white"
-        app:bottomDividerLineVisible="true"
-        app:leftIcon="@drawable/svg_black_return_back"
-        app:title="登录"
-        app:titleColor="@color/color_333" />
+        android:background="@color/colorPrimary"
+        app:leftIcon="@drawable/svg_white_return_back"
+        app:leftText="返回"
+        app:leftTextColor="@color/white"
+        app:leftTextVisibility="true"
+        app:title="登录界面"
+        app:titleColor="@color/white" />
 
     <include layout="@layout/include_refresh_recycler_layout" />
 

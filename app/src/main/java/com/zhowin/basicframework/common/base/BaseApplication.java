@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.zhowin.basicframework.common.utils.Utils;
+import com.zhowin.viewlibrary.utils.ZhoToolUtils;
 
 
 /**
@@ -21,6 +22,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         instance = this;
         Utils.init(this);
+        ZhoToolUtils.init(this);
     }
 
 

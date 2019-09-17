@@ -8,15 +8,12 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
-import com.zhowin.basicframework.common.utils.SizeUtils;
-import com.zhowin.basicframework.common.utils.SnackbarUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.viewlibrary.view.SimpleTitleBar;
+import com.zhowin.viewlibrary.view.ZhoSimpleTitleView;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -27,11 +24,10 @@ import okhttp3.ResponseBody;
  */
 public class LoginActivity extends BaseActivity {
 
-    private SimpleTitleBar simpleTitleBar;
     private RefreshLayout refreshLayout;
     private RecyclerView recyclerView;
     private LoadingController loadingController;
-
+    private ZhoSimpleTitleView zhoTitleView;
 
     @Override
     public void initData(@Nullable Bundle bundle) {
@@ -45,71 +41,35 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void bindViews(View contentView) {
-        simpleTitleBar = get(R.id.simpleTitleBar);
         refreshLayout = get(R.id.refreshLayout);
         recyclerView = get(R.id.recyclerView);
-        simpleTitleBar.setTitleText("列表展示");
-        simpleTitleBar.isShowRightLayout(true);
-        simpleTitleBar.isShowRightText(true);
-        simpleTitleBar.setRightTextColor(mContext.getResources().getColor(R.color.color_333));
-        simpleTitleBar.setRightText("明细");
-        simpleTitleBar.isShowBottomDividerLine(true);
-        simpleTitleBar.setBottomDividerLineHeight(SizeUtils.dp2px(1));
-        simpleTitleBar.setRightAction(view -> {
-//                LoginActivity.this.showToast("点击了明细");
-            SnackbarUtils.with(findViewById(android.R.id.content))
-                    .setMessage("点击了明细")
-                    .show();
 
-        });
+        zhoTitleView=get(R.id.zhoTitleView);
 
         loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, () -> {
             showToast("点击了重新加载");
             loadingController.dismissLoading();
         });
 
-
+        zhoTitleView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingController.showError();
+            }
+        },1000);
 
 
     }
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
+        zhoTitleView.setLeftFinish(this);
         refreshLayout.setOnRefreshListener(() -> {
             refreshLayout.setRefreshing(false);
             loadingController.showError();
         });
 
-        simpleTitleBar.postDelayed(() -> {
-//                loadingController.showEmpty();
-            loadingController.showNetworkError();
-        }, 2000);
 
-
-        RetrofitFactory.getInstance().downloadFile("")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResponseBody>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResponseBody responseBody) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
 
     }
 

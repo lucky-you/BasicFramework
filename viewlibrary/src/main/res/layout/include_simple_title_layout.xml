@@ -1,83 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rlTitleBarLayout"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="48dp"
+    android:gravity="center"
+    android:orientation="horizontal">
 
-    <View
-        android:id="@+id/titleBarStatusView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
+    <com.zhowin.viewlibrary.view.ZhoTextAutoZoom
+        android:id="@+id/tv_rx_title"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:hint="@string/app_name"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:isScrollContainer="false"
+        android:maxLength="240"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp" />
 
     <LinearLayout
-        android:id="@+id/llLeftLayout"
+        android:id="@+id/ll_left"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:visibility="visible">
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <ImageView
-            android:id="@+id/ivLeftIcon"
+            android:id="@+id/iv_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="4dp"
             android:src="@drawable/svg_black_return_back" />
 
         <TextView
-            android:id="@+id/tvLeftTextTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:lines="1"
-            android:maxLength="6"
-            android:minWidth="24dp"
-            android:textColor="@color/color_666"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="17sp" />
-
-    <LinearLayout
-        android:id="@+id/llRightLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:visibility="visible">
-
-        <ImageView
-            android:id="@+id/ivRightIcon"
+            android:id="@+id/tv_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:paddingLeft="4dp"
+            android:text="left"
+            android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/tvRightText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:lines="1"
-            android:maxLength="6"
-            android:minWidth="24dp"
-            android:textColor="@color/color_666"
-            android:textSize="15sp"
-            android:visibility="visible" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/bottomDivideLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/divide_line_out" />
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingRight="4dp"
+            android:text="right"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/svg_right_more" />
+
+    </LinearLayout>
+
 </RelativeLayout>
