@@ -546,7 +546,7 @@ public final class BarUtils {
     /**
      * 设置状态栏的样式
      */
-    public static void setStatusBar(Activity activity, boolean useThemeStatusBarColor, boolean withoutUseStatusBarColor) {
+    public static void setStatusActivityBar(Activity activity, boolean useThemeStatusBarColor, boolean withoutUseStatusBarColor) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = activity.getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

@@ -230,7 +230,6 @@ public final class NetworkUtils {
                 netType = NetworkType.NETWORK_WIFI;
             } else if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
                 switch (info.getSubtype()) {
-
                     case TelephonyManager.NETWORK_TYPE_GSM:
                     case TelephonyManager.NETWORK_TYPE_GPRS:
                     case TelephonyManager.NETWORK_TYPE_CDMA:
@@ -239,7 +238,6 @@ public final class NetworkUtils {
                     case TelephonyManager.NETWORK_TYPE_IDEN:
                         netType = NetworkType.NETWORK_2G;
                         break;
-
                     case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
                     case TelephonyManager.NETWORK_TYPE_EVDO_A:
                     case TelephonyManager.NETWORK_TYPE_UMTS:
@@ -252,13 +250,11 @@ public final class NetworkUtils {
                     case TelephonyManager.NETWORK_TYPE_HSPAP:
                         netType = NetworkType.NETWORK_3G;
                         break;
-
                     case TelephonyManager.NETWORK_TYPE_IWLAN:
                     case TelephonyManager.NETWORK_TYPE_LTE:
                         netType = NetworkType.NETWORK_4G;
                         break;
                     default:
-
                         String subtypeName = info.getSubtypeName();
                         if (subtypeName.equalsIgnoreCase("TD-SCDMA")
                                 || subtypeName.equalsIgnoreCase("WCDMA")

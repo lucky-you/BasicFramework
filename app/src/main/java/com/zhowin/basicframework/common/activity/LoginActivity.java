@@ -8,6 +8,7 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
+import com.zhowin.basicframework.common.utils.BarUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
@@ -43,22 +44,17 @@ public class LoginActivity extends BaseActivity {
     public void bindViews(View contentView) {
         refreshLayout = get(R.id.refreshLayout);
         recyclerView = get(R.id.recyclerView);
-
-        zhoTitleView=get(R.id.zhoTitleView);
-
+        zhoTitleView = get(R.id.zhoTitleView);
         loadingController = LoadingViewUtils.showLoadingView(mContext, recyclerView, () -> {
             showToast("点击了重新加载");
             loadingController.dismissLoading();
         });
-
         zhoTitleView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 loadingController.showNetworkError();
             }
-        },1000);
-
-
+        }, 1000);
     }
 
     @Override
@@ -68,7 +64,6 @@ public class LoginActivity extends BaseActivity {
             refreshLayout.setRefreshing(false);
             loadingController.showError();
         });
-
 
 
     }

@@ -47,4 +47,16 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>
 
+
+    <!--    网络变化的监听的Style-->
+    <style name="StyleNetChangedDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="StyleNetChangedDialog.Animation" parent="Animation.AppCompat.Dialog">
+        <item name="android:windowEnterAnimation">@anim/translate_netstate_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_netstate_dialog_out</item>
+    </style>
+
 </resources>

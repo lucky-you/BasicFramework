@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity {
         get(R.id.tvTypeFour).setOnClickListener(this);
         get(R.id.tvTypeFive).setOnClickListener(this);
         get(R.id.tvTypeSix).setOnClickListener(this);
+        get(R.id.tvTypeSeven).setOnClickListener(this);
 
     }
 
@@ -77,6 +78,8 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tvTypeSix:
                 showMineLoadView();
+                break;
+            case R.id.tvTypeSeven:
                 break;
         }
     }
