@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.yanzhenjie.permission.runtime.Permission;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
+import com.zhowin.basicframework.common.download.DownLoadFragment;
 import com.zhowin.basicframework.common.permission.AndPermissionListener;
 import com.zhowin.basicframework.common.permission.AndPermissionUtils;
 import com.zhowin.basicframework.common.utils.ActivityUtils;
@@ -80,6 +81,8 @@ public class MainActivity extends BaseActivity {
                 showMineLoadView();
                 break;
             case R.id.tvTypeSeven:
+                DownLoadFragment downLoadFragment = new DownLoadFragment();
+                downLoadFragment.show(getSupportFragmentManager(), "SS");
                 break;
         }
     }
