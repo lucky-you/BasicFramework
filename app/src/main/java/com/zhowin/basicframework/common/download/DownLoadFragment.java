@@ -12,12 +12,12 @@ import com.zhowin.basicframework.common.utils.ToastUtils;
  * date :2020/1/7 11:04
  * description:
  */
-public class DownLoadFragment extends BaseDialogFragment {
+public class DownLoadFragment extends BaseDialogFragment  {
     TextView tvTypeSeven;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.down_load_fragment_layout;
     }
 
     @Override

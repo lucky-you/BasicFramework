@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="@dimen/spacing_400">
+
+
+    <TextView
+        android:id="@+id/tvTypeSeven"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_44"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/spacing_20"
+        android:gravity="center_vertical"
+        android:text="dialogFragment的基类处理"
+        android:textColor="@color/color_333"
+        android:textSize="14sp" />
+</LinearLayout>

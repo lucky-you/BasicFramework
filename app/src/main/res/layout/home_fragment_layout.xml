@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhowin.viewlibrary.view.NoNestedScrollview xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTypeOne"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="密码支付框"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeTwo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="密码支付框（自定义键盘）"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeThree"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="Android样式对话框"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeFour"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="IOS样式对话框"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeFive"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="页面状态的展示"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeSix"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="加载进度的对话框"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+        <TextView
+            android:id="@+id/tvTypeSeven"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/spacing_10"
+            android:text="dialogFragment的基类处理"
+            android:textColor="@color/color_333"
+            android:textSize="14sp" />
+
+        <View style="@style/DivideStyleOf1dp" />
+
+
+    </LinearLayout>
+</com.zhowin.viewlibrary.view.NoNestedScrollview>
