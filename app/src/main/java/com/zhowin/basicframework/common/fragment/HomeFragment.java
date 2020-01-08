@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.TextView;
 
 import com.yanzhenjie.permission.runtime.Permission;
 import com.zhowin.basicframework.R;
@@ -28,11 +29,14 @@ import java.util.List;
  */
 public class HomeFragment extends BaseFragment {
 
+    private TextView tvTypeSeven;
+    private int index;
 
-    public static HomeFragment newInstance() {
-        Bundle args = new Bundle();
+    public static HomeFragment newInstance(int index) {
         HomeFragment fragment = new HomeFragment();
-        fragment.setArguments(args);
+        Bundle bundle = new Bundle();
+        bundle.putInt("index", index);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -49,13 +53,16 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void bindViews(View contentView) {
+        index = getArguments().getInt("index");
         get(R.id.tvTypeOne).setOnClickListener(this);
         get(R.id.tvTypeTwo).setOnClickListener(this);
         get(R.id.tvTypeThree).setOnClickListener(this);
         get(R.id.tvTypeFour).setOnClickListener(this);
         get(R.id.tvTypeFive).setOnClickListener(this);
         get(R.id.tvTypeSix).setOnClickListener(this);
-        get(R.id.tvTypeSeven).setOnClickListener(this);
+        tvTypeSeven = get(R.id.tvTypeSeven);
+        tvTypeSeven.setOnClickListener(this);
+        tvTypeSeven.setText("DialogFragment的基类处理" + index);
     }
 
     @Override

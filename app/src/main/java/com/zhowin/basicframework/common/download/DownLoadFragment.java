@@ -12,7 +12,7 @@ import com.zhowin.basicframework.common.utils.ToastUtils;
  * date :2020/1/7 11:04
  * description:
  */
-public class DownLoadFragment extends BaseDialogFragment  {
+public class DownLoadFragment extends BaseDialogFragment {
     TextView tvTypeSeven;
 
     @Override
@@ -28,7 +28,7 @@ public class DownLoadFragment extends BaseDialogFragment  {
 
     @Override
     public void initData() {
-        tvTypeSeven.setText("哈哈哈哈哈哈");
+        tvTypeSeven.setText("视频通话");
     }
 
     @Override

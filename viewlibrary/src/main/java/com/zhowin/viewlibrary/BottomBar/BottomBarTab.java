@@ -50,7 +50,7 @@ public class BottomBarTab extends FrameLayout {
         Drawable drawable = typedArray.getDrawable(0);
         setBackgroundDrawable(drawable);
         typedArray.recycle();
-
+        //底部容器
         LinearLayout lLContainer = new LinearLayout(context);
         lLContainer.setOrientation(LinearLayout.VERTICAL);
         lLContainer.setGravity(Gravity.CENTER);
@@ -58,6 +58,7 @@ public class BottomBarTab extends FrameLayout {
         paramsContainer.gravity = Gravity.CENTER;
         lLContainer.setLayoutParams(paramsContainer);
 
+        //icon
         mIcon = new ImageView(context);
         int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26, getResources().getDisplayMetrics());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
@@ -66,10 +67,11 @@ public class BottomBarTab extends FrameLayout {
         mIcon.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
         lLContainer.addView(mIcon);
 
+        //底部文案
         mTvTitle = new TextView(context);
         mTvTitle.setText(title);
         LinearLayout.LayoutParams paramsTv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        paramsTv.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+        // paramsTv.topMargin = dp2px(context, 2);
         mTvTitle.setTextSize(12);
         mTvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
         mTvTitle.setLayoutParams(paramsTv);
@@ -77,23 +79,25 @@ public class BottomBarTab extends FrameLayout {
 
         addView(lLContainer);
 
-        int min = dip2px(context, 20);
-        int padding = dip2px(context, 5);
+        //未读消息
+        int min = dp2px(context, 16);
+        int padding = dp2px(context, 4);
         mTvUnreadCount = new TextView(context);
         mTvUnreadCount.setBackgroundResource(R.drawable.shape_unread_message_bg);
         mTvUnreadCount.setMinWidth(min);
-        mTvUnreadCount.setTextSize(8);
+        mTvUnreadCount.setTextSize(10);
         mTvUnreadCount.setTextColor(Color.WHITE);
         mTvUnreadCount.setPadding(padding, 0, padding, 0);
         mTvUnreadCount.setGravity(Gravity.CENTER);
         FrameLayout.LayoutParams tvUnReadParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, min);
         tvUnReadParams.gravity = Gravity.CENTER;
-        tvUnReadParams.leftMargin = dip2px(context, 17);
-        tvUnReadParams.bottomMargin = dip2px(context, 14);
+        tvUnReadParams.leftMargin = dp2px(context, 16);
+        tvUnReadParams.topMargin = dp2px(context, 2);
+        tvUnReadParams.bottomMargin = dp2px(context, 14);
         mTvUnreadCount.setLayoutParams(tvUnReadParams);
         mTvUnreadCount.setVisibility(GONE);
-
         addView(mTvUnreadCount);
+
     }
 
     @Override
@@ -107,6 +111,7 @@ public class BottomBarTab extends FrameLayout {
             mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.tab_unselect));
         }
     }
+
 
     public void setTabPosition(int position) {
         mTabPosition = position;
@@ -153,7 +158,8 @@ public class BottomBarTab extends FrameLayout {
         return count;
     }
 
-    private int dip2px(Context context, float dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    public int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }

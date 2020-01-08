@@ -3,11 +3,11 @@ package com.zhowin.basicframework.common.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
-import com.zhowin.basicframework.common.download.DownLoadFragment;
 import com.zhowin.basicframework.common.fragment.HomeFragment;
 import com.zhowin.viewlibrary.BottomBar.BottomBarLayout;
 import com.zhowin.viewlibrary.BottomBar.BottomBarTab;
@@ -41,17 +41,13 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
                 .addItem(new BottomBarTab(mContext, R.drawable.ic_account_circle_white_24dp, "消息"))
                 .addItem(new BottomBarTab(mContext, R.drawable.ic_account_circle_white_24dp, "发现"))
                 .addItem(new BottomBarTab(mContext, R.drawable.ic_account_circle_white_24dp, "我的"));
-
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.flTabContainer, HomeFragment.newInstance())
+                .add(R.id.flTabContainer, HomeFragment.newInstance(0))
                 .commit();
-
-        mBottomBarLayout.getItem(0).setUnreadCount(3);
         mBottomBarLayout.setOnTabSelectedListener(this);
+        mBottomBarLayout.getItem(1).setUnreadCount(3);
     }
-
 
     @Override
     public void setClickListener(View view) {
@@ -61,14 +57,11 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
 
     @Override
     public void onTabSelected(int position, int prePosition) {
-        BottomBarTab tab = mBottomBarLayout.getItem(0);
-        if (position == 2) {
-            tab.setUnreadCount(0);
-            DownLoadFragment downLoadFragment = new DownLoadFragment();
-            downLoadFragment.show(getSupportFragmentManager(), "SS");
-        } else {
-            tab.setUnreadCount(tab.getUnreadCount() + 1);
-        }
+        Log.e("xy", "position:" + position + "--prePosition:" + prePosition);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.flTabContainer, HomeFragment.newInstance(position))
+                .commit();
     }
 
     @Override

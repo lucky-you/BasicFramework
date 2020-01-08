@@ -22,13 +22,13 @@ import java.util.List;
 /**
  * author Z_B
  * date :2020/1/8 11:23
- * description: 装tab的容器
+ * description: 底部bottomBar的布局
  */
 public class BottomBarLayout extends LinearLayout {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
     private final Interpolator mInterpolator = new AccelerateDecelerateInterpolator();
     private boolean mVisible = true;
-    private List<BottomBarTab> mTabs = new ArrayList<>();
+    private List<BottomBarTab> mBottomTabs = new ArrayList<>();
     private LinearLayout mTabLayout;
     private LayoutParams mTabParams;
     private int mCurrentPosition = 0;
@@ -75,7 +75,7 @@ public class BottomBarLayout extends LinearLayout {
                     onTabSelectedListener.onTabSelected(pos, mCurrentPosition);
                     tab.setSelected(true);
                     onTabSelectedListener.onTabUnselected(mCurrentPosition);
-                    mTabs.get(mCurrentPosition).setSelected(false);
+                    mBottomTabs.get(mCurrentPosition).setSelected(false);
                     mCurrentPosition = pos;
                 }
             }
@@ -83,9 +83,11 @@ public class BottomBarLayout extends LinearLayout {
         tab.setTabPosition(mTabLayout.getChildCount());
         tab.setLayoutParams(mTabParams);
         mTabLayout.addView(tab);
-        mTabs.add(tab);
+        mBottomTabs.add(tab);
         return this;
     }
+
+
 
     public void setOnTabSelectedListener(OnBottomTabSelectedListener onTabSelectedListener) {
         this.onTabSelectedListener = onTabSelectedListener;
@@ -108,8 +110,8 @@ public class BottomBarLayout extends LinearLayout {
      * 获取 Tab
      */
     public BottomBarTab getItem(int index) {
-        if (mTabs.size() < index) return null;
-        return mTabs.get(index);
+        if (mBottomTabs.size() < index) return null;
+        return mBottomTabs.get(index);
     }
 
 
@@ -123,7 +125,6 @@ public class BottomBarLayout extends LinearLayout {
     protected void onRestoreInstanceState(Parcelable state) {
         SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
-
         if (mCurrentPosition != ss.position) {
             mTabLayout.getChildAt(mCurrentPosition).setSelected(false);
             mTabLayout.getChildAt(ss.position).setSelected(true);
@@ -166,12 +167,12 @@ public class BottomBarLayout extends LinearLayout {
         hide(true);
     }
 
-    public void show() {
-        show(true);
-    }
-
     public void hide(boolean anim) {
         toggle(false, anim, false);
+    }
+
+    public void show() {
+        show(true);
     }
 
     public void show(boolean anim) {
