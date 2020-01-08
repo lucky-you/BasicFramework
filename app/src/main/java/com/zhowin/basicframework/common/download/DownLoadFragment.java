@@ -2,7 +2,6 @@ package com.zhowin.basicframework.common.download;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseDialogFragment;

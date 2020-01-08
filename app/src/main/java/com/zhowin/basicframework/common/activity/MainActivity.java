@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity {
                 DownLoadFragment downLoadFragment = new DownLoadFragment();
                 downLoadFragment.show(getSupportFragmentManager(), "SS");
                 break;
+
         }
     }
 
