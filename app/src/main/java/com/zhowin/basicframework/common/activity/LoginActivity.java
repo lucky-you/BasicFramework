@@ -66,7 +66,6 @@ public class LoginActivity extends BaseActivity {
         zhoTitleView.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("点击了注册");
             }
         });
     }
