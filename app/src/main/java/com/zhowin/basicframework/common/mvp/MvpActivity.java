@@ -2,7 +2,7 @@ package com.zhowin.basicframework.common.mvp;
 
 import android.os.Bundle;
 
-import com.zhowin.basicframework.common.lib.LibActivity;
+import com.zhowin.basicframework.common.base.LibActivity;
 
 
 public abstract class MvpActivity<P extends BasePresenter> extends LibActivity {

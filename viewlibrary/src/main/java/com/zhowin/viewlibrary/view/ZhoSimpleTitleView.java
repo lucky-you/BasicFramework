@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,90 +19,64 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhowin.viewlibrary.R;
-import com.zhowin.viewlibrary.utils.ZhoToolUtils;
 
 /**
  * author      : Z_B
  * date       : 2019/5/20
  * function  :  简单的Android 通用标题栏
  */
-public class ZhoSimpleTitleView extends FrameLayout {
-    //*******************************************控件start******************************************
+public class ZhoSimpleTitleView extends FrameLayout implements View.OnClickListener {
     //根布局
     private RelativeLayout mRootLayout;
-
     //Title的TextView控件
-    private ZhoTextAutoZoom mTvTitle;
-
+    private TextView mTvTitle;
     //左边布局
-    private LinearLayout mLlLeft;
-
+    private LinearLayout mLlLeftLayout;
     //左边ImageView控件
     private ImageView mIvLeft;
-
     //左边TextView控件
     private TextView mTvLeft;
-
     //右边布局
-    private LinearLayout mLlRight;
-
+    private LinearLayout mLlRightLayout;
     //右边ImageView控件
     private ImageView mIvRight;
-
     //右边TextView控件
     private TextView mTvRight;
-    //===========================================控件end=============================================
-
-    //*******************************************属性start*******************************************
     //Title文字
     private String mTitle;
-
     //Title字体颜色
     private int mTitleColor;
-
     //Title字体大小
     private int mTitleSize;
-
     //Title是否显示
     private boolean mTitleVisibility;
-
     //左边 ICON 引用的资源ID
     private int mLeftIcon;
-
     //右边 ICON 引用的资源ID
     private int mRightIcon;
-
     //左边 ICON 是否显示
     private boolean mLeftIconVisibility;
-
     //右边 ICON 是否显示
     private boolean mRightIconVisibility;
-
     //左边文字
     private String mLeftText;
-
     //左边字体颜色
     private int mLeftTextColor;
-
     //左边字体大小
     private int mLeftTextSize;
-
     //左边文字是否显示
     private boolean mLeftTextVisibility;
-
     //右边文字
     private String mRightText;
-
     //右边字体颜色
     private int mRightTextColor;
-
     //右边字体大小
     private int mRightTextSize;
-
     //右边文字是否显示
     private boolean mRightTextVisibility;
+    //上下文
+    private Context mContext;
 
-    //===========================================属性end=============================================
     public ZhoSimpleTitleView(@NonNull Context context) {
         super(context);
     }
@@ -112,65 +88,59 @@ public class ZhoSimpleTitleView extends FrameLayout {
     }
 
     private void initView(final Context context, AttributeSet attrs) {
+        mContext = context;
         LayoutInflater.from(context).inflate(R.layout.include_simple_title_layout, this);
-        mRootLayout = findViewById(R.id.root_layout);
-        mTvTitle = findViewById(R.id.tv_rx_title);
-        mLlLeft = findViewById(R.id.ll_left);
-        mIvLeft = findViewById(R.id.iv_left);
-        mIvRight = findViewById(R.id.iv_right);
-        mLlRight = findViewById(R.id.ll_right);
-        mTvLeft = findViewById(R.id.tv_left);
-        mTvRight = findViewById(R.id.tv_right);
-
+        mRootLayout = findViewById(R.id.rootLayout);
+        mTvTitle = findViewById(R.id.tvTitleText);
+        mLlLeftLayout = findViewById(R.id.llLeftLayout);
+        mIvLeft = findViewById(R.id.ivLeftIcon);
+        mTvLeft = findViewById(R.id.tvLeftText);
+        mIvRight = findViewById(R.id.ivRightIcon);
+        mLlRightLayout = findViewById(R.id.llRightLayout);
+        mTvRight = findViewById(R.id.tvRightText);
+        mLlLeftLayout.setOnClickListener(this);
         //获得这个控件对应的属性。
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ZhoSimpleTitleView);
-
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ZhoSimpleTitleView);
         try {
-            //获得属性值
-            //getColor(R.styleable.RxTitle_RxBackground, getResources().getColor(R.color.transparent))
             //标题
-            mTitle = a.getString(R.styleable.ZhoSimpleTitleView_title);
+            mTitle = typedArray.getString(R.styleable.ZhoSimpleTitleView_title);
             //标题颜色
-            mTitleColor = a.getColor(R.styleable.ZhoSimpleTitleView_titleColor, getResources().getColor(R.color.white));
+            mTitleColor = typedArray.getColor(R.styleable.ZhoSimpleTitleView_titleColor, getResources().getColor(R.color.white));
             //标题字体大小
-            mTitleSize = a.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_titleSize, ZhoToolUtils.dip2px(16));
-//            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics());
-            mTitleVisibility = a.getBoolean(R.styleable.ZhoSimpleTitleView_titleVisibility, true);
-
+            mTitleSize = typedArray.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_titleSize, dp2px(context, 16));
+            //标题是否显示
+            mTitleVisibility = typedArray.getBoolean(R.styleable.ZhoSimpleTitleView_titleVisibility, true);
             //左边图标
-            mLeftIcon = a.getResourceId(R.styleable.ZhoSimpleTitleView_leftIcon, R.drawable.svg_black_return_back);
-            //右边图标
-            mRightIcon = a.getResourceId(R.styleable.ZhoSimpleTitleView_rightIcon, R.drawable.svg_right_more);
+            mLeftIcon = typedArray.getResourceId(R.styleable.ZhoSimpleTitleView_leftIcon, R.drawable.svg_black_return_back);
             //左边图标是否显示
-            mLeftIconVisibility = a.getBoolean(R.styleable.ZhoSimpleTitleView_leftIconVisibility, true);
-            //右边图标是否显示
-            mRightIconVisibility = a.getBoolean(R.styleable.ZhoSimpleTitleView_rightIconVisibility, false);
-
-            mLeftText = a.getString(R.styleable.ZhoSimpleTitleView_leftText);
-
+            mLeftIconVisibility = typedArray.getBoolean(R.styleable.ZhoSimpleTitleView_leftIconVisibility, true);
+            //左边问题
+            mLeftText = typedArray.getString(R.styleable.ZhoSimpleTitleView_leftText);
             //左边字体颜色
-            mLeftTextColor = a.getColor(R.styleable.ZhoSimpleTitleView_leftTextColor, getResources().getColor(R.color.white));
-            //标题字体大小
-            mLeftTextSize = a.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_leftTextSize, ZhoToolUtils.dip2px(14));
-            mLeftTextVisibility = a.getBoolean(R.styleable.ZhoSimpleTitleView_leftTextVisibility, false);
-
-            mRightText = a.getString(R.styleable.ZhoSimpleTitleView_rightText);
+            mLeftTextColor = typedArray.getColor(R.styleable.ZhoSimpleTitleView_leftTextColor, getResources().getColor(R.color.white));
+            //左侧标题字体大小
+            mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_leftTextSize, dp2px(context, 14));
+            //左侧标题是否显示
+            mLeftTextVisibility = typedArray.getBoolean(R.styleable.ZhoSimpleTitleView_leftTextVisibility, false);
+            //右边文字
+            mRightText = typedArray.getString(R.styleable.ZhoSimpleTitleView_rightText);
             //右边字体颜色
-            mRightTextColor = a.getColor(R.styleable.ZhoSimpleTitleView_rightTextColor, getResources().getColor(R.color.white));
-            //标题字体大小
-            mRightTextSize = a.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_rightTextSize, ZhoToolUtils.dip2px(14));
-            mRightTextVisibility = a.getBoolean(R.styleable.ZhoSimpleTitleView_rightTextVisibility, false);
-
+            mRightTextColor = typedArray.getColor(R.styleable.ZhoSimpleTitleView_rightTextColor, getResources().getColor(R.color.white));
+            //右边图标
+            mRightIcon = typedArray.getResourceId(R.styleable.ZhoSimpleTitleView_rightIcon, R.drawable.svg_right_more);
+            //右边图标是否显示
+            mRightIconVisibility = typedArray.getBoolean(R.styleable.ZhoSimpleTitleView_rightIconVisibility, false);
+            //右边标题字体大小
+            mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.ZhoSimpleTitleView_rightTextSize, dp2px(context, 14));
+            //右边标题是否显示
+            mRightTextVisibility = typedArray.getBoolean(R.styleable.ZhoSimpleTitleView_rightTextVisibility, false);
         } finally {
             //回收这个对象
-            a.recycle();
+            typedArray.recycle();
         }
-
-        //******************************************************************************************以下属性初始化
-        if (!ZhoToolUtils.isNullString(mTitle)) {
+        if (!TextUtils.isEmpty(mTitle)) {
             setTitle(mTitle);
         }
-
         if (mTitleColor != 0) {
             setTitleColor(mTitleColor);
         }
@@ -209,42 +179,19 @@ public class ZhoSimpleTitleView extends FrameLayout {
 
         setRightIconVisibility(mRightIconVisibility);
 
-        initAutoFitEditText();
-        //==========================================================================================以上为属性初始化
     }
 
-    private void initAutoFitEditText() {
-        mTvTitle.clearFocus();
-        mTvTitle.setEnabled(false);
-        mTvTitle.setFocusableInTouchMode(false);
-        mTvTitle.setFocusable(false);
-        mTvTitle.setEnableSizeCache(false);
-        //might cause crash on some devices
-        mTvTitle.setMovementMethod(null);
-        // can be added after layout inflation;
-        mTvTitle.setMaxHeight(ZhoToolUtils.dip2px(55f));
-        //don't forget to add min text size programmatically
-        mTvTitle.setMinTextSize(37f);
-        try {
-            ZhoTextAutoZoom.setNormalization((Activity) getContext(), mRootLayout, mTvTitle);
-            ZhoToolUtils.hideSoftInput((Activity) getContext());
-        } catch (Exception e) {
-
-        }
-    }
-
-    //**********************************************************************************************以下为get方法
 
     public RelativeLayout getRootLayout() {
         return mRootLayout;
     }
 
-    public ZhoTextAutoZoom getTvTitle() {
+    public TextView getTvTitle() {
         return mTvTitle;
     }
 
     public LinearLayout getLlLeft() {
-        return mLlLeft;
+        return mLlLeftLayout;
     }
 
     public ImageView getIvLeft() {
@@ -256,7 +203,7 @@ public class ZhoSimpleTitleView extends FrameLayout {
     }
 
     public LinearLayout getLlRight() {
-        return mLlRight;
+        return mLlRightLayout;
     }
 
     public ImageView getIvRight() {
@@ -284,8 +231,8 @@ public class ZhoSimpleTitleView extends FrameLayout {
         return mLeftText;
     }
 
-    //**********************************************************************************************以下为  左边文字  相关方法
     public void setLeftText(String leftText) {
+        if (TextUtils.isEmpty(leftText)) return;
         mLeftText = leftText;
         mTvLeft.setText(mLeftText);
 
@@ -326,8 +273,8 @@ public class ZhoSimpleTitleView extends FrameLayout {
         return mRightText;
     }
 
-    //**********************************************************************************************以下为  右边文字  相关方法
     public void setRightText(String rightText) {
+        if (TextUtils.isEmpty(rightText)) return;
         mRightText = rightText;
         mTvRight.setText(mRightText);
 
@@ -351,9 +298,6 @@ public class ZhoSimpleTitleView extends FrameLayout {
         mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, mRightTextSize);
     }
 
-    //==============================================================================================以上为get方法
-
-    //**********************************************************************************************以下为set方法
 
     public boolean isRightTextVisibility() {
         return mRightTextVisibility;
@@ -375,7 +319,6 @@ public class ZhoSimpleTitleView extends FrameLayout {
         return mTitle;
     }
 
-    //**********************************************************************************************以下为Title相关方法
     public void setTitle(String title) {
         mTitle = title;
         mTvTitle.setText(mTitle);
@@ -411,7 +354,6 @@ public class ZhoSimpleTitleView extends FrameLayout {
     public int getRightIcon() {
         return mRightIcon;
     }
-    //==============================================================================================以上为  Title  相关方法
 
     public void setRightIcon(int rightIcon) {
         mRightIcon = rightIcon;
@@ -434,7 +376,6 @@ public class ZhoSimpleTitleView extends FrameLayout {
     public boolean isRightIconVisibility() {
         return mRightIconVisibility;
     }
-    //==============================================================================================以上为  左边文字  相关方法
 
     public void setRightIconVisibility(boolean rightIconVisibility) {
         mRightIconVisibility = rightIconVisibility;
@@ -445,23 +386,13 @@ public class ZhoSimpleTitleView extends FrameLayout {
         }
     }
 
-    public void setLeftFinish(final Activity activity) {
-        mLlLeft.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-            }
-        });
-    }
-
     public void setLeftOnClickListener(OnClickListener onClickListener) {
-        mLlLeft.setOnClickListener(onClickListener);
+        mLlLeftLayout.setOnClickListener(onClickListener);
     }
 
     public void setRightOnClickListener(OnClickListener onClickListener) {
-        mLlRight.setOnClickListener(onClickListener);
+        mLlRightLayout.setOnClickListener(onClickListener);
     }
-    //==============================================================================================以上为  右边文字  相关方法
 
     public void setLeftTextOnClickListener(OnClickListener onClickListener) {
         mTvLeft.setOnClickListener(onClickListener);
@@ -478,6 +409,27 @@ public class ZhoSimpleTitleView extends FrameLayout {
     public void setRightIconOnClickListener(OnClickListener onClickListener) {
         mIvRight.setOnClickListener(onClickListener);
     }
-    //==============================================================================================以上为set方法
 
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.llLeftLayout) {
+            hideSoftKeyboard((Activity) mContext);
+            ((Activity) mContext).finish();
+        }
+    }
+
+    public int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity
+                .getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (activity.getCurrentFocus() != null
+                && activity.getCurrentFocus().getWindowToken() != null) {
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 }

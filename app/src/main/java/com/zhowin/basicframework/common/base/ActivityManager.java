@@ -1,4 +1,4 @@
-package com.zhowin.basicframework.common.lib;
+package com.zhowin.basicframework.common.base;
 
 import android.app.Activity;
 import android.content.Context;

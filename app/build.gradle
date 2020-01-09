@@ -107,4 +107,5 @@ dependencies {
     implementation 'com.github.lucky-you:RadiusTextView:1.0.3'
     implementation 'com.yanzhenjie.permission:support:2.0.1'
     implementation 'com.github.tgio:rncryptor-native:0.0.9'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 }

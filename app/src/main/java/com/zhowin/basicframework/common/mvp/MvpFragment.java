@@ -4,7 +4,7 @@ package com.zhowin.basicframework.common.mvp;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zhowin.basicframework.common.lib.LibFragment;
+import com.zhowin.basicframework.common.base.LibFragment;
 
 
 public abstract class MvpFragment<P extends BasePresenter> extends LibFragment {

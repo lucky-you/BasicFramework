@@ -10,28 +10,11 @@ import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.mvp.BasePresenter;
 import com.zhowin.basicframework.common.mvp.MvpFragment;
 import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
-import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
 public abstract class BaseMvpFragment<P extends BasePresenter> extends MvpFragment<P> {
 
     protected String userToken;
-
-    public TitleBuilder initTitle(Object obj) {
-        if (obj instanceof String) {
-            return new TitleBuilder(mRootView).setTitleText((String) obj);
-        } else {
-            return new TitleBuilder(mRootView).setTitleText((int) obj);
-        }
-    }
-
-    public TitleBuilder initTitleNoBack(Object obj) {
-        if (obj instanceof String) {
-            return new TitleBuilder(mRootView).setTitleText((String) obj).noBack();
-        } else {
-            return new TitleBuilder(mRootView).setTitleText((int) obj).noBack();
-        }
-    }
 
 
     public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
@@ -81,7 +64,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends MvpFragme
         super.onViewCreated(view, savedInstanceState);
     }
 
-       @Override
+    @Override
     public void onResume() {
         super.onResume();
     }

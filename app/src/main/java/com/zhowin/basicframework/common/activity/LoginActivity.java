@@ -59,13 +59,16 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
-        zhoTitleView.setLeftFinish(this);
         refreshLayout.setOnRefreshListener(() -> {
             refreshLayout.setRefreshing(false);
             loadingController.showError();
         });
-
-
+        zhoTitleView.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("点击了注册");
+            }
+        });
     }
 
 

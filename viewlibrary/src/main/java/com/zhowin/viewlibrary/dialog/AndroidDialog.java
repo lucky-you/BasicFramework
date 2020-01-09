@@ -96,7 +96,7 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initViews() {
-        tvTitleTxt = findViewById(R.id.tvTitle);
+        tvTitleTxt = findViewById(R.id.tvTitleText);
         tvContentTxt = findViewById(R.id.tvContent);
         tvDetermineTxt = findViewById(R.id.tvDetermine);
         tvDetermineTxt.setOnClickListener(this);

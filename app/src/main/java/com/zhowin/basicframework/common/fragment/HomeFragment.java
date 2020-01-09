@@ -3,18 +3,20 @@ package com.zhowin.basicframework.common.fragment;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yanzhenjie.permission.runtime.Permission;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.activity.LoginActivity;
-import com.zhowin.basicframework.common.activity.MainActivity;
 import com.zhowin.basicframework.common.base.BaseFragment;
 import com.zhowin.basicframework.common.download.DownLoadFragment;
 import com.zhowin.basicframework.common.permission.AndPermissionListener;
 import com.zhowin.basicframework.common.permission.AndPermissionUtils;
 import com.zhowin.basicframework.common.utils.ActivityUtils;
+import com.zhowin.basicframework.common.utils.BarUtils;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
@@ -63,7 +65,10 @@ public class HomeFragment extends BaseFragment {
         tvTypeSeven = get(R.id.tvTypeSeven);
         tvTypeSeven.setOnClickListener(this);
         tvTypeSeven.setText("DialogFragment的基类处理" + index);
+        Log.e("xy", "index:" + index);
+//        showMineLoadView();
     }
+
 
     @Override
     public void processLogic(Bundle savedInstanceState) {
@@ -127,7 +132,7 @@ public class HomeFragment extends BaseFragment {
 
     private void showMineLoadView() {
         showLoadDialog("加载中..");
-        get(R.id.tvTypeOne).postDelayed(() -> dismissLoadDialog(), 3000);
+        get(R.id.tvTypeOne).postDelayed(() -> dismissLoadDialog(), 2000);
     }
 
 

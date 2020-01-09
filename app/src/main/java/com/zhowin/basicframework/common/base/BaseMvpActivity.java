@@ -10,7 +10,6 @@ import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.mvp.BasePresenter;
 import com.zhowin.basicframework.common.mvp.MvpActivity;
 import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
-import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivity<P> {
@@ -18,13 +17,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivi
 
     protected String userToken;
 
-    public TitleBuilder initTitle(Object obj) {
-        if (obj instanceof String) {
-            return new TitleBuilder(this).setTitleText((String) obj);
-        } else {
-            return new TitleBuilder(this).setTitleText((int) obj);
-        }
-    }
 
     public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         return initCommonRecyclerView(R.id.recyclerView, adapter, decoration);

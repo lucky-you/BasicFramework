@@ -1,6 +1,5 @@
-package com.zhowin.basicframework.common.lib;
+package com.zhowin.basicframework.common.base;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -29,15 +28,12 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 
-public abstract class LibActivity extends AppCompatActivity implements BaseView {
+public abstract class LibActivity extends AppCompatActivity implements LibBaseView {
 
     protected Context mContext;
     protected View mContentView;
-    /**
-     * 上次点击时间
-     */
-    private long lastClick = 0;
-    private LoadProgressDialog progressDialog;
+    private long lastClickTime = 0;/*上一次点击时间*/
+    private LoadProgressDialog progressDialog;/*加载进度提示框*/
     protected boolean mCheckNetwork = true;/*默认检查网络状态*/
     protected boolean mNetConnected;/*网络连接的状态，true表示有网络，flase表示无网络连接*/
     private NetworkChangedReceiver mNetWorkChangReceiver;/*网络状态变化的广播接收器*/
@@ -65,9 +61,7 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
     }
 
 
-    @SuppressLint("ResourceType")
     protected void setBaseView(@LayoutRes int layoutId) {
-        if (layoutId <= 0) return;
         setContentView(mContentView = LayoutInflater.from(this).inflate(layoutId, null));
     }
 
@@ -124,8 +118,8 @@ public abstract class LibActivity extends AppCompatActivity implements BaseView 
      */
     private boolean isFastClick() {
         long now = System.currentTimeMillis();
-        if (now - lastClick >= 300) {
-            lastClick = now;
+        if (now - lastClickTime >= 300) {
+            lastClickTime = now;
             return false;
         }
         return true;

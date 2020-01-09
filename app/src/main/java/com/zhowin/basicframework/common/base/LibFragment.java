@@ -1,4 +1,4 @@
-package com.zhowin.basicframework.common.lib;
+package com.zhowin.basicframework.common.base;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,14 +16,13 @@ import android.view.ViewGroup;
 
 
 import com.zhowin.basicframework.R;
-import com.zhowin.basicframework.common.base.BaseApplication;
 import com.zhowin.basicframework.common.model.EventNotice;
 import com.zhowin.basicframework.common.utils.ToastUtils;
 import com.zhowin.basicframework.common.view.LoadProgressDialog;
 
 import org.greenrobot.eventbus.EventBus;
 
-public abstract class LibFragment extends Fragment implements BaseView {
+public abstract class LibFragment extends Fragment implements LibBaseView {
     private static final String TAG = "LibFragment";
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     protected Activity mContext;
@@ -33,20 +32,20 @@ public abstract class LibFragment extends Fragment implements BaseView {
     private long lastClick = 0;
     private boolean isViewCreate = false;//view是否创建
     private boolean isViewVisible = false;//view是否可见
-    private LoadProgressDialog  progressDialog;
+    private LoadProgressDialog progressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             if (isSupportHidden) {
-                ft.hide(this);
+                fragmentTransaction.hide(this);
             } else {
-                ft.show(this);
+                fragmentTransaction.show(this);
             }
-            ft.commitAllowingStateLoss();
+            fragmentTransaction.commitAllowingStateLoss();
         }
     }
 
@@ -58,7 +57,6 @@ public abstract class LibFragment extends Fragment implements BaseView {
     }
 
     protected void setBaseView(@NonNull LayoutInflater inflater, @LayoutRes int layoutId) {
-        if (layoutId <= 0) return;
         mRootView = inflater.inflate(layoutId, null);
     }
 
@@ -87,11 +85,12 @@ public abstract class LibFragment extends Fragment implements BaseView {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
         isViewVisible = isVisibleToUser;
         if (isVisibleToUser && isViewCreate) {
             visibleToUser();
         }
-        super.setUserVisibleHint(isVisibleToUser);
+
     }
 
     @Override

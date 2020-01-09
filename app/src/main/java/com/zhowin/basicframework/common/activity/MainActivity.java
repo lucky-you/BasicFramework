@@ -9,6 +9,7 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.fragment.HomeFragment;
+import com.zhowin.basicframework.common.utils.BarUtils;
 import com.zhowin.viewlibrary.BottomBar.BottomBarLayout;
 import com.zhowin.viewlibrary.BottomBar.BottomBarTab;
 import com.zhowin.viewlibrary.BottomBar.OnBottomTabSelectedListener;
@@ -31,6 +32,7 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
     @Override
     public void bindViews(View contentView) {
         mBottomBarLayout = get(R.id.bottomBarTab);
+
 
     }
 

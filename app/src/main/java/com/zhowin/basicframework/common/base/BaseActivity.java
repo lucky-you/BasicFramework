@@ -6,26 +6,24 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.zhowin.basicframework.R;
-import com.zhowin.basicframework.common.lib.LibActivity;
 import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
-import com.zhowin.basicframework.common.view.TitleBuilder;
 
 
 public abstract class BaseActivity extends LibActivity {
 
 
-    public TitleBuilder initTitle(Object obj) {
-        if (obj instanceof String) {
-            return new TitleBuilder(this).setTitleText((String) obj);
-        } else {
-            return new TitleBuilder(this).setTitleText((int) obj);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImmersionBar.with(this)
+                .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                .statusBarColor(R.color.colorPrimary)
+                .keyboardEnable(true)
+                .statusBarDarkFont(true, 0f)
+                .init();
     }
 
     public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {

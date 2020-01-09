@@ -1,5 +1,10 @@
 package com.zhowin.basicframework.common.base;
 
+/**
+ * 数据结构的基类
+ *
+ * @param <T> 使用泛型
+ */
 public class ResultResponse<T> {
 
     public int code;
