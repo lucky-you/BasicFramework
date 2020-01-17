@@ -83,11 +83,11 @@ public class ZhoSimpleTitleView extends FrameLayout implements View.OnClickListe
 
     public ZhoSimpleTitleView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        //导入布局
         initView(context, attrs);
     }
 
     private void initView(final Context context, AttributeSet attrs) {
+        //导入布局
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.include_simple_title_layout, this);
         mRootLayout = findViewById(R.id.rootLayout);

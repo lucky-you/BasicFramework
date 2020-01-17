@@ -12,8 +12,9 @@
         app:leftIcon="@drawable/svg_white_return_back"
         app:leftText="返回"
         app:leftTextColor="@color/white"
-        app:leftTextVisibility="true"
+        app:leftTextVisibility="false"
         app:title="注册" />
+
 
 
 </LinearLayout>

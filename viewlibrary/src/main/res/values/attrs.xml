@@ -144,12 +144,29 @@
     </declare-styleable>
 
 
+    <!--    记载控件-->
     <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
         <!--loading控件的大小，默认32dp-->
         <attr name="mlv_loading_view_size" format="dimension" />
         <!--loading控件的颜色，默认白色-->
         <attr name="mlv_loading_view_color" format="color" />
+    </declare-styleable>
+
+
+    <!--    自定义返回按钮-->
+    <declare-styleable name="BackArrowView">
+        <!-- 箭头颜色 -->
+        <attr name="bav_color" format="color" />
+        <!-- 箭头线宽 -->
+        <attr name="bav_stroke_width" format="integer|float|dimension" />
+        <!-- 模式 -->
+        <attr name="bav_arrow_style" format="enum">
+            <!-- Google Material Design -->
+            <enum name="material_design" value="1" />
+            <!-- 微信风格 -->
+            <enum name="wechat_design" value="2" />
+        </attr>
     </declare-styleable>
 
 </resources>
