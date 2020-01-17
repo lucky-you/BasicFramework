@@ -7,18 +7,11 @@ import android.view.View;
 
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
-import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
-import com.zhowin.basicframework.common.utils.BarUtils;
+import com.zhowin.basicframework.common.utils.ActivityUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;
 import com.zhowin.viewlibrary.view.ZhoSimpleTitleView;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 
 /**
  * 登录界面，这里只是方便展示网络请求，正式项目根据不同的需求来展示不同的界面
@@ -66,6 +59,7 @@ public class LoginActivity extends BaseActivity {
         zhoTitleView.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ActivityUtils.startActivity(RegisterActivity.class);
             }
         });
     }

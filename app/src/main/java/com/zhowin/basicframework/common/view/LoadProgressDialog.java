@@ -40,9 +40,9 @@ public class LoadProgressDialog extends Dialog {
         TextView tipTextView = view.findViewById(R.id.tvLoadText);
         miniLoadingView.start();
         tipTextView.setText(msg);
-        progressDialog = new LoadProgressDialog(context, R.style.LoadProgressDialogStyle);// 创建自定义样式dialog
-        progressDialog.setCanceledOnTouchOutside(false);//点击外围不可消失
-        progressDialog.setCancelable(false);// 不可以用“返回键”取消
+        progressDialog = new LoadProgressDialog(context, R.style.LoadProgressDialogStyle);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
         progressDialog.setContentView(layout, new LinearLayout.LayoutParams(dip2px(context, 120), dip2px(context, 110)));
         return progressDialog;
     }

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".common.activity.RegisterActivity">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <com.zhowin.viewlibrary.view.ZhoSimpleTitleView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/colorPrimary"
+        app:leftIcon="@drawable/svg_white_return_back"
+        app:leftText="返回"
+        app:leftTextColor="@color/white"
+        app:leftTextVisibility="true"
+        app:title="注册" />
+
+
+</LinearLayout>
