@@ -1,8 +1,6 @@
 package com.zhowin.basicframework.common.api;
 
 
-import android.util.Log;
-
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -45,17 +43,14 @@ public abstract class ApiServiceCallback<T> extends DisposableObserver<ResultRes
         if (throwable instanceof SocketTimeoutException  //网络超时,网络连接异常
                 || throwable instanceof ConnectException   //均视为网络异常
                 || throwable instanceof UnknownHostException) {
-            Log.e("TAG", "网络连接异常: " + throwable.getMessage());
-            error = "网络连接异常";
+            error = "网络连接异常：" + throwable.getMessage();
             onErrorThrowable(error);
         } else if (throwable instanceof JsonParseException
                 || throwable instanceof JSONException     //均视为解析错误
                 || throwable instanceof java.text.ParseException) {
-            Log.e("TAG", "数据解析异常: " + throwable.getMessage());
-            error = "数据解析异常";
+            error = "数据解析异常：" + throwable.getMessage();
             onFailure(JSON_ERROR, error);
         } else {
-            Log.e("TAG", "错误: " + throwable.getMessage());
             error = "错误:" + throwable.getMessage();
             onFailure(DATA_ERROR, error);
         }

@@ -16,12 +16,9 @@ public interface IBaseView {
     /**
      * 请求数据失败
      *
-     * @param code 错误code
-     * @param message    错误信息
+     * @param code    错误code
+     * @param message 错误信息
      */
     void onRequestFailure(int code, String message);
-
-
-
 
 }
