@@ -3,8 +3,8 @@ package com.zhowin.basicframework.common.mvp;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
-import com.zhowin.basicframework.common.base.ApiService;
-import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
+import com.zhowin.basicframework.common.api.ApiService;
+import com.zhowin.basicframework.common.api.RetrofitFactory;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

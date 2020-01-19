@@ -1,4 +1,4 @@
-package com.zhowin.viewlibrary.widget;
+package com.zhowin.viewlibrary.view;
 
 import android.content.Context;
 import android.content.res.Resources;

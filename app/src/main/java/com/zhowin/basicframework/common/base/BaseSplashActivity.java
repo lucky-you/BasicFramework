@@ -11,7 +11,7 @@ import com.zhowin.basicframework.common.utils.DrawableUtils;
 
 
 /**
- * 基础启动页
+ * 启动页的基类
  */
 public abstract class BaseSplashActivity extends AppCompatActivity {
     /**
@@ -41,6 +41,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
 
     /**
      * 初始化启动界面
+     *
      * @param splashImgResId 背景资源图片资源ID
      */
     protected void initSplashView(int splashImgResId) {
@@ -51,6 +52,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
 
     /**
      * 初始化启动界面背景图片
+     *
      * @return 背景图片资源ID
      */
     protected int getSplashImgResId() {

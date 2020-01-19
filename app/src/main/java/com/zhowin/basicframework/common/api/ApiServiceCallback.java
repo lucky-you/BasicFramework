@@ -1,10 +1,9 @@
-package com.zhowin.basicframework.common.retrofit;
+package com.zhowin.basicframework.common.api;
 
 
 import android.util.Log;
 
 import com.google.gson.JsonParseException;
-import com.zhowin.basicframework.common.base.ResultResponse;
 
 import org.json.JSONException;
 

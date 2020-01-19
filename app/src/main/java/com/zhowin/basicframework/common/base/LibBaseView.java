@@ -40,6 +40,6 @@ public interface LibBaseView extends View.OnClickListener {
      *
      * @param view 视图
      */
-    void setClickListener(final View view);
+    void onViewClick(final View view);
 
 }

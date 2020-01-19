@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.zhowin.basicframework.R;
-import com.zhowin.basicframework.common.base.ApiService;
+import com.zhowin.basicframework.common.api.ApiService;
 import com.zhowin.basicframework.common.base.BaseApplication;
-import com.zhowin.basicframework.common.retrofit.RetrofitFactory;
+import com.zhowin.basicframework.common.api.RetrofitFactory;
 import com.zhowin.basicframework.common.utils.FileUtils;
 
 import java.io.File;
@@ -32,8 +32,7 @@ public class DownloadUtil {
     public static final String PATH_CHALLENGE_VIDEO = Environment.getExternalStorageDirectory() + "/" + BaseApplication.getInstance().getString(R.string.app_name);
     //视频下载相关
     protected ApiService mApiService;
-    private String mVideoPath; //下载到本地的视频路径
-
+    private String mUrlPath; //下载到本地的视频路径
 
     public DownloadUtil() {
         if (mApiService == null) {
@@ -54,18 +53,18 @@ public class DownloadUtil {
             int i = name.lastIndexOf('/');//一定是找最后一个'/'出现的位置
             if (i != -1) {
                 name = name.substring(i);
-                mVideoPath = PATH_CHALLENGE_VIDEO + name;
+                mUrlPath = PATH_CHALLENGE_VIDEO + name;
             }
         }
-        if (TextUtils.isEmpty(mVideoPath)) {
-            Log.e(TAG, "downloadVideo:存储路径为空了");
+        if (TextUtils.isEmpty(mUrlPath)) {
+            Log.e(TAG, "download:存储路径为空了");
             return;
         }
         //建立一个文件
-        File mFile = new File(mVideoPath);
+        File mFile = new File(mUrlPath);
         if (!FileUtils.isFileExists(mFile) && FileUtils.createOrExistsFile(mFile)) {
             if (mApiService == null) {
-                Log.e(TAG, "downloadVideo:下载接口为空了");
+                Log.e(TAG, "download:下载接口为空了");
                 return;
             }
             mApiService.downloadFile(url)
@@ -89,14 +88,11 @@ public class DownloadUtil {
 
                         @Override
                         public void onComplete() {
-
                         }
                     });
-
-
         } else {
             //已经存在了，不再重复下载
-            downloadListener.onFinish(mVideoPath);
+            downloadListener.onFinish(mUrlPath);
         }
     }
 
@@ -104,7 +100,6 @@ public class DownloadUtil {
      * 保存到本地
      */
     private void writeFileToDisk(ResponseBody response, File file, DownloadStatusListener downloadListener) {
-//        downloadListener.onStart();
         long currentLength = 0;
         OutputStream os = null;
         if (response == null) {
@@ -123,7 +118,7 @@ public class DownloadUtil {
                 Log.e(TAG, "当前进度:" + currentLength);
                 downloadListener.onProgress((int) (100 * currentLength / totalLength));
                 if ((int) (100 * currentLength / totalLength) == 100) {
-                    downloadListener.onFinish(mVideoPath);
+                    downloadListener.onFinish(mUrlPath);
                 }
             }
         } catch (FileNotFoundException e) {

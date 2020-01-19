@@ -1,4 +1,4 @@
-package com.zhowin.basicframework.common.base;
+package com.zhowin.basicframework.common.api;
 
 
 import com.zhowin.basicframework.BuildConfig;

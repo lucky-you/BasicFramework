@@ -10,9 +10,9 @@ import com.zhowin.basicframework.common.utils.ToastUtils;
 /**
  * author Z_B
  * date :2020/1/7 11:04
- * description:
+ * description: 底部弹出的fragment
  */
-public class DownLoadFragment extends BaseDialogFragment {
+public class BottomShowFragment extends BaseDialogFragment {
     TextView tvTypeSeven;
 
     @Override

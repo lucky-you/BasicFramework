@@ -15,7 +15,7 @@ import com.zhowin.viewlibrary.R;
 
 
 /**
- * 作者： zhoubin
+ * 作者： Z_B
  * 时间： 2017/6/11
  * 描述： 密码输入框
  */

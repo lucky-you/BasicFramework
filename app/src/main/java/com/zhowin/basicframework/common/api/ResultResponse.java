@@ -1,4 +1,4 @@
-package com.zhowin.basicframework.common.base;
+package com.zhowin.basicframework.common.api;
 
 /**
  * 数据结构的基类

@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
     }
 
     @Override
-    public void setClickListener(View view) {
+    public void onViewClick(View view) {
 
     }
 

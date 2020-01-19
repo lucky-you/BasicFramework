@@ -87,7 +87,7 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
      *
      * @param isConnected 是否连接
      */
-    private void networkStateChangedUI(boolean isConnected) {
+    protected void networkStateChangedUI(boolean isConnected) {
         if (mCheckNetwork) {
             if (isConnected) {
                 if (null != mNetStateChangedDialog) mNetStateChangedDialog.dismiss();
@@ -102,13 +102,13 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
      *
      * @param checkNetWork
      */
-    public void setCheckNetWork(boolean checkNetWork) {
+    protected void setCheckNetWork(boolean checkNetWork) {
         mCheckNetwork = checkNetWork;
     }
 
     @Override
     public void onClick(View view) {
-        if (!isFastClick()) setClickListener(view);
+        if (!isFastClick()) onViewClick(view);
     }
 
     /**

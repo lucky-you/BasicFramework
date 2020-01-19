@@ -66,7 +66,7 @@ public class LoginActivity extends BaseActivity {
 
 
     @Override
-    public void setClickListener(View view) {
+    public void onViewClick(View view) {
 
     }
 }

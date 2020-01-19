@@ -21,7 +21,7 @@ import com.zhowin.viewlibrary.R;
 
 
 /**
- * 作者： zhoubin
+ * 作者： Z_B
  * 时间： 2017/6/18
  * 描述： 自定义加载图片
  */

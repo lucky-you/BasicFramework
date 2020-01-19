@@ -143,7 +143,7 @@ public abstract class LibFragment extends Fragment implements LibBaseView {
 
     @Override
     public void onClick(View view) {
-        if (!isFastClick()) setClickListener(view);
+        if (!isFastClick()) onViewClick(view);
     }
 
 

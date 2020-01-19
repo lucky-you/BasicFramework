@@ -8,4 +8,8 @@ import com.zhowin.basicframework.common.mvp.IBaseView;
  * function  : 登录的view
  */
 public interface ILoginView extends IBaseView {
+
+
+
+
 }

@@ -5,18 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yanzhenjie.permission.runtime.Permission;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.activity.LoginActivity;
 import com.zhowin.basicframework.common.base.BaseFragment;
-import com.zhowin.basicframework.common.download.DownLoadFragment;
+import com.zhowin.basicframework.common.download.BottomShowFragment;
 import com.zhowin.basicframework.common.permission.AndPermissionListener;
 import com.zhowin.basicframework.common.permission.AndPermissionUtils;
 import com.zhowin.basicframework.common.utils.ActivityUtils;
-import com.zhowin.basicframework.common.utils.BarUtils;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
@@ -76,7 +74,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void setClickListener(View view) {
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tvTypeOne:
                 setPasswordDialogOne();
@@ -101,8 +99,8 @@ public class HomeFragment extends BaseFragment {
                 showMineLoadView();
                 break;
             case R.id.tvTypeSeven:
-                DownLoadFragment downLoadFragment = new DownLoadFragment();
-                downLoadFragment.show(getChildFragmentManager(), "SS");
+                BottomShowFragment bottomShowFragment = new BottomShowFragment();
+                bottomShowFragment.show(getChildFragmentManager(), "SS");
                 break;
 
         }

@@ -1,11 +1,8 @@
-package com.zhowin.basicframework.common.retrofit;
+package com.zhowin.basicframework.common.api;
 
-
-import android.text.TextUtils;
 
 import com.google.gson.GsonBuilder;
 import com.zhowin.basicframework.BuildConfig;
-import com.zhowin.basicframework.common.base.ApiService;
 import com.zhowin.basicframework.common.base.BaseApplication;
 import com.zhowin.basicframework.common.utils.NetworkUtils;
 
@@ -15,11 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
-import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
