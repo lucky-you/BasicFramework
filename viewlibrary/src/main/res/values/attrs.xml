@@ -82,7 +82,7 @@
         <attr name="bgCorner" format="dimension" />
     </declare-styleable>
 
-
+    <!--开关-->
     <declare-styleable name="SwitchButton">
         <!--阴影半径-->
         <attr name="sb_shadow_radius" format="reference|dimension" />
@@ -168,5 +168,17 @@
             <enum name="wechat_design" value="2" />
         </attr>
     </declare-styleable>
+
+
+    <!--TextView可指定drawable 的大小-->
+    <declare-styleable name="ZhoDrawableTextView">
+        <attr name="android:drawableLeft" />
+        <attr name="android:drawableRight" />
+        <attr name="android:drawableTop" />
+        <attr name="android:drawableBottom" />
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+
 
 </resources>

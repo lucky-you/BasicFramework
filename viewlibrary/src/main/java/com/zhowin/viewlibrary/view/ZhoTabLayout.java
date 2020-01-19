@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -22,7 +21,7 @@ import com.zhowin.viewlibrary.callback.onZhoTabItemClickListener;
 /**
  * author Z_B
  * date :2020/1/19 9:47
- * description: 自定义的tabLayout
+ * description: 自定义的tabLayout 左侧图片，右侧文字，底部指示器
  */
 public class ZhoTabLayout extends LinearLayout {
 
