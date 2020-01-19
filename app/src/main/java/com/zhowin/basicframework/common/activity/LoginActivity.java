@@ -45,7 +45,7 @@ public class LoginActivity extends BaseActivity {
         zhoTitleView.postDelayed(new Runnable() {
             @Override
             public void run() {
-                loadingController.showNetworkError();
+                loadingController.showEmpty();
             }
         }, 1000);
     }

@@ -27,7 +27,7 @@ public class LoadingController implements LoadingInterface {
     private int loadingImageResource;
     private Drawable loadingImageDrawable;
     private String loadingMessage;
-    // network error
+
 
     // other error
     private int errorImageResoruce;
