@@ -27,8 +27,6 @@ public class LoadingController implements LoadingInterface {
     private int loadingImageResource;
     private Drawable loadingImageDrawable;
     private String loadingMessage;
-
-
     // other error
     private int errorImageResoruce;
     private Drawable errorImageDrawable;
@@ -37,7 +35,6 @@ public class LoadingController implements LoadingInterface {
     private int emptyViewImageResource;
     private Drawable emptyViewImageDrawable;
     private String emptyMessage;
-
     // listener
     private String networkErrorRetryText;
     private LoadingInterface.OnClickListener onNetworkErrorRetryClickListener;
