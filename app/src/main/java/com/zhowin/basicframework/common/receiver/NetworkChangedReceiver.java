@@ -1,4 +1,4 @@
-package com.zhowin.basicframework.receiver;
+package com.zhowin.basicframework.common.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.EventBus;
 public class NetworkChangedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction() == ConnectivityManager.CONNECTIVITY_ACTION) {
+        if (ConnectivityManager.CONNECTIVITY_ACTION == intent.getAction()) {
             /*判断当前网络时候可用以及网络类型*/
             boolean isConnected = NetworkUtils.isConnected();
             NetworkUtils.NetworkType networkType = NetworkUtils.getNetworkType();

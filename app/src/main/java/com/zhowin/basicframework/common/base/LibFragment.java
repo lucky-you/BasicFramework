@@ -132,6 +132,9 @@ public abstract class LibFragment extends Fragment implements LibBaseView {
     }
 
 
+    /**
+     * 是否快速点击
+     */
     private boolean isFastClick() {
         long now = System.currentTimeMillis();
         if (now - lastClick >= 800) {

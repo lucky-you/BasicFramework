@@ -17,11 +17,11 @@ import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.dialog.NetworkChangedDialog;
 import com.zhowin.basicframework.common.model.EventNotice;
 import com.zhowin.basicframework.common.model.NetworkChangeEvent;
+import com.zhowin.basicframework.common.receiver.NetworkChangedReceiver;
 import com.zhowin.basicframework.common.utils.KeyboardUtils;
 import com.zhowin.basicframework.common.utils.NetworkUtils;
 import com.zhowin.basicframework.common.utils.ToastUtils;
 import com.zhowin.basicframework.common.view.LoadProgressDialog;
-import com.zhowin.basicframework.receiver.NetworkChangedReceiver;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -58,6 +58,8 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
         IntentFilter filter = new IntentFilter();
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(mNetWorkChangReceiver, filter);
+
+
     }
 
 
@@ -77,7 +79,7 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onNetworkChangeEvent(NetworkChangeEvent event) {
-        Log.e("xy", "网络发生变化:" + event.getNetworkType());
+        Log.e("xy", "网络状态:" + event.getNetworkType());
         mNetConnected = event.isConnected();
         networkStateChangedUI(event.isConnected());
     }
@@ -85,13 +87,15 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
     /**
      * 根据网络状态显示或者隐藏提示对话框
      *
-     * @param isConnected 是否连接
+     * @param isConnected 连接是否可用
      */
     protected void networkStateChangedUI(boolean isConnected) {
         if (mCheckNetwork) {
             if (isConnected) {
+                // 网络连接可用
                 if (null != mNetStateChangedDialog) mNetStateChangedDialog.dismiss();
             } else {
+                //网络连接不可用
                 if (null != mNetStateChangedDialog) mNetStateChangedDialog.show();
             }
         }
