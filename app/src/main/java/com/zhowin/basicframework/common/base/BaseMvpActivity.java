@@ -15,9 +15,6 @@ import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 public abstract class BaseMvpActivity<P extends BasePresenter> extends MvpActivity<P> {
 
 
-    protected String userToken;
-
-
     public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {
         return initCommonRecyclerView(R.id.recyclerView, adapter, decoration);
     }

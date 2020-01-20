@@ -14,7 +14,6 @@ import com.zhowin.basicframework.common.recyclerview.BaseSimpleAdapter;
 
 public abstract class BaseMvpFragment<P extends BasePresenter> extends MvpFragment<P> {
 
-    protected String userToken;
 
 
     public RecyclerView initCommonRecyclerView(BaseSimpleAdapter adapter, RecyclerView.ItemDecoration decoration) {

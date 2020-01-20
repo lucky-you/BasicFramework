@@ -9,7 +9,6 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,14 +26,14 @@ public class HitIOSDialog {
     private Context context;
     private Dialog dialog;
     private LinearLayout lLayoutBackground;
-    private TextView txt_title;
-    private TextView txt_msg;
-    private EditText edittxt_result;
-    private LinearLayout dialog_Group;
-    private ImageView dialog_marBottom;
-    private TextView btn_neg;
-    private TextView btn_pos;
-    private ImageView img_line;
+    private TextView textTitle;
+    private TextView textContent;
+    private EditText editTextResult;
+    private LinearLayout dialogGroup;
+    private ImageView dialogMarBottom;
+    private TextView btnNegative;
+    private TextView btnPositive;
+    private ImageView imgLine;
     private Display display;
     private boolean showTitle = false;
     private boolean showMsg = false;
@@ -55,21 +54,21 @@ public class HitIOSDialog {
         View view = LayoutInflater.from(context).inflate(R.layout.include_hit_ios_dialog_layout, null);
         // 获取自定义Dialog布局中的控件
         lLayoutBackground = view.findViewById(R.id.lLayout_bg);
-        txt_title = view.findViewById(R.id.txt_title);
-        txt_title.setVisibility(View.GONE);
-        txt_msg = view.findViewById(R.id.txt_msg);
-        txt_msg.setVisibility(View.GONE);
-        edittxt_result = view.findViewById(R.id.edittxt_result);
-        edittxt_result.setVisibility(View.GONE);
-        dialog_Group = view.findViewById(R.id.dialog_Group);
-        dialog_Group.setVisibility(View.GONE);
-        dialog_marBottom = view.findViewById(R.id.dialog_marBottom);
-        btn_neg = view.findViewById(R.id.btn_neg);
-        btn_neg.setVisibility(View.GONE);
-        btn_pos = view.findViewById(R.id.btn_pos);
-        btn_pos.setVisibility(View.GONE);
-        img_line = view.findViewById(R.id.img_line);
-        img_line.setVisibility(View.GONE);
+        textTitle = view.findViewById(R.id.txt_title);
+        textTitle.setVisibility(View.GONE);
+        textContent = view.findViewById(R.id.txt_msg);
+        textContent.setVisibility(View.GONE);
+        editTextResult = view.findViewById(R.id.edit_text_result);
+        editTextResult.setVisibility(View.GONE);
+        dialogGroup = view.findViewById(R.id.dialog_Group);
+        dialogGroup.setVisibility(View.GONE);
+        dialogMarBottom = view.findViewById(R.id.dialog_marBottom);
+        btnNegative = view.findViewById(R.id.btn_neg);
+        btnNegative.setVisibility(View.GONE);
+        btnPositive = view.findViewById(R.id.btn_pos);
+        btnPositive.setVisibility(View.GONE);
+        imgLine = view.findViewById(R.id.img_line);
+        imgLine.setVisibility(View.GONE);
         // 定义Dialog布局和参数
         dialog = new Dialog(context, R.style.AndroidDialogStyle);
         dialog.setContentView(view);
@@ -82,71 +81,71 @@ public class HitIOSDialog {
     public HitIOSDialog setTitle(String title) {
         showTitle = true;
         if (TextUtils.isEmpty(title)) {
-            txt_title.setText(context.getString(R.string.The_title));
+            textTitle.setText(context.getString(R.string.The_title));
         } else {
-            txt_title.setText(title);
+            textTitle.setText(title);
         }
         return this;
     }
 
     public HitIOSDialog setEditHint(String hint) {
         showEditText = true;
-        edittxt_result.setHint(hint);
+        editTextResult.setHint(hint);
         return this;
     }
 
     public HitIOSDialog setEditHeight(int height) {
         showEditText = true;
-        edittxt_result.setHeight(height);
+        editTextResult.setHeight(height);
         return this;
     }
 
     public HitIOSDialog setEditMinLine(int minLine) {
         showEditText = true;
-        edittxt_result.setMinLines(minLine);
+        editTextResult.setMinLines(minLine);
         return this;
     }
 
     public HitIOSDialog setEditMaxLine(int maxLine) {
         showEditText = true;
-        edittxt_result.setMaxLines(maxLine);
+        editTextResult.setMaxLines(maxLine);
         return this;
     }
 
     public HitIOSDialog setEditMaxLength(int maxLength) {
         showEditText = true;
-        edittxt_result.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        editTextResult.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
         return this;
     }
 
     public HitIOSDialog setEditGravity(int gravity) {
         showEditText = true;
-        edittxt_result.setGravity(gravity);
+        editTextResult.setGravity(gravity);
         return this;
     }
 
     public HitIOSDialog setEditTextSize(int spSize) {
         showEditText = true;
-        edittxt_result.setTextSize(TypedValue.COMPLEX_UNIT_SP, spSize);
+        editTextResult.setTextSize(TypedValue.COMPLEX_UNIT_SP, spSize);
         return this;
     }
 
     public HitIOSDialog setEditText(String msg) {
         showEditText = true;
-        edittxt_result.setText(msg);
-        edittxt_result.setSelection(msg.length());
+        editTextResult.setText(msg);
+        editTextResult.setSelection(msg.length());
         return this;
     }
 
     public HitIOSDialog setEditInputType(int type) {
         showEditText = true;
-        edittxt_result.setInputType(type);
+        editTextResult.setInputType(type);
         return this;
     }
 
     public HitIOSDialog setEditSelection(int index) {
         showEditText = true;
-        edittxt_result.setSelection(index);
+        editTextResult.setSelection(index);
         return this;
     }
 
@@ -155,30 +154,30 @@ public class HitIOSDialog {
     }
 
     public String getResult() {
-        return edittxt_result.getText().toString();
+        return editTextResult.getText().toString();
     }
 
     public EditText getEditText() {
-        return edittxt_result;
+        return editTextResult;
     }
 
-    public HitIOSDialog setMsg(String msg) {
+    public HitIOSDialog setContent(String msg) {
         showMsg = true;
         if (TextUtils.equals("", msg)) {
-            txt_msg.setText(context.getString(R.string.content));
+            textContent.setText(context.getString(R.string.content));
         } else {
-            txt_msg.setText(msg);
+            textContent.setText(msg);
         }
         return this;
     }
 
-    public HitIOSDialog setMsgTextColor(int color) {
-        txt_msg.setTextColor(color);
+    public HitIOSDialog setContentTextColor(int color) {
+        textContent.setTextColor(color);
         return this;
     }
 
-    public HitIOSDialog setMsgOnClickListener(View.OnClickListener listener) {
-        txt_msg.setOnClickListener(listener);
+    public HitIOSDialog setContentOnClickListener(View.OnClickListener listener) {
+        textContent.setOnClickListener(listener);
         return this;
     }
 
@@ -187,7 +186,7 @@ public class HitIOSDialog {
         if (view == null) {
             showLayout = false;
         } else
-            dialog_Group.addView(view,
+            dialogGroup.addView(view,
                     android.view.ViewGroup.LayoutParams.MATCH_PARENT,
                     android.view.ViewGroup.LayoutParams.MATCH_PARENT);
         return this;
@@ -213,11 +212,11 @@ public class HitIOSDialog {
                                           final View.OnClickListener listener) {
         showPosBtn = true;
         if (TextUtils.isEmpty(text)) {
-            btn_pos.setText(context.getString(R.string.determine));
+            btnPositive.setText(context.getString(R.string.determine));
         } else {
-            btn_pos.setText(text);
+            btnPositive.setText(text);
         }
-        btn_pos.setOnClickListener(new View.OnClickListener() {
+        btnPositive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onClick(v);
@@ -229,7 +228,7 @@ public class HitIOSDialog {
 
     public HitIOSDialog setPositiveButtonColor(int color) {
         showPosBtn = true;
-        btn_pos.setTextColor(color);
+        btnPositive.setTextColor(color);
         return this;
     }
 
@@ -237,11 +236,11 @@ public class HitIOSDialog {
                                           final View.OnClickListener listener) {
         showNegBtn = true;
         if (TextUtils.isEmpty(text)) {
-            btn_neg.setText(context.getString(R.string.cancel));
+            btnNegative.setText(context.getString(R.string.cancel));
         } else {
-            btn_neg.setText(text);
+            btnNegative.setText(text);
         }
-        btn_neg.setOnClickListener(new View.OnClickListener() {
+        btnNegative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null)
@@ -254,27 +253,27 @@ public class HitIOSDialog {
 
     private void setLayout() {
         if (!showTitle && !showMsg) {
-            txt_title.setText(context.getString(R.string.prompt));
-            txt_title.setVisibility(View.VISIBLE);
+            textTitle.setText(context.getString(R.string.prompt));
+            textTitle.setVisibility(View.VISIBLE);
         }
         if (showTitle) {
-            txt_title.setVisibility(View.VISIBLE);
+            textTitle.setVisibility(View.VISIBLE);
         }
         if (showEditText) {
-            edittxt_result.setVisibility(View.VISIBLE);
+            editTextResult.setVisibility(View.VISIBLE);
         }
         if (showMsg) {
-            txt_msg.setVisibility(View.VISIBLE);
+            textContent.setVisibility(View.VISIBLE);
         }
         if (showLayout) {
-            dialog_Group.setVisibility(View.VISIBLE);
-            dialog_marBottom.setVisibility(View.GONE);
+            dialogGroup.setVisibility(View.VISIBLE);
+            dialogMarBottom.setVisibility(View.GONE);
         }
         if (!showPosBtn && !showNegBtn) {
-            btn_pos.setText(context.getString(R.string.determine));
-            btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
-            btn_pos.setOnClickListener(new View.OnClickListener() {
+            btnPositive.setText(context.getString(R.string.determine));
+            btnPositive.setVisibility(View.VISIBLE);
+            btnPositive.setBackgroundResource(R.drawable.alertdialog_single_selector);
+            btnPositive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialog.dismiss();
@@ -282,20 +281,20 @@ public class HitIOSDialog {
             });
         }
         if (showPosBtn && showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
-            btn_neg.setVisibility(View.VISIBLE);
-            btn_neg.setBackgroundResource(R.drawable.alertdialog_left_selector);
-            img_line.setVisibility(View.VISIBLE);
+            btnPositive.setVisibility(View.VISIBLE);
+            btnPositive.setBackgroundResource(R.drawable.alertdialog_right_selector);
+            btnNegative.setVisibility(View.VISIBLE);
+            btnNegative.setBackgroundResource(R.drawable.alertdialog_left_selector);
+            imgLine.setVisibility(View.VISIBLE);
         }
         if (showPosBtn && !showNegBtn) {
-            btn_pos.setVisibility(View.VISIBLE);
-            btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
+            btnPositive.setVisibility(View.VISIBLE);
+            btnPositive.setBackgroundResource(R.drawable.alertdialog_single_selector);
         }
 
         if (!showPosBtn && showNegBtn) {
-            btn_neg.setVisibility(View.VISIBLE);
-            btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
+            btnNegative.setVisibility(View.VISIBLE);
+            btnNegative.setBackgroundResource(R.drawable.alertdialog_single_selector);
         }
     }
 

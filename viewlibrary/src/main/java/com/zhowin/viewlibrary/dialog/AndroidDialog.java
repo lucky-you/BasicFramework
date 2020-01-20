@@ -19,8 +19,8 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
 
     private TextView tvTitleTxt;
     private TextView tvContentTxt;
-    private TextView tvDetermineTxt;
-    private TextView tvCancelTxt;
+    private TextView tvPositiveTxt;
+    private TextView tvNegativeTxt;
     private Context mContext;
     private OnAndroidDialogClickListener onAndroidDialogClickListener;
     private String title;
@@ -55,6 +55,11 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public AndroidDialog setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
     public AndroidDialog setPositiveButton(String name) {
         this.positiveName = name;
         return this;
@@ -85,23 +90,26 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
+    public AndroidDialog setCancelableThat(boolean cancel) {
+        this.setCancelable(cancel);
+        this.setCanceledOnTouchOutside(cancel);
+        return this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.include_android_dialog_layout);
-        setCanceledOnTouchOutside(false);
-        setCancelable(false);
         initViews();
     }
 
     private void initViews() {
         tvTitleTxt = findViewById(R.id.tvTitleText);
         tvContentTxt = findViewById(R.id.tvContent);
-        tvDetermineTxt = findViewById(R.id.tvDetermine);
-        tvDetermineTxt.setOnClickListener(this);
-        tvCancelTxt = findViewById(R.id.tvCancel);
-        tvCancelTxt.setOnClickListener(this);
+        tvPositiveTxt = findViewById(R.id.tvDetermine);
+        tvPositiveTxt.setOnClickListener(this);
+        tvNegativeTxt = findViewById(R.id.tvCancel);
+        tvNegativeTxt.setOnClickListener(this);
         if (TextUtils.isEmpty(title)) {
             tvTitleTxt.setVisibility(View.GONE);
         } else {
@@ -112,10 +120,10 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
             tvContentTxt.setText(content);
         }
         if (!TextUtils.isEmpty(positiveName)) {
-            tvDetermineTxt.setText(positiveName);
+            tvPositiveTxt.setText(positiveName);
         }
         if (!TextUtils.isEmpty(negativeName)) {
-            tvCancelTxt.setText(negativeName);
+            tvNegativeTxt.setText(negativeName);
         }
         if (titleTextColor != 0) {
             tvTitleTxt.setTextColor(titleTextColor);
@@ -124,10 +132,10 @@ public class AndroidDialog extends Dialog implements View.OnClickListener {
             tvContentTxt.setTextColor(contentTextColor);
         }
         if (positiveTextColor != 0) {
-            tvDetermineTxt.setTextColor(positiveTextColor);
+            tvPositiveTxt.setTextColor(positiveTextColor);
         }
         if (negativeTextColor != 0) {
-            tvCancelTxt.setTextColor(negativeTextColor);
+            tvNegativeTxt.setTextColor(negativeTextColor);
         }
     }
 

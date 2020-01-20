@@ -15,6 +15,9 @@ import com.zhowin.basicframework.common.utils.ToastUtils;
 public class BottomShowFragment extends BaseDialogFragment {
     TextView tvTypeSeven;
 
+    public BottomShowFragment() {
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.down_load_fragment_layout;
@@ -35,7 +38,7 @@ public class BottomShowFragment extends BaseDialogFragment {
     public void onClick(View view) {
         if (isFastClick()) return;
         if (view.getId() == R.id.tvTypeSeven) {
-            ToastUtils.showShort("点击事件");
+            ToastUtils.showShort("视频通话");
         }
     }
 }

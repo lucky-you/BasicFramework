@@ -3,7 +3,6 @@ package com.zhowin.basicframework.common.fragment;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -63,8 +62,6 @@ public class HomeFragment extends BaseFragment {
         tvTypeSeven = get(R.id.tvTypeSeven);
         tvTypeSeven.setOnClickListener(this);
         tvTypeSeven.setText("DialogFragment的基类处理" + index);
-        Log.e("xy", "index:" + index);
-//        showMineLoadView();
     }
 
 
@@ -154,7 +151,10 @@ public class HomeFragment extends BaseFragment {
                 showToast("确定");
             }
         })
-                .setTitle("友情提醒")
+                .setTitle("友情提示")
+                .setPositiveButton("确定")
+                .setNegativeButton("取消")
+                .setCancelableThat(false)
                 .show();
     }
 
@@ -162,10 +162,20 @@ public class HomeFragment extends BaseFragment {
         HitIOSDialog hitIOSDialog = new HitIOSDialog(mContext).builder();
         hitIOSDialog
                 .setTitle("友情提示")
-                .setMsg("确定要退出吗?")
-                .setNegativeButton("取消", null)
-                .setPositiveButton("确定", view -> {
-                }).show();
+                .setContent("您确定删除此信息？")
+                .setNegativeButton("取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .show();
     }
 
 }

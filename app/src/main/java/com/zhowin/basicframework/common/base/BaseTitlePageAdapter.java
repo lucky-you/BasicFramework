@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * author Z_B
  * date :2020/1/19 10:53
- * description:
+ * description: pageAdapter
  */
 public class BaseTitlePageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> mFragments;

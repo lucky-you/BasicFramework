@@ -2,40 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_dialog_bg"
+    android:background="@drawable/shape_bottom_dialog_bg"
     android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/tvTypeSeven"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_44"
+        android:layout_height="@dimen/spacing_48"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="视频"
         android:textColor="@color/color_333"
-        android:textSize="14sp" />
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/color_eee" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_44"
+        android:layout_height="@dimen/spacing_48"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="语音通话"
         android:textColor="@color/color_333"
-        android:textSize="14sp" />
+        android:textSize="15sp" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/color_ddd" />
+        android:layout_height="8dp"
+        android:background="@color/color_eee" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_44"
+        android:layout_height="@dimen/spacing_48"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="取消"
         android:textColor="@color/color_333"
-        android:textSize="14sp" />
+        android:textSize="15sp" />
 </LinearLayout>

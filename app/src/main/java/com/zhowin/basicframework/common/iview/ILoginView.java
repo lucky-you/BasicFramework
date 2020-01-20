@@ -11,5 +11,4 @@ public interface ILoginView extends IBaseView {
 
 
 
-
 }

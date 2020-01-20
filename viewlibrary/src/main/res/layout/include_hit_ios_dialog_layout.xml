@@ -32,7 +32,7 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/edittxt_result"
+        android:id="@+id/edit_text_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"

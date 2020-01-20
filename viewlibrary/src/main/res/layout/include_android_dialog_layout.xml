@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
     android:background="@drawable/shape_dialog_bg"
     android:orientation="vertical">
 
@@ -10,11 +9,12 @@
         android:id="@+id/tvTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/prompt"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <TextView
@@ -22,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
+        android:layout_margin="24dp"
         android:gravity="center"
         android:lineSpacingExtra="3dp"
         android:text="@string/Are_you_sure_you_want_to_delete_it"
         android:textColor="@color/color_666"
-        android:textSize="14sp" />
+        android:textSize="15sp" />
 
     <View
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="46dp"
         android:orientation="horizontal">
 
         <TextView
@@ -48,11 +48,12 @@
             android:gravity="center"
             android:text="@string/cancel"
             android:textColor="@color/color_999"
-            android:textSize="14sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:layout_gravity="center"
             android:background="@color/color_f2f2f2" />
 
@@ -65,7 +66,8 @@
             android:gravity="center"
             android:text="@string/determine"
             android:textColor="@color/color_e53d3d"
-            android:textSize="14sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
