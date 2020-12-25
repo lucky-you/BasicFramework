@@ -8,15 +8,20 @@ import com.zhowin.basicframework.common.utils.NetworkUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
+import okio.Buffer;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -128,6 +133,39 @@ public class RetrofitFactory {
                         .build();
             }
             return response;
+        }
+    }
+
+    public class LogInterceptor implements Interceptor {
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            RequestBody body = request.body();
+            String method = request.method();
+            if ("POST".equals(method)) {
+                Buffer buffer = new Buffer();
+                try {
+                    request.body().writeTo(buffer);
+                    Charset charset = Charset.forName("UTF-8");
+                    MediaType contentType = request.body().contentType();
+                    if (contentType != null) {
+                        charset = contentType.charset(charset);
+                    }
+                    String params = buffer.readString(charset);
+                    System.out.println("request参数: " + params + "\n token:" + request.header("token"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("request  url:" + request.url().toString());
+            Response response = chain.proceed(chain.request());
+            MediaType mediaType = response.body().contentType();
+            String content = response.body().string();
+            System.out.println("request  response:" + content);
+            return response.newBuilder()
+                    .body(ResponseBody.create(mediaType, content))
+                    .build();
         }
     }
 
