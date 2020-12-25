@@ -14,7 +14,6 @@ import com.zhowin.viewlibrary.empty.OnNextClickListener;
  * function  : 加载的布局
  */
 public class LoadingViewUtils {
-
     public static LoadingController showLoadingView(Context mContext, RecyclerView rootView, final OnNextClickListener onNextClickListener) {
         LoadingController loadingController = new LoadingController.Builder(mContext, rootView)
                 .setLoadingMessage(mContext.getString(R.string.LoadingController_loading_message))

@@ -3,6 +3,7 @@ package com.zhowin.basicframework.common.fragment;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +12,8 @@ import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.activity.LoginActivity;
 import com.zhowin.basicframework.common.base.BaseFragment;
 import com.zhowin.basicframework.common.download.BottomShowFragment;
+import com.zhowin.basicframework.common.download.DownloadStatusListener;
+import com.zhowin.basicframework.common.download.DownloadUtil;
 import com.zhowin.basicframework.common.permission.AndPermissionListener;
 import com.zhowin.basicframework.common.permission.AndPermissionUtils;
 import com.zhowin.basicframework.common.utils.ActivityUtils;
@@ -126,8 +129,33 @@ public class HomeFragment extends BaseFragment {
 
 
     private void showMineLoadView() {
-        showLoadDialog("加载中..");
-        get(R.id.tvTypeOne).postDelayed(() -> dismissLoadDialog(), 2000);
+//        showLoadDialog("加载中..");
+//        get(R.id.tvTypeOne).postDelayed(() -> dismissLoadDialog(), 2000);
+        String url = "https://png.lxxxin.com/uploads/20201210/FgNuN8Iv93jtDmiztrWNAC8Do1Nd.jpg";
+        DownloadUtil downloadUtil = new DownloadUtil();
+        downloadUtil.downloadFile(url, new DownloadStatusListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onProgress(int currentLength) {
+                Log.e("xy","currentLength："+currentLength);
+            }
+
+            @Override
+            public void onFinish(String localPath) {
+                Log.e("xy","localPath："+localPath);
+
+            }
+
+            @Override
+            public void onFailure(String errorInfo) {
+                Log.e("xy","errorInfo："+errorInfo);
+            }
+        });
+
     }
 
 
