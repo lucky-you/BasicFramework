@@ -16,8 +16,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-
-        buildConfigField("String", "API_HOST", API_DEVELOP_HOST)
         ndk {
             //选择要添加的对应 cpu 类型的 .so 库。
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'

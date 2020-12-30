@@ -129,33 +129,34 @@ public class HomeFragment extends BaseFragment {
 
 
     private void showMineLoadView() {
-//        showLoadDialog("加载中..");
-//        get(R.id.tvTypeOne).postDelayed(() -> dismissLoadDialog(), 2000);
-        String url = "https://png.lxxxin.com/uploads/20201210/FgNuN8Iv93jtDmiztrWNAC8Do1Nd.jpg";
+        downLoadImage();
+    }
+
+    private void downLoadImage() {
+        String url = "https://images5.alphacoders.com/601/thumb-1920-601569.jpg";
         DownloadUtil downloadUtil = new DownloadUtil();
         downloadUtil.downloadFile(url, new DownloadStatusListener() {
             @Override
             public void onStart() {
-
+                showLoadDialog("加载中..");
             }
 
             @Override
             public void onProgress(int currentLength) {
-                Log.e("xy","currentLength："+currentLength);
+                Log.e("xy", "currentLength：" + currentLength);
             }
 
             @Override
             public void onFinish(String localPath) {
-                Log.e("xy","localPath："+localPath);
-
+                Log.e("xy", "localPath：" + localPath);
+                dismissLoadDialog();
             }
 
             @Override
             public void onFailure(String errorInfo) {
-                Log.e("xy","errorInfo："+errorInfo);
+                Log.e("xy", "errorInfo：" + errorInfo);
             }
         });
-
     }
 
 
