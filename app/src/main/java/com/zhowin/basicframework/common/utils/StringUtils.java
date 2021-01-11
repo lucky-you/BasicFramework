@@ -16,6 +16,8 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SizeUtils;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

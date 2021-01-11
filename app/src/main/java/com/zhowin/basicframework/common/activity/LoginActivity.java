@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
-import com.zhowin.basicframework.common.utils.ActivityUtils;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.viewlibrary.empty.LoadingController;

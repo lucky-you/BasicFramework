@@ -3,9 +3,9 @@ package com.zhowin.basicframework.common.download;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseDialogFragment;
-import com.zhowin.basicframework.common.utils.ToastUtils;
 
 /**
  * author Z_B

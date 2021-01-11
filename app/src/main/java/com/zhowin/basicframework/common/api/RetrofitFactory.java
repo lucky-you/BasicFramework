@@ -1,10 +1,10 @@
 package com.zhowin.basicframework.common.api;
 
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.google.gson.GsonBuilder;
 import com.zhowin.basicframework.BuildConfig;
 import com.zhowin.basicframework.common.base.BaseApplication;
-import com.zhowin.basicframework.common.utils.NetworkUtils;
 
 import java.io.File;
 import java.io.IOException;

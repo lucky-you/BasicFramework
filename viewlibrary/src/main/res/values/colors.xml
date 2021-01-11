@@ -17,4 +17,16 @@
 
     <color name="tab_select">#F44336</color>
     <color name="tab_unselect">#c9c9c9</color>
+
+
+
+    <!-- RulerView -->
+    <color name="default_ruler_view_bg_color">#FFFCFFFC</color>
+    <color name="default_ruler_view_small_scale_color">#FF999999</color>
+    <color name="default_ruler_view_mid_scale_color">#FF666666</color>
+    <color name="default_ruler_view_large_scale_color">#FF50B586</color>
+    <color name="default_ruler_view_scale_num_color">#FF333333</color>
+    <color name="default_ruler_view_result_num_color">#FF50B586</color>
+    <color name="default_ruler_view_unit_color">#FF50B586</color>
+
 </resources>

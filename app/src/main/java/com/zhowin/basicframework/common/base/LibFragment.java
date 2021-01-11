@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.model.EventNotice;
-import com.zhowin.basicframework.common.utils.ToastUtils;
 import com.zhowin.basicframework.common.view.LoadProgressDialog;
 
 import org.greenrobot.eventbus.EventBus;

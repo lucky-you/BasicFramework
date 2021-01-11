@@ -1,8 +1,8 @@
 package com.zhowin.basicframework.common.activity;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseSplashActivity;
-import com.zhowin.basicframework.common.utils.ActivityUtils;
 
 /**
  * author      : Z_B

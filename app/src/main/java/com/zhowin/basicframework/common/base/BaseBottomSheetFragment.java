@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.zhowin.basicframework.R;
-import com.zhowin.basicframework.common.utils.ScreenUtils;
 
 
 /**

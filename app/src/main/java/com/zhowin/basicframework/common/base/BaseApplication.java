@@ -5,8 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.zhowin.basicframework.common.utils.Utils;
-
 
 /**
  * application的基类
@@ -20,7 +18,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Utils.init(this);
     }
 
 

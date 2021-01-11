@@ -1,6 +1,6 @@
 package com.zhowin.basicframework.common.model;
 
-import com.zhowin.basicframework.common.utils.NetworkUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 
 /**
  * author Z_B

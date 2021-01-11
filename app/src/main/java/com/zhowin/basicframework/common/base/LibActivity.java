@@ -13,14 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.blankj.utilcode.util.KeyboardUtils;
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.dialog.NetworkChangedDialog;
 import com.zhowin.basicframework.common.model.EventNotice;
 import com.zhowin.basicframework.common.model.NetworkChangeEvent;
 import com.zhowin.basicframework.common.receiver.NetworkChangedReceiver;
-import com.zhowin.basicframework.common.utils.KeyboardUtils;
-import com.zhowin.basicframework.common.utils.NetworkUtils;
-import com.zhowin.basicframework.common.utils.ToastUtils;
 import com.zhowin.basicframework.common.view.LoadProgressDialog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -176,7 +176,6 @@ public abstract class LibActivity extends AppCompatActivity implements LibBaseVi
     @Override
     protected void onDestroy() {
         ActivityManager.getAppInstance().removeActivity(this);//将当前activity移除管理栈
-        KeyboardUtils.fixInputMethodManagerLeak(this);
         unregisterReceiver(mNetWorkChangReceiver);
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);

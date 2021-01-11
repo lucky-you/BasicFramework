@@ -7,22 +7,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.yanzhenjie.permission.runtime.Permission;
 import com.zhowin.basicframework.R;
-import com.zhowin.basicframework.common.activity.LoginActivity;
 import com.zhowin.basicframework.common.base.BaseFragment;
 import com.zhowin.basicframework.common.download.BottomShowFragment;
 import com.zhowin.basicframework.common.download.DownloadStatusListener;
 import com.zhowin.basicframework.common.download.DownloadUtil;
-import com.zhowin.basicframework.common.permission.AndPermissionListener;
-import com.zhowin.basicframework.common.permission.AndPermissionUtils;
-import com.zhowin.basicframework.common.utils.ActivityUtils;
 import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
 import com.zhowin.viewlibrary.dialog.AndroidDialog;
 import com.zhowin.viewlibrary.dialog.HitIOSDialog;
 import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
 
-import java.util.List;
 
 /**
  * author Z_B
@@ -89,11 +83,7 @@ public class HomeFragment extends BaseFragment {
                 shoIosDialog();
                 break;
             case R.id.tvTypeFive:
-                requestPermission(
-                        Permission.READ_PHONE_STATE,
-                        Permission.READ_EXTERNAL_STORAGE,
-                        Permission.WRITE_EXTERNAL_STORAGE
-                );
+
                 break;
             case R.id.tvTypeSix:
                 showMineLoadView();
@@ -106,26 +96,7 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    private void requestPermission(String... permissions) {
-        AndPermissionUtils.requestPermission(getActivity(), new AndPermissionListener() {
-            @Override
-            public void PermissionSuccess(List<String> permissions) {
-                ActivityUtils.startActivity(LoginActivity.class);
-            }
 
-            @Override
-            public void PermissionFailure(List<String> permissions) {
-
-            }
-
-            @Override
-            public void OpenSystemSettings() {
-
-
-            }
-        }, permissions);
-
-    }
 
 
     private void showMineLoadView() {

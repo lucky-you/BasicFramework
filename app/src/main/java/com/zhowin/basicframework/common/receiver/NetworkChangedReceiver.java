@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.zhowin.basicframework.common.model.NetworkChangeEvent;
-import com.zhowin.basicframework.common.utils.NetworkUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
