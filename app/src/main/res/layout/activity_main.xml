@@ -14,5 +14,6 @@
     <com.zhowin.viewlibrary.BottomBar.BottomBarLayout
         android:id="@+id/bottomBarTab"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:background="@android:color/transparent" />
 </LinearLayout>

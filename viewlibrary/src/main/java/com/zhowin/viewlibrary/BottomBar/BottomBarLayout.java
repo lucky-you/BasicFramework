@@ -82,11 +82,11 @@ public class BottomBarLayout extends LinearLayout {
         });
         tab.setTabPosition(mTabLayout.getChildCount());
         tab.setLayoutParams(mTabParams);
+        tab.setBackgroundResource(android.R.color.transparent);
         mTabLayout.addView(tab);
         mBottomTabs.add(tab);
         return this;
     }
-
 
 
     public void setOnTabSelectedListener(OnBottomTabSelectedListener onTabSelectedListener) {

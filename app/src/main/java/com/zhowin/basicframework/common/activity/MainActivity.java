@@ -32,8 +32,6 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
     @Override
     public void bindViews(View contentView) {
         mBottomBarLayout = get(R.id.bottomBarTab);
-
-
     }
 
     @Override

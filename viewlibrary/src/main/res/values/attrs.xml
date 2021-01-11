@@ -180,5 +180,17 @@
         <attr name="drawableHeight" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="ArcView">
+        <!--景色 -->
+        <attr name="arcBgColor" format="color" />
+        <!-- 弧度高度,单位dp-->
+        <attr name="arcHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ArcImageView">
+        <!-- 弧度高度,单位dp-->
+        <attr name="arcIVHeight" format="dimension" />
+    </declare-styleable>
+
 
 </resources>
