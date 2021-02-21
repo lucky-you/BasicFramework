@@ -24,6 +24,5 @@ public class NetworkChangedReceiver extends BroadcastReceiver {
             NetworkUtils.NetworkType networkType = NetworkUtils.getNetworkType();
             EventBus.getDefault().post(new NetworkChangeEvent(isConnected, networkType));
         }
-
     }
 }
