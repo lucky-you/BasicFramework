@@ -1,11 +1,11 @@
 package com.zhowin.basicframework.common.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity {
         zhoTitleView.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startActivity(RegisterActivity.class);
+                startActivity(new Intent(mContext, RegisterActivity.class));
             }
         });
     }

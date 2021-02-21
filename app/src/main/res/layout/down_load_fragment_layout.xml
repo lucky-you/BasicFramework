@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_bottom_dialog_bg"
     android:orientation="vertical">
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/ivImageOne"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@color/color_e53d3d"
+        app:riv_corner_radius="5dp"
+        app:riv_oval="false" />
+
+    <com.zhowin.viewlibrary.view.RoundImageView
+        android:id="@+id/ivImageTwo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@color/color_e53d3d"
+        app:corner_radius="5dp"
+        app:type="round" />
 
 
     <TextView
