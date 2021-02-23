@@ -1,4 +1,4 @@
-package com.zhowin.library.BottomBar;
+package com.zhowin.library.bottomBar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
