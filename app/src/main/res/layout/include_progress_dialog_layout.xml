@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <com.zhowin.viewlibrary.view.MiniLoadingView
+    <com.zhowin.library.view.MiniLoadingView
         android:id="@+id/miniLoadingView"
         android:layout_width="@dimen/spacing_44"
         android:layout_height="@dimen/spacing_44"

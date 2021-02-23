@@ -3,9 +3,9 @@ package com.zhowin.basicframework.common.view;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
-import com.zhowin.viewlibrary.R;
-import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.viewlibrary.empty.OnNextClickListener;
+import com.zhowin.library.R;
+import com.zhowin.library.empty.LoadingController;
+import com.zhowin.library.empty.OnNextClickListener;
 
 
 /**

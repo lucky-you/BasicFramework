@@ -10,8 +10,8 @@ import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
-import com.zhowin.viewlibrary.empty.LoadingController;
-import com.zhowin.viewlibrary.view.ZhoSimpleTitleView;
+import com.zhowin.library.empty.LoadingController;
+import com.zhowin.library.view.ZhoSimpleTitleView;
 
 /**
  * 登录界面，这里只是方便展示网络请求，正式项目根据不同的需求来展示不同的界面

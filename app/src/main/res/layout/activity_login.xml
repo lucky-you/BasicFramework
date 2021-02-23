@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.zhowin.viewlibrary.view.ZhoSimpleTitleView
+    <com.zhowin.library.view.ZhoSimpleTitleView
         android:id="@+id/zhoTitleView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spacing_48"

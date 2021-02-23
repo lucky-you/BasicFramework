@@ -17,7 +17,7 @@
         app:riv_corner_radius="5dp"
         app:riv_oval="false" />
 
-    <com.zhowin.viewlibrary.view.RoundImageView
+    <com.zhowin.library.view.RoundImageView
         android:id="@+id/ivImageTwo"
         android:layout_width="80dp"
         android:layout_height="80dp"

@@ -9,9 +9,9 @@ import android.view.View;
 import com.zhowin.basicframework.R;
 import com.zhowin.basicframework.common.base.BaseActivity;
 import com.zhowin.basicframework.common.fragment.HomeFragment;
-import com.zhowin.viewlibrary.BottomBar.BottomBarLayout;
-import com.zhowin.viewlibrary.BottomBar.BottomBarTab;
-import com.zhowin.viewlibrary.BottomBar.OnBottomTabSelectedListener;
+import com.zhowin.library.BottomBar.BottomBarLayout;
+import com.zhowin.library.BottomBar.BottomBarTab;
+import com.zhowin.library.BottomBar.OnBottomTabSelectedListener;
 
 public class MainActivity extends BaseActivity implements OnBottomTabSelectedListener {
 

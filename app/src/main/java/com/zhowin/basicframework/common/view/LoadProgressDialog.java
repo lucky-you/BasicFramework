@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhowin.basicframework.R;
-import com.zhowin.viewlibrary.view.MiniLoadingView;
+import com.zhowin.library.view.MiniLoadingView;
 
 /**
  * author      : Z_B

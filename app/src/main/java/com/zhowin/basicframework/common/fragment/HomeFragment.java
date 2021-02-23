@@ -12,10 +12,10 @@ import com.zhowin.basicframework.common.base.BaseFragment;
 import com.zhowin.basicframework.common.download.BottomShowFragment;
 import com.zhowin.basicframework.common.download.DownloadStatusListener;
 import com.zhowin.basicframework.common.download.DownloadUtil;
-import com.zhowin.viewlibrary.callback.OnAndroidDialogClickListener;
-import com.zhowin.viewlibrary.dialog.AndroidDialog;
-import com.zhowin.viewlibrary.dialog.HitIOSDialog;
-import com.zhowin.viewlibrary.dialog.PasswordDialogUtils;
+import com.zhowin.library.callback.OnAndroidDialogClickListener;
+import com.zhowin.library.dialog.AndroidDialog;
+import com.zhowin.library.dialog.HitIOSDialog;
+import com.zhowin.library.dialog.PasswordDialogUtils;
 
 
 /**

@@ -37,7 +37,7 @@
         android:layout_height="1dp"
         android:background="#d1d2d6" />
 
-    <com.zhowin.viewlibrary.view.PasswordEditText
+    <com.zhowin.library.view.PasswordEditText
         android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         app:passwordColor="@color/color_666" />
 
 
-    <com.zhowin.viewlibrary.view.CustomerKeyboard
+    <com.zhowin.library.view.CustomerKeyboard
         android:id="@+id/custom_key_board"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
