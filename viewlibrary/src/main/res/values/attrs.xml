@@ -144,7 +144,7 @@
     </declare-styleable>
 
 
-    <!--    记载控件-->
+    <!--  加载进度的控件-->
     <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
         <!--loading控件的大小，默认32dp-->
