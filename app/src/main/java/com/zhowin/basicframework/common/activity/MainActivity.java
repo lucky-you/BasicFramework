@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity implements OnBottomTabSelectedLis
     @Override
     public void onViewClick(View view) {
 
-
     }
 
 
