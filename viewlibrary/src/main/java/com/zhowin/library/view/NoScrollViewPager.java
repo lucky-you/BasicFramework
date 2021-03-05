@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 作者： zhoubin
+ * 作者： Z_B
  * 时间： 2017/4/21
  * 描述： 禁止滑动的ViewPager
  */

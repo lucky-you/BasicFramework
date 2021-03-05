@@ -14,7 +14,7 @@ import com.zhowin.library.R;
 
 
 /**
- * Created by ZhouBin on 2017/8/7.
+ * Created by Z_B on 2017/8/7.
  * Effect: 可以一键删除的EditText
  */
 

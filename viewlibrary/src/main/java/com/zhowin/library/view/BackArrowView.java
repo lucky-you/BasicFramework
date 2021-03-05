@@ -15,7 +15,7 @@ import com.zhowin.library.R;
 /**
  * author Z_B
  * date :2020/1/17 16:25
- * description: 自定义返回键按钮
+ * desc: 自定义返回键按钮
  */
 public class BackArrowView extends View {
 
