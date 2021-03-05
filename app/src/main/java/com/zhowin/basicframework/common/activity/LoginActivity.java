@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.zhowin.basicframework.R;
@@ -12,6 +13,12 @@ import com.zhowin.basicframework.common.view.LoadingViewUtils;
 import com.zhowin.basicframework.common.view.RefreshLayout;
 import com.zhowin.library.empty.LoadingController;
 import com.zhowin.library.view.ZhoSimpleTitleView;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 
 /**
  * 登录界面，这里只是方便展示网络请求，正式项目根据不同的需求来展示不同的界面
@@ -60,6 +67,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, RegisterActivity.class));
+//                justDo();
             }
         });
     }
@@ -68,6 +76,35 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void onViewClick(View view) {
 
+    }
+
+
+    private void justDo() {
+
+        Observable.just("hello world")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("xy", "threadName:" + Thread.currentThread().getName());
+
+                    }
+                });
     }
 }
 
