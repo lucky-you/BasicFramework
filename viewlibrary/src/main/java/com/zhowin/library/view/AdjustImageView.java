@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 /**
  * author : zho
  * date  ：2021/1/11
- * desc ：
+ * desc ： 自适应宽高的ImageView
  */
 public class AdjustImageView extends AppCompatImageView {
 
